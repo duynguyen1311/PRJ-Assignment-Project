@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Khoa</title>
+    <title>Quản lý lớp</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.jsp"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="home.jsp"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -40,14 +40,14 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-item active ">
-                            <a href="index.jsp" class='sidebar-link'>
+                            <a href="home.jsp" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Trang chủ</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="table_fixed1.jsp" class='sidebar-link'>
+                            <a href="khoa.jsp" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Khoa</span>
                             </a>
@@ -55,14 +55,14 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="table_fixed2.jsp" class='sidebar-link'>
+                            <a href="monhoc.jsp" class='sidebar-link'>
                                 <i class="bi bi-collection-fill"></i>
                                 <span>Môn học</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="table_fixed3.jsp" class='sidebar-link'>
+                            <a href="lop.jsp" class='sidebar-link'>
                                 <i class="bi bi-grid-1x2-fill"></i>
                                 <span>Lớp</span>
                             </a>
@@ -75,10 +75,10 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="table_fixed4.jsp">Danh sách sinh viên</a>
+                                    <a href="sinhvien.jsp">Danh sách sinh viên</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="table_fixed5.jsp">Điểm</a>
+                                    <a href="diem.jsp">Điểm</a>
                                 </li>
                             </ul>
                         </li>
@@ -98,29 +98,27 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Quản lý khoa</h3>
+                            <h3>Quản lý lớp</h3>
                             <p class="text-subtitle text-muted" style="margin-top:50px"></p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Khoa</li>
+                                    <li class="breadcrumb-item"><a href="home.jsp">Trang chủ</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Lớp</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                 </div>
-                <!-- Table head options start -->
                 <section class="section">
-                    <div class="row" id="table-head">
+                    <div class="row" id="table-bordered">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-content">
-                                    <!-- table head dark -->
+                                    <!-- table bordered -->
                                     <div class="table-responsive">
-                                        <table class="table mb-0 text-center  table-dark">
-                                            <thead class="thead-dark">
+                                        <table class="table table-bordered mb-0 text-center table-dark">
+                                            <thead>
                                                 <tr>
                                                     <th>NAME</th>
                                                     <th>RATE</th>
