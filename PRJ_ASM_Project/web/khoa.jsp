@@ -101,8 +101,10 @@
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý khoa</h3>
                                 <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                    </i>Thêm mới </button>
+                                <a href="Khoa_form.jsp">
+                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                        </i>Thêm mới </button>
+                                </a>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -149,67 +151,6 @@
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
-
-                                                    <!--                                                    <tr>
-                                                                                                            <td class="text-bold-500">Morgan Vanblum</td>
-                                                                                                            <td>$13/hr</td>
-                                                                                                            <td class="text-bold-500">Graphic concepts</td>
-                                                                                                            <td>Remote</td>
-                                                                                                            <td>Shangai,China</td>
-                                                                                                            <td>
-                                                                                                                <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                                <a href="#" class="bi-trash-fill"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td class="text-bold-500">Tiffani Blogz</td>
-                                                                                                            <td>$15/hr</td>
-                                                                                                            <td class="text-bold-500">Animation</td>
-                                                                                                            <td>Remote</td>
-                                                                                                            <td>Austin,Texas</td>
-                                                                                                            <td>
-                                                                                                                <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                                <a href="#" class="bi-trash-fill"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td class="text-bold-500">Ashley Boul</td>
-                                                                                                            <td>$15/hr</td>
-                                                                                                            <td class="text-bold-500">Animation</td>
-                                                                                                            <td>Remote</td>
-                                                                                                            <td>Austin,Texas</td>
-                                                                                                            <td>
-                                                                                                                <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                                <a href="#" class="bi-trash-fill"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td class="text-bold-500">Mikkey Mice</td>
-                                                                                                            <td>$15/hr</td>
-                                                                                                            <td class="text-bold-500">Animation</td>
-                                                                                                            <td>Remote</td>
-                                                                                                            <td>Austin,Texas</td>
-                                                                                                            <td>
-                                                                                                                <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                                <a href="#" class="bi-trash-fill"><i
-                                                                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                                                                        data-feather="mail"></i></a>
-                                                                                                            </td>
-                                                                                                        </tr>-->
                                                 </tbody>
                                             </table>
                                         </div>
