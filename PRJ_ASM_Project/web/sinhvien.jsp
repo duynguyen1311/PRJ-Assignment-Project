@@ -55,14 +55,14 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc.jsp" class='sidebar-link'>
+                                <a href="monhoc" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop.jsp" class='sidebar-link'>
+                                <a href="lop" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -180,6 +180,14 @@
                                                                                 <input type="text" class="form-control">
                                                                             </div>
                                                                             <label>Quê quán</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
+                                                                            <label>Số điện thoại</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
+                                                                            <label>Email</label>
                                                                             <div class="form-group">
                                                                                 <input type="text" class="form-control">
                                                                             </div>

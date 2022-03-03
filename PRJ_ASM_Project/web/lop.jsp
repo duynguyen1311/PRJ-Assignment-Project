@@ -4,7 +4,10 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Khoa"%>
+<%@page import="model.KhoaHoc"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,14 +58,14 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc.jsp" class='sidebar-link'>
+                                <a href="monhoc" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop.jsp" class='sidebar-link'>
+                                <a href="lop" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -124,90 +127,32 @@
                                         <table class="table table-bordered mb-0 text-center">
                                             <thead>
                                                 <tr>
-                                                    <th>NAME</th>
-                                                    <th>RATE</th>
-                                                    <th>SKILL</th>
-                                                    <th>TYPE</th>
-                                                    <th>LOCATION</th>
+                                                    <th>Mã lớp</th>
+                                                    <th>Tên Lớp</th>
+                                                    <th>Mã HĐT</th>
+                                                    <th>Khoa</th>
+                                                    <th>Khóa</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-bold-500">Michael Right</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">UI/UX</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Taxes</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Morgan Vanblum</td>
-                                                    <td>$13/hr</td>
-                                                    <td class="text-bold-500">Graphic concepts</td>
-                                                    <td>Remote</td>
-                                                    <td>Shangai,China</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Tiffani Blogz</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Ashley Boul</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${listLop}" var="ll">
+                                                    <tr>
+                                                        <td class="text-bold-500">${ll.maLop}</td>
+                                                        <td>${ll.tenLop}</td>
+                                                        <td class="text-bold-500">${ll.maHDT}</td>
+                                                        <td>${ll.khoa.tenKhoa}</td>
+                                                        <td>${ll.khoahoc.tenKH}</td>
+                                                        <td>
+                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                            <a href="#" class="bi-trash-fill"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

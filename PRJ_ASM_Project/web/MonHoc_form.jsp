@@ -173,7 +173,7 @@
                         </div>
                     </div>
                 </section>
-                <a href=""><button class="btn btn-outline-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                <a href=""><button class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                         style="margin-right: 5px;">
                     </i>Lưu</button>
                 </a>

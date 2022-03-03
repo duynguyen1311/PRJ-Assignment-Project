@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,14 +56,14 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc.jsp" class='sidebar-link'>
+                                <a href="monhoc" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop.jsp" class='sidebar-link'>
+                                <a href="lop" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -100,9 +101,9 @@
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý môn học</h3>
                                 <a href="MonHoc_form.jsp">
-                                <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                    </i>Thêm mới </button>
+                                    <p class="text-subtitle text-muted" style="margin-top:50px"></p>
+                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                        </i>Thêm mới </button>
                                 </a>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -125,90 +126,30 @@
                                         <table class="table table-striped mb-0 text-center">
                                             <thead>
                                                 <tr>
-                                                    <th>NAME</th>
-                                                    <th>RATE</th>
-                                                    <th>SKILL</th>
-                                                    <th>TYPE</th>
-                                                    <th>LOCATION</th>
+                                                    <th>ID</th>
+                                                    <th>Mã môn học</th>
+                                                    <th>Tên môn học</th>
+                                                    <th>Số tín chỉ</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-bold-500">Michael Right</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">UI/UX</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Taxes</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Morgan Vanblum</td>
-                                                    <td>$13/hr</td>
-                                                    <td class="text-bold-500">Graphic concepts</td>
-                                                    <td>Remote</td>
-                                                    <td>Shangai,China</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Tiffani Blogz</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Ashley Boul</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${listMonHoc}" var="lm">
+                                                    <tr>
+                                                        <td class="text-bold-500">${lm.id}</td>
+                                                        <td>${lm.maMH}</td>
+                                                        <td class="text-bold-500">${lm.tenMH}</td>
+                                                        <td>${lm.tinChi}</td>
+                                                        <td>
+                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                            <a href="#" class="bi-trash-fill"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

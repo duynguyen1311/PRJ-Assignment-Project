@@ -25,6 +25,10 @@ public class Khoa {
         this.dienThoai = dienThoai;
     }
 
+    public Khoa(String tenKhoa) {
+        this.tenKhoa = tenKhoa;
+    }
+
     public String getMaKhoa() {
         return maKhoa;
     }
