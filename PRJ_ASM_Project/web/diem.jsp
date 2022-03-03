@@ -100,8 +100,10 @@
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý điểm</h3>
                                 <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                    </i>Thêm mới </button>
+                                <a href="Diem_form.jsp">
+                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                        </i>Thêm mới </button>
+                                </a>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
