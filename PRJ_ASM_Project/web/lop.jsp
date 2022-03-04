@@ -78,10 +78,10 @@
                                 </a>
                                 <ul class="submenu ">
                                     <li class="submenu-item ">
-                                        <a href="sinhvien.jsp">Danh sách sinh viên</a>
+                                        <a href="sinhvien">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
-                                        <a href="diem.jsp">Điểm</a>
+                                        <a href="diem">Điểm</a>
                                     </li>
                                 </ul>
                             </li>

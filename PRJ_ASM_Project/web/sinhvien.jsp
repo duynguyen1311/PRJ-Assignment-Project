@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,10 +76,10 @@
                                 </a>
                                 <ul class="submenu ">
                                     <li class="submenu-item ">
-                                        <a href="sinhvien.jsp">Danh sách sinh viên</a>
+                                        <a href="sinhvien">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
-                                        <a href="diem.jsp">Điểm</a>
+                                        <a href="diem">Điểm</a>
                                     </li>
                                 </ul>
                             </li>
@@ -125,609 +126,122 @@
                                         <table class="table mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>NAME</th>
-                                                    <th>RATE</th>
-                                                    <th>SKILL</th>
-                                                    <th>TYPE</th>
-                                                    <th>LOCATION</th>
+                                                    <th>Mã sinh viên</th>
+                                                    <th>Tên sinh viên</th>
+                                                    <th>Ngày sinh</th>
+                                                    <th>Mã lớp</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="table-active">
-                                                    <td class="text-bold-500">Michael Right</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">UI/UX</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Taxes</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Số điện thoại</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Email</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-primary">
-                                                    <td class="text-bold-500">Morgan Vanblum</td>
-                                                    <td>$13/hr</td>
-                                                    <td class="text-bold-500">Graphic concepts</td>
-                                                    <td>Remote</td>
-                                                    <td>Shangai,China</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-secondary">
-                                                    <td class="text-bold-500">Tiffani Blogz</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-success">
-                                                    <td class="text-bold-500">Ashley Boul</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        </a></td>
-                                                </tr>
-                                                <tr class="table-danger">
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-warning">
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-info">
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-light">
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="table-dark">
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#" class="bi-eye" data-bs-toggle="modal"
-                                                           data-bs-target="#inlineForm"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                             role="dialog" aria-labelledby="myModalLabel33"
-                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                 role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                            tin sinh viên</h4>
-                                                                        <button type="button" class="close"
-                                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                            <i data-feather="x"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form action="#">
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <input type="radio">Nam
-                                                                                <input type="radio"
-                                                                                       style="margin-left: 20px;">Nữ
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="bi-box-arrow-in-up-left"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                        <a href="#" class="bi-trash-fill"><i
-                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                data-feather="mail"></i></a>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${requestScope.listSinhVien}" var="sv">
+                                                    <tr class="table-success">
+                                                        <td class="text-bold-500">${sv.maSV}</td>
+                                                        <td>${sv.tenSV}</td>
+                                                        <td class="text-bold-500">${sv.ngaySinh}</td>
+                                                        <td>${sv.lop.maLop}</td>
+                                                        <td><a href="#" class="bi-eye" data-bs-toggle="modal"
+                                                               data-bs-target="#inlineForm"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                            <a href="#" class="bi-trash-fill"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <div class="modal fade text-left" id="inlineForm" tabindex="-1"
+                                         role="dialog" aria-labelledby="myModalLabel33"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                             role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel33">Thông
+                                                        tin sinh viên</h4>
+                                                    <button type="button" class="close"
+                                                            data-bs-dismiss="modal" aria-label="Close">
+                                                        <i data-feather="x"></i>
+                                                    </button>
+                                                </div>
+                                                <form action="#">
+                                                    <c:forEach items="${requestScope.listSinhVien}" var="sv">
+                                                        <div class="modal-body">
+                                                            <label>Mã số sinh viên</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="${sv.maSV}" readonly="readonly">
+                                                            </div>
+                                                            <label>Họ và tên</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="${sv.tenSV}" readonly="readonly">
+                                                            </div>
+                                                            <label>Giới tính</label>
+                                                            <div class="form-group"
+                                                                 style="margin-top: 10px;">
+                                                                <c:choose>
+                                                                    <c:when test="${sv.gioiTinh==1}">
+                                                                        <input type="radio" value="1" checked>Nam
+                                                                    </c:when>
+                                                                    <c:when test="${sv.gioiTinh==0}">
+                                                                        <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
+                                                                    </c:when>
+                                                                </c:choose>
+
+                                                            </div>
+                                                            <label>Ngày sinh</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="${sv.ngaySinh}" readonly="readonly">
+                                                            </div>
+                                                            <label>Quê quán</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="${sv.queQuan}" readonly="readonly">
+                                                            </div>
+                                                            <label>Số điện thoại</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="${sv.sdt}" readonly="readonly">
+                                                            </div>
+                                                            <label>Email</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="${sv.email}" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+                    </section>
+                    <!-- Table head options end -->
                 </div>
-                </section>
-                <!-- Table head options end -->
+
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2021 &copy; Mazer</p>
+                        </div>
+                        <div class="float-end">
+                            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                    href="http://ahmadsaugi.com">A. Saugi</a></p>
+                        </div>
+                    </div>
+                </footer>
             </div>
-
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">A. Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
         </div>
-    </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/mazer.js"></script>
-</body>
+        <script src="assets/js/mazer.js"></script>
+    </body>
 
 </html>

@@ -23,6 +23,10 @@ public class Lop {
     public Lop() {
     }
 
+    public Lop(String maLop) {
+        this.maLop = maLop;
+    }
+ 
     public Lop(String maLop, String tenLop, String maHDT, Khoa khoa, KhoaHoc khoahoc) {
         this.maLop = maLop;
         this.tenLop = tenLop;

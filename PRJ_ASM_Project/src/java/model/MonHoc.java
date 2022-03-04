@@ -18,6 +18,10 @@ public class MonHoc {
     public MonHoc() {
     }
 
+    public MonHoc(String maMH) {
+        this.maMH = maMH;
+    }
+
     public MonHoc(int id, String maMH, String tenMH, int tinChi) {
         this.id = id;
         this.maMH = maMH;
