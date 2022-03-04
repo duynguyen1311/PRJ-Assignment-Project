@@ -35,6 +35,9 @@ public class SinhVienController extends HttpServlet {
             throws ServletException, IOException {
         SinhVienDAO dao = new SinhVienDAO();
         ArrayList<SinhVien> listSinhVien = dao.getAllSinhVien();
+        String id = request.getParameter("svid");
+        SinhVien sv = dao.getSinhVienByMaSV(id);
+        request.setAttribute("sinhv", sv);
         request.setAttribute("listSinhVien", listSinhVien);
         request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
     }

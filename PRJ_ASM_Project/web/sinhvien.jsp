@@ -171,25 +171,25 @@
                                                         <i data-feather="x"></i>
                                                     </button>
                                                 </div>
-                                                <form action="#">
-                                                    <c:forEach items="${requestScope.listSinhVien}" var="sv">
+                                                <c:forEach items="${requestScope.listSinhVien}" var="sv">
+                                                    <form action="sinhvien?svid=${sv.maSV}" method="post">
                                                         <div class="modal-body">
                                                             <label>Mã số sinh viên</label>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sv.maSV}" readonly="readonly">
+                                                                <input type="text" class="form-control" value="${sinhv.maSV}" readonly="readonly">
                                                             </div>
                                                             <label>Họ và tên</label>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sv.tenSV}" readonly="readonly">
+                                                                <input type="text" class="form-control" value="${sinhv.tenSV}" readonly="readonly">
                                                             </div>
                                                             <label>Giới tính</label>
                                                             <div class="form-group"
                                                                  style="margin-top: 10px;">
                                                                 <c:choose>
-                                                                    <c:when test="${sv.gioiTinh==1}">
+                                                                    <c:when test="${sinhv.gioiTinh==1}">
                                                                         <input type="radio" value="1" checked>Nam
                                                                     </c:when>
-                                                                    <c:when test="${sv.gioiTinh==0}">
+                                                                    <c:when test="${sinhv.gioiTinh==0}">
                                                                         <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
                                                                     </c:when>
                                                                 </c:choose>
@@ -197,23 +197,23 @@
                                                             </div>
                                                             <label>Ngày sinh</label>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sv.ngaySinh}" readonly="readonly">
+                                                                <input type="text" class="form-control" value="${sinhv.ngaySinh}" readonly="readonly">
                                                             </div>
                                                             <label>Quê quán</label>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sv.queQuan}" readonly="readonly">
+                                                                <input type="text" class="form-control" value="${sinhv.queQuan}" readonly="readonly">
                                                             </div>
                                                             <label>Số điện thoại</label>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sv.sdt}" readonly="readonly">
+                                                                <input type="text" class="form-control" value="${sinhv.sdt}" readonly="readonly">
                                                             </div>
                                                             <label>Email</label>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sv.email}" readonly="readonly">
+                                                                <input type="text" class="form-control" value="${sinhv.email}" readonly="readonly">
                                                             </div>
                                                         </div>
-                                                    </c:forEach>
-                                                </form>
+                                                    </form>
+                                                </c:forEach>
                                             </div>
                                         </div>
                                     </div>
