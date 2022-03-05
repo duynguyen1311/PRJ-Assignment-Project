@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.HeDT;
 import model.Khoa;
 import model.KhoaHoc;
 import model.Lop;
@@ -29,15 +30,19 @@ public class LopDAO {
     public ArrayList<Lop> getLopList() {
         try {
             ArrayList<Lop> list = new ArrayList<>();
-            String sql = "select MaLop,TenLop,MaHeDT,TenKhoa,TenKhoaHoc from Lop l JOIN Khoa k \n"
-                    + "on l.MaKhoa = k.MaKhoa JOIN KhoaHoc kh \n"
-                    + "on l.MaKhoaHoc = kh.MaKhoaHoc";
+            String sql = "SELECT lop.MaLop,lop.TenLop,HeDT.TenHeDT,khoa.TenKhoa,KhoaHoc.TenKhoaHoc\n"
+                    + "FROM dbo.HeDT INNER JOIN\n"
+                    + "dbo.Lop ON dbo.HeDT.MaHeDT = dbo.Lop.MaHeDT INNER JOIN\n"
+                    + "dbo.Khoa ON dbo.Lop.MaKhoa = dbo.Khoa.MaKhoa INNER JOIN\n"
+                    + "dbo.KhoaHoc ON dbo.Lop.MaKhoaHoc = dbo.KhoaHoc.MaKhoaHoc";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Lop lp = new Lop(rs.getString(1),rs.getString(2), rs.getString(3),
-                        new Khoa(rs.getString(4)), new KhoaHoc(rs.getString(5)));
+                Lop lp = new Lop(rs.getString(1), rs.getString(2),
+                        new HeDT(rs.getString(3)),
+                        new Khoa(rs.getString(4)),
+                        new KhoaHoc(rs.getString(5)));
                 list.add(lp);
             }
             return list;
@@ -47,7 +52,7 @@ public class LopDAO {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
         for (Lop o : dao.getLopList()) {

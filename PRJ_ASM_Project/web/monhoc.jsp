@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý môn học</h3>
-                                <a href="MonHoc_form.jsp">
+                                <a href="monhoc_create">
                                     <p class="text-subtitle text-muted" style="margin-top:50px"></p>
                                     <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
                                         </i>Thêm mới </button>

@@ -26,7 +26,7 @@ public class MonHocDAO {
     public ArrayList<MonHoc> getMonHocList() {
         try {
             ArrayList<MonHoc> list = new ArrayList<>();
-            String sql = "select id,MaMH,TenMH,SoTrinh from MonHoc";
+            String sql = "select id,MaMH,TenMH,SoTrinh from MonHoc order by id ASC";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -42,10 +42,23 @@ public class MonHocDAO {
         return null;
     }
     
+    public void insertMonHoc(String maMH, String tenMH, int tinchi) {
+        try {
+            String sql = "insert into MonHoc(MaMH,TenMH,SoTrinh)\n"
+                    + "values (?,?,?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maMH);
+            ps.setString(2, tenMH);
+            ps.setInt(3, tinchi);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void main(String[] args) {
         MonHocDAO dao = new MonHocDAO();
-        for (MonHoc o : dao.getMonHocList()) {
-            System.out.println(o);
-        }
+        dao.insertMonHoc("H3", "new mon", 4);
     }
 }

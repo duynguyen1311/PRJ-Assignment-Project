@@ -9,6 +9,7 @@ import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -43,7 +44,23 @@ public class KhoaDAO {
         }
         return null;
     }
-    
+
+    public void insertKhoa(String maKhoa, String tenKhoa, String diachi, String sdt) {
+        try {
+            String sql = "insert into Khoa\n"
+                    + "values (?,?,?,?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maKhoa);
+            ps.setString(2, tenKhoa);
+            ps.setString(3, diachi);
+            ps.setString(4, sdt);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         KhoaDAO dao = new KhoaDAO();
         for (Khoa o : dao.getKhoaList()) {

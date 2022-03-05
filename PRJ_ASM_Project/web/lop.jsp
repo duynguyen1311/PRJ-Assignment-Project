@@ -129,7 +129,7 @@
                                                 <tr>
                                                     <th>Mã lớp</th>
                                                     <th>Tên Lớp</th>
-                                                    <th>Mã HĐT</th>
+                                                    <th>Hệ đào tạo</th>
                                                     <th>Khoa</th>
                                                     <th>Khóa</th>
                                                     <th>ACTION</th>
@@ -140,7 +140,7 @@
                                                     <tr>
                                                         <td class="text-bold-500">${ll.maLop}</td>
                                                         <td>${ll.tenLop}</td>
-                                                        <td class="text-bold-500">${ll.maHDT}</td>
+                                                        <td class="text-bold-500">${ll.heDT.tenHDT}</td>
                                                         <td>${ll.khoa.tenKhoa}</td>
                                                         <td>${ll.khoahoc.tenKH}</td>
                                                         <td>

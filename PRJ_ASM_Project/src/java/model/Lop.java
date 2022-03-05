@@ -17,7 +17,7 @@ public class Lop {
     private String maLop;
     private String tenLop;
     private Khoa khoa;
-    private String maHDT;
+    private HeDT heDT;
     private KhoaHoc khoahoc;
 
     public Lop() {
@@ -26,12 +26,12 @@ public class Lop {
     public Lop(String maLop) {
         this.maLop = maLop;
     }
- 
-    public Lop(String maLop, String tenLop, String maHDT, Khoa khoa, KhoaHoc khoahoc) {
+
+    public Lop(String maLop, String tenLop,HeDT heDT, Khoa khoa, KhoaHoc khoahoc) {
         this.maLop = maLop;
         this.tenLop = tenLop;
         this.khoa = khoa;
-        this.maHDT = maHDT;
+        this.heDT = heDT;
         this.khoahoc = khoahoc;
     }
 
@@ -59,12 +59,12 @@ public class Lop {
         this.khoa = khoa;
     }
 
-    public String getMaHDT() {
-        return maHDT;
+    public HeDT getHeDT() {
+        return heDT;
     }
 
-    public void setMaHDT(String maHDT) {
-        this.maHDT = maHDT;
+    public void setHeDT(HeDT heDT) {
+        this.heDT = heDT;
     }
 
     public KhoaHoc getKhoahoc() {
@@ -77,7 +77,6 @@ public class Lop {
 
     @Override
     public String toString() {
-        return "Lop{" + "maLop=" + maLop + ", tenLop=" + tenLop + ", khoa=" + khoa + ", maHDT=" + maHDT + ", khoahoc=" + khoahoc + '}';
+        return "Lop{" + "maLop=" + maLop + ", tenLop=" + tenLop + ", khoa=" + khoa + ", heDT=" + heDT + ", khoahoc=" + khoahoc + '}';
     }
-
 }
