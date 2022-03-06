@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DAO.MonHocDAO;
+import DAO.LopDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "MonHoc_Create_Controller", urlPatterns = {"/monhoc_create"})
-public class MonHoc_Create_Controller extends HttpServlet {
+@WebServlet(name = "Lop_Create_Controller", urlPatterns = {"/lop_create"})
+public class Lop_Create_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class MonHoc_Create_Controller extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MonHoc_Create_Controller</title>");
+            out.println("<title>Servlet Lop_Create_Controller</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MonHoc_Create_Controller at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Lop_Create_Controller at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +59,7 @@ public class MonHoc_Create_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("MonHoc_form.jsp").forward(request, response);
+        request.getRequestDispatcher("Lop_form.jsp").forward(request, response);
     }
 
     /**
@@ -73,12 +73,15 @@ public class MonHoc_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String maMH = request.getParameter("maMH");
-        String tenMH = request.getParameter("tenMH");
-        int tinchi = Integer.parseInt(request.getParameter("tinchi"));
-        MonHocDAO dao = new MonHocDAO();
-        dao.insertMonHoc(maMH, tenMH, tinchi);
-        request.getRequestDispatcher("monhoc").forward(request, response);
+        String maLop = request.getParameter("maLop");
+        String tenLop = request.getParameter("tenLop");
+        String maKhoa = request.getParameter("maKhoa");
+        String maHDT = request.getParameter("maHDT");
+        String maKhoahoc = request.getParameter("maKhoahoc");
+        
+        LopDAO dao = new LopDAO();
+        dao.insertLop(maLop, tenLop, maKhoa, maHDT, maKhoahoc);
+        request.getRequestDispatcher("lop").forward(request, response);
     }
 
     /**

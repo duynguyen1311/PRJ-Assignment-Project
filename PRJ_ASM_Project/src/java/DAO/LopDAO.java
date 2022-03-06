@@ -53,10 +53,28 @@ public class LopDAO {
         return null;
     }
 
+    public void insertLop(String maLop, String tenLop, String maKhoa, String maHDT, String maKhoaHoc) {
+        try {
+            String sql = "insert into Lop(MaLop,TenLop,MaKhoa,MaHeDT,MaKhoaHoc)\n"
+                    + "values (?,?,?,?,?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maLop);
+            ps.setString(2, tenLop);
+            ps.setString(3, maKhoa);
+            ps.setString(4, maHDT);
+            ps.setString(5, maKhoaHoc);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
-        for (Lop o : dao.getLopList()) {
-            System.out.println(o);
-        }
+//        for (Lop o : dao.getLopList()) {
+//            System.out.println(o);
+//        }
+        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
     }
 }
