@@ -142,7 +142,7 @@
                                                             <td class="text-bold-500">${l.diaChi}</td>
                                                             <td>${l.dienThoai}</td>
                                                             <td>
-                                                                <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                                <a href="khoa_update?kid=${l.maKhoa}" class="bi-box-arrow-in-up-left"><i
                                                                         class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                         data-feather="mail"></i></a>
                                                                 <a href="#" class="bi-trash-fill"><i

@@ -141,7 +141,7 @@
                                                         <td class="text-bold-500">${lm.tenMH}</td>
                                                         <td>${lm.tinChi}</td>
                                                         <td>
-                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                            <a href="monhoc_update?mid=${lm.id}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                             <a href="#" class="bi-trash-fill"><i

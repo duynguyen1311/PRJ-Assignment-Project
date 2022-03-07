@@ -44,7 +44,7 @@ public class KhoaDAO {
         }
         return null;
     }
-    
+
     public ArrayList<Khoa> getMaKhoaTenKhoa() {
         try {
             ArrayList<Khoa> list = new ArrayList<>();
@@ -63,7 +63,25 @@ public class KhoaDAO {
         }
         return null;
     }
-    
+
+    public Khoa getKhoaByMaKhoa(String maKhoa) {
+        try {
+            String sql = "select * from khoa where MaKhoa = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maKhoa);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Khoa k = new Khoa(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                return k;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public void insertKhoa(String maKhoa, String tenKhoa, String diachi, String sdt) {
         try {
             String sql = "insert into Khoa\n"
@@ -80,10 +98,28 @@ public class KhoaDAO {
         }
     }
 
+    public void updateKhoa(String maKhoa, String tenKhoa, String diachi, String sdt) {
+        try {
+            String sql = "Update Khoa\n"
+                    + "Set TenKhoa = ?, DiaChi=?, DienThoai=?\n"
+                    + "Where MaKhoa=?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, tenKhoa);
+            ps.setString(2, diachi);
+            ps.setString(3, sdt);
+            ps.setString(4, maKhoa);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         KhoaDAO dao = new KhoaDAO();
         for (Khoa o : dao.getMaKhoaTenKhoa()) {
             System.out.println(o);
         }
+//        dao.updateKhoa("A1", "Ki thuat", "Tang 5", "1234");
     }
 }
