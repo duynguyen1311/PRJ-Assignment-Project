@@ -143,6 +143,7 @@
                                                                 <label for="city-column">Giới tính</label>
                                                                 <input type="text" id="city-column" class="form-control" placeholder="Giới tính"
                                                                        name="gioitinh">
+
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -164,9 +165,9 @@
                                                                 <label for="email-id-column">Mã lớp</label>
                                                                 <select name="maLop" id="first-name" class="form-control">
                                                                     <c:forEach items="${listMaLop}" var="lml">
-                                                                    <option>${lml.maLop}</option>
-                                                                </c:forEach>
-                                                            </select>
+                                                                        <option>${lml.maLop}</option>
+                                                                    </c:forEach>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
