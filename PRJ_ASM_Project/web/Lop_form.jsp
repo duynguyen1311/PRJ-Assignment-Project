@@ -156,7 +156,6 @@
                                                                 <c:forEach items="${listMaKhoa}" var="lmk">
                                                                     <option>${lmk.maKhoa}</option>
                                                                 </c:forEach>
-
                                                             </select>
                                                         </div>
                                                     </div>

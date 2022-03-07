@@ -26,7 +26,7 @@ public class LopDAO {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
+
     public ArrayList<Lop> getLopList() {
         try {
             ArrayList<Lop> list = new ArrayList<>();
@@ -52,7 +52,26 @@ public class LopDAO {
         }
         return null;
     }
-    
+
+    public ArrayList<Lop> getMaLop() {
+        try {
+            ArrayList<Lop> list = new ArrayList<>();
+            String sql = "select MaLop from Lop";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Lop lp = new Lop(rs.getString(1));
+                list.add(lp);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public void insertLop(String maLop, String tenLop, String maKhoa, String maHDT, String maKhoaHoc) {
         try {
             String sql = "insert into Lop(MaLop,TenLop,MaKhoa,MaHeDT,MaKhoaHoc)\n"
@@ -72,9 +91,9 @@ public class LopDAO {
 
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
-//        for (Lop o : dao.getLopList()) {
-//            System.out.println(o);
-//        }
-        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
+        for (Lop o : dao.getMaLop()) {
+            System.out.println(o);
+        }
+//        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
     }
 }
