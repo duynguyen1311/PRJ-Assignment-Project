@@ -18,6 +18,11 @@ public class Khoa {
     public Khoa() {
     }
 
+    public Khoa(String maKhoa, String tenKhoa) {
+        this.maKhoa = maKhoa;
+        this.tenKhoa = tenKhoa;
+    }
+
     public Khoa(String maKhoa, String tenKhoa, String diaChi, String dienThoai) {
         this.maKhoa = maKhoa;
         this.tenKhoa = tenKhoa;

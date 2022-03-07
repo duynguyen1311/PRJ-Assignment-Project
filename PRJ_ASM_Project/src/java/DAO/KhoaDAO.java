@@ -44,7 +44,26 @@ public class KhoaDAO {
         }
         return null;
     }
+    
+    public ArrayList<Khoa> getMaKhoaTenKhoa() {
+        try {
+            ArrayList<Khoa> list = new ArrayList<>();
+            String sql = "select MaKhoa, TenKhoa from khoa";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Khoa k = new Khoa(rs.getString(1), rs.getString(2));
+                list.add(k);
+            }
+            return list;
 
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public void insertKhoa(String maKhoa, String tenKhoa, String diachi, String sdt) {
         try {
             String sql = "insert into Khoa\n"
@@ -63,7 +82,7 @@ public class KhoaDAO {
 
     public static void main(String[] args) {
         KhoaDAO dao = new KhoaDAO();
-        for (Khoa o : dao.getKhoaList()) {
+        for (Khoa o : dao.getMaKhoaTenKhoa()) {
             System.out.println(o);
         }
     }

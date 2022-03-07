@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -151,8 +152,12 @@
                                                             <label class="col-form-label">Mã Khoa</label>
                                                         </div>
                                                         <div class="col-lg-10 col-9">
-                                                            <input type="text" id="first-name" class="form-control" name="maKhoa"
-                                                                   placeholder="Mã khoa">
+                                                            <select name="maKhoa" id="first-name" class="form-control">
+                                                                <c:forEach items="${listMaKhoa}" var="lmk">
+                                                                    <option>${lmk.maKhoa}</option>
+                                                                </c:forEach>
+
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -162,8 +167,11 @@
                                                             <label class="col-form-label">Mã HĐT</label>
                                                         </div>
                                                         <div class="col-lg-10 col-9">
-                                                            <input type="text" id="last-name" class="form-control" name="maHDT"
-                                                                   placeholder="Mã hệ đào tạo">
+                                                            <select name="maHDT" id="first-name" class="form-control">
+                                                                <c:forEach items="${listMaHDT}" var="lmhdt">
+                                                                    <option>${lmhdt.maHDT}</option>
+                                                                </c:forEach>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,8 +183,11 @@
                                                             <label class="col-form-label">Mã Khóa học</label>
                                                         </div>
                                                         <div class="col-lg-10 col-9">
-                                                            <input type="text" id="last-name" class="form-control" name="maKhoahoc"
-                                                                   placeholder="Mã khóa học">
+                                                            <select name="maKhoahoc" id="first-name" class="form-control">
+                                                                <c:forEach items="${listMaKhoaHoc}" var="lmkh">
+                                                                    <option>${lmkh.maKH}</option>
+                                                                </c:forEach>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>

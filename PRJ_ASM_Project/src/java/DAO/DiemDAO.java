@@ -22,6 +22,7 @@ import model.SinhVien;
  * @author admin
  */
 public class DiemDAO {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -46,11 +47,29 @@ public class DiemDAO {
         }
         return null;
     }
-    
+
+    public void insertDiem(String maSV, String maMH, int hocKy, int diem1, int diem2) {
+        try {
+            String sql = "insert into Diem(MaSV,MaMH,HocKy,DiemLan1,DiemLan2)\n"
+                    + "values (?,?,?,?,?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maSV);
+            ps.setString(2, maMH);
+            ps.setInt(3, hocKy);
+            ps.setInt(4, diem1);
+            ps.setInt(5, diem2);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         DiemDAO dao = new DiemDAO();
-        for (Diem o : dao.getDiemList()) {
-            System.out.println(o);
-        }
+//        for (Diem o : dao.getDiemList()) {
+//            System.out.println(o);
+//        }
+        dao.insertDiem("0241060218", "SQL", 2, 5, 1);
     }
 }

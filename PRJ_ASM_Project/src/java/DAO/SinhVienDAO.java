@@ -66,12 +66,31 @@ public class SinhVienDAO {
         return null;
     }
     
+    public ArrayList<SinhVien> getMaSinhVien() {
+        try {
+            ArrayList<SinhVien> list = new ArrayList<>();
+            String sql = "select MaSV from SinhVien";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SinhVien sv = new SinhVien(rs.getString(1));
+                list.add(sv);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
-//        for (SinhVien o : dao.getAllSinhVien()) {
-//            System.out.println(o);
-//        }
-        SinhVien s = dao.getSinhVienByMaSV("0241060218");
-        System.out.println(s);
+        for (SinhVien o : dao.getMaSinhVien()) {
+            System.out.println(o);
+        }
+//        SinhVien s = dao.getSinhVienByMaSV("0241060218");
+//        System.out.println(s);
     }
 }

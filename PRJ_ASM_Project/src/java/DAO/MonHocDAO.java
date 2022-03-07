@@ -42,6 +42,25 @@ public class MonHocDAO {
         return null;
     }
     
+    public ArrayList<MonHoc> getMaMonHoc() {
+        try {
+            ArrayList<MonHoc> list = new ArrayList<>();
+            String sql = "select MaMH from MonHoc";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                MonHoc mh = new MonHoc(rs.getString(1));
+                list.add(mh);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public void insertMonHoc(String maMH, String tenMH, int tinchi) {
         try {
             String sql = "insert into MonHoc(MaMH,TenMH,SoTrinh)\n"
@@ -59,6 +78,9 @@ public class MonHocDAO {
     
     public static void main(String[] args) {
         MonHocDAO dao = new MonHocDAO();
-        dao.insertMonHoc("H3", "new mon", 4);
+        for (MonHoc o : dao.getMaMonHoc()) {
+            System.out.println(o);
+        }
+        
     }
 }

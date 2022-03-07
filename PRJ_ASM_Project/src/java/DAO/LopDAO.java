@@ -26,7 +26,7 @@ public class LopDAO {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-
+    
     public ArrayList<Lop> getLopList() {
         try {
             ArrayList<Lop> list = new ArrayList<>();
@@ -52,7 +52,7 @@ public class LopDAO {
         }
         return null;
     }
-
+    
     public void insertLop(String maLop, String tenLop, String maKhoa, String maHDT, String maKhoaHoc) {
         try {
             String sql = "insert into Lop(MaLop,TenLop,MaKhoa,MaHeDT,MaKhoaHoc)\n"

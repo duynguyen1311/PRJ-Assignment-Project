@@ -5,10 +5,9 @@
  */
 package controller;
 
-import DAO.HDTDAO;
-import DAO.KhoaDAO;
-import DAO.KhoaHocDAO;
-import DAO.LopDAO;
+import DAO.DiemDAO;
+import DAO.MonHocDAO;
+import DAO.SinhVienDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,16 +16,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.HeDT;
-import model.Khoa;
-import model.KhoaHoc;
+import model.MonHoc;
+import model.SinhVien;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "Lop_Create_Controller", urlPatterns = {"/lop_create"})
-public class Lop_Create_Controller extends HttpServlet {
+@WebServlet(name = "Diem_Create_Controller", urlPatterns = {"/diem_create"})
+public class Diem_Create_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +43,10 @@ public class Lop_Create_Controller extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Lop_Create_Controller</title>");            
+            out.println("<title>Servlet Diem_Create_Controller</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Lop_Create_Controller at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Diem_Create_Controller at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,18 +64,15 @@ public class Lop_Create_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        KhoaDAO kdao = new KhoaDAO();
-        KhoaHocDAO khdao = new KhoaHocDAO();
-        HDTDAO hdao = new HDTDAO();
+        MonHocDAO mhdao = new MonHocDAO();
+        SinhVienDAO svdao = new SinhVienDAO();
+        ArrayList<MonHoc> listMaMH = mhdao.getMaMonHoc();
+        ArrayList<SinhVien> listMaSV = svdao.getMaSinhVien();
         
-        ArrayList<Khoa> listMaKhoa = kdao.getMaKhoaTenKhoa();
-        ArrayList<KhoaHoc> listMaKhoaHoc = khdao.getMaKhoaHocTenKhoaHoc();
-        ArrayList<HeDT> listMaHDT = hdao.getMaHDTTenHDT();
+        request.setAttribute("listMaMH", listMaMH);
+        request.setAttribute("listMaSV", listMaSV);
         
-        request.setAttribute("listMaKhoa", listMaKhoa);
-        request.setAttribute("listMaKhoaHoc", listMaKhoaHoc);
-        request.setAttribute("listMaHDT", listMaHDT);
-        request.getRequestDispatcher("Lop_form.jsp").forward(request, response);
+        request.getRequestDispatcher("Diem_form.jsp").forward(request, response);
     }
 
     /**
@@ -91,15 +86,16 @@ public class Lop_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String maLop = request.getParameter("maLop");
-        String tenLop = request.getParameter("tenLop");
-        String maKhoa = request.getParameter("maKhoa");
-        String maHDT = request.getParameter("maHDT");
-        String maKhoahoc = request.getParameter("maKhoahoc");
+        String maSV = request.getParameter("maSV");
+        String maMH = request.getParameter("maMH");
+        int hocKy = Integer.parseInt(request.getParameter("hocky"));
+        int diem1 = Integer.parseInt(request.getParameter("diem1"));
+        int diem2 = Integer.parseInt(request.getParameter("diem2"));
         
-        LopDAO dao = new LopDAO();
-        dao.insertLop(maLop, tenLop, maKhoa, maHDT, maKhoahoc);
-        request.getRequestDispatcher("lop").forward(request, response);
+        DiemDAO dao = new DiemDAO();
+        dao.insertDiem(maSV, maMH, hocKy, diem1, diem2);
+        request.getRequestDispatcher("diem").forward(request, response);
+        
     }
 
     /**
