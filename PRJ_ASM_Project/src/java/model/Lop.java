@@ -22,7 +22,7 @@ public class Lop {
 
     public Lop() {
     }
-
+    
     public Lop(String maLop) {
         this.maLop = maLop;
     }

@@ -1,18 +1,21 @@
 <%-- 
-    Document   : SinhVien_form
-    Created on : Mar 3, 2022, 6:23:59 PM
+    Document   : MonHoc_form
+    Created on : Mar 3, 2022, 4:16:27 PM
     Author     : admin
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Khoa"%>
+<%@page import="model.KhoaHoc"%>
+<%@page import="model.HeDT"%>
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Danh sách sinh viên</title>
+        <title>Quản Lý Lớp</title>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -31,7 +34,7 @@
                     <div class="sidebar-header">
                         <div class="d-flex justify-content-between">
                             <div class="logo">
-                                <a href="home.jsp"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                                <a href="#"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                             </div>
                             <div class="toggler">
                                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -99,105 +102,100 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Danh sách sinh viên</h3>
+                                <h3>Quản lý lớp</h3>
                                 <p class="text-subtitle text-muted" style="margin-top:50px"></p>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Danh sách sinh viên</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Lớp</li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
                     </div>
-                    <form action="sinhvien_create" method="post">
-                        <section id="multiple-column-form">
-                            <div class="row match-height">
-                                <div class="col-12">
+                    <form action="lop_update" method="post">
+                        <section id="horizontal-input">
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Thêm sinh viên mới</h4>
+                                            <h4 class="card-title">Cập nhật thông tin lớp</h4>
                                         </div>
-                                        <div class="card-content">
-                                            <div class="card-body">
-                                                <form class="form">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="first-name-column">Mã sinh viên</label>
-                                                                <input type="text" id="helperText" class="form-control"
-                                                                       placeholder="Mã sinh viên" name="maSV">
-                                                                <p style="font-style: italic"><small class="text-muted">Không được trùng mã</small></p>
-                                                            </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row align-items-center">
+                                                        <div class="col-lg-2 col-3">
+                                                            <label class="col-form-label">Mã Lớp</label>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="last-name-column">Họ và tên</label>
-                                                                <input type="text" id="last-name-column" class="form-control"
-                                                                       placeholder="Họ và tên" name="tenSV">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="city-column">Giới tính</label>
-                                                                <input type="text" id="city-column" class="form-control" placeholder="Giới tính"
-                                                                       name="gioitinh">
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="country-floating">Ngày sinh</label>
-                                                                <input type="date" id="country-floating" class="form-control"
-                                                                       name="ngaysinh" placeholder="Ngày sinh">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="company-column">Quê quán</label>
-                                                                <input type="text" id="company-column" class="form-control"
-                                                                       name="quequan" placeholder="Quê quán">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="email-id-column">Mã lớp</label>
-                                                                <select name="maLop" id="first-name" class="form-control">
-                                                                    <c:forEach items="${listMaLop}" var="lml">
-                                                                        <option>${lml.maLop}</option>
-                                                                    </c:forEach>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="company-column">Số điện thoại</label>
-                                                                <input type="text" id="company-column" class="form-control"
-                                                                       name="sdt" placeholder="Số điện thoại">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="email-id-column">Email</label>
-                                                                <input type="email" id="email-id-column" class="form-control"
-                                                                       name="email" placeholder="Email">
-                                                            </div>
+                                                        <div class="col-lg-10 col-9">
+                                                            <input type="text" id="first-name" class="form-control" name="maLop"
+                                                                   placeholder="Mã Lớp" value="${l.maLop}" readonly="readonly">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row align-items-center">
+                                                        <div class="col-lg-2 col-3">
+                                                            <label class="col-form-label">Tên Lớp</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-9">
+                                                            <input type="text" id="last-name" class="form-control" name="tenLop"
+                                                                   placeholder="Tên lớp" value="${l.tenLop}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row align-items-center">
+                                                        <div class="col-lg-2 col-3">
+                                                            <label class="col-form-label">Mã Khoa</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-9">
+                                                            <input type="text" id="last-name" class="form-control" name="maKhoa"
+                                                                   value="${l.khoa.maKhoa}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row align-items-center">
+                                                        <div class="col-lg-2 col-3">
+                                                            <label class="col-form-label">Mã HĐT</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-9">
+                                                            <input type="text" id="last-name" class="form-control" name="maHDT"
+                                                                   value="${l.heDT.maHDT}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row align-items-center">
+                                                        <div class="col-lg-2 col-3">
+                                                            <label class="col-form-label">Mã Khóa học</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-9">
+                                                            <input type="text" id="last-name" class="form-control" name="maKhoaHoc"
+                                                                   value="${l.khoahoc.maKH}">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                        <button type="submit" class="btn btn-primary" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                        <button type="submit" class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
-                            </i>Lưu</button>
+                            </i>Xác nhận</button>
                         </a>
                     </form>
-                    <a href="sinhvien"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="lop"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>

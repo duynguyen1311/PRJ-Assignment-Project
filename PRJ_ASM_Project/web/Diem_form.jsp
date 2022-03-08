@@ -172,7 +172,7 @@
                                 </div>
                             </div>
                         </section>
-                        <button type="submit" class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                        <button type="submit" class="btn btn-primary" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                     style="margin-right: 5px;">
                                 </i>Lưu</button>
                     </form>

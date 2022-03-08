@@ -5,22 +5,22 @@
  */
 package controller;
 
-import DAO.SinhVienDAO;
+import DAO.DiemDAO;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.SinhVien;
+import model.Diem;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "SinhVienController", urlPatterns = {"/sinhvien"})
-public class SinhVienController extends HttpServlet {
+@WebServlet(name = "Diem_Update_Controller", urlPatterns = {"/diem_update"})
+public class Diem_Update_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,13 +33,19 @@ public class SinhVienController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SinhVienDAO dao = new SinhVienDAO();
-        ArrayList<SinhVien> listSinhVien = dao.getAllSinhVien();
-        String id = request.getParameter("sid");
-        SinhVien sv = dao.getSinhVienByMaSV(id);
-        request.setAttribute("sinhv", sv);
-        request.setAttribute("listSinhVien", listSinhVien);
-        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Diem_Update_Controller</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Diem_Update_Controller at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +60,12 @@ public class SinhVienController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("did");
+        String mh = request.getParameter("dmh");
+        DiemDAO dao = new DiemDAO();
+        Diem d = dao.getDiemByMaSVandMaMH(id,mh);
+        request.setAttribute("d", d);
+        request.getRequestDispatcher("Diem_Update.jsp").forward(request, response);
     }
 
     /**
@@ -68,7 +79,15 @@ public class SinhVienController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String maSV = request.getParameter("maSV");
+        String maMH = request.getParameter("maMH");
+        int hocky = Integer.parseInt(request.getParameter("hocky"));
+        int diem1 = Integer.parseInt(request.getParameter("diem1"));
+        int diem2 = Integer.parseInt(request.getParameter("diem2"));
+        
+        DiemDAO dao = new DiemDAO();
+        dao.updateDiem(maSV, maMH, hocky, diem1, diem2);
+        request.getRequestDispatcher("diem").forward(request, response);
     }
 
     /**

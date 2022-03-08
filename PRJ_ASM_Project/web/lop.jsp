@@ -144,7 +144,7 @@
                                                         <td>${ll.khoa.tenKhoa}</td>
                                                         <td>${ll.khoahoc.tenKH}</td>
                                                         <td>
-                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                            <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                             <a href="#" class="bi-trash-fill"><i

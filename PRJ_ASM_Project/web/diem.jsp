@@ -142,7 +142,7 @@
                                                         <td>${ld.diem1}</td>
                                                         <td>${ld.diem2}</td>
                                                         <td>
-                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                            <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                             <a href="#" class="bi-trash-fill"><i

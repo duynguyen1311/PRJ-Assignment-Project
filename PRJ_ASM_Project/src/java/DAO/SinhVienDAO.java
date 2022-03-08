@@ -108,13 +108,35 @@ public class SinhVienDAO {
         }
     }
 
+    public void updateSinhVien(String maSV, String tenSV, int gioitinh,
+            String ngaysinh, String quequan, String maLop, String sdt, String email) {
+        try {
+            String sql = "Update SinhVien\n"
+                    + "Set TenSV = ?, GioiTinh=?, NgaySinh=?, QueQuan = ?, MaLop = ?, SDT = ?, Email = ?\n"
+                    + "Where MaSV=?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, tenSV);
+            ps.setInt(2, gioitinh);
+            ps.setString(3, ngaysinh);
+            ps.setString(4, quequan);
+            ps.setString(5, maLop);
+            ps.setString(6, sdt);
+            ps.setString(7, email);
+            ps.setString(8, maSV);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
 //        for (SinhVien o : dao.getMaSinhVien()) {
 //            System.out.println(o);
 //        }
-//        SinhVien s = dao.getSinhVienByMaSV("0241060218");
-//        System.out.println(s);
-        dao.insertSinhVien("123456", "Nguyen Van A", 0, "1989-01-02", "Ha Long", "MT2", "090909123", "nmquynh@gmail");
+        SinhVien s = dao.getSinhVienByMaSV("111111");
+        System.out.println(s);
+//        dao.insertSinhVien("123456", "Nguyen Van A", 0, "1989-01-02", "Ha Long", "MT2", "090909123", "nmquynh@gmail");
     }
 }

@@ -112,13 +112,13 @@
                             </div>
                         </div>
                     </div>
-                    <form action="sinhvien_create" method="post">
+                    <form action="sinhvien_update" method="post">
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Thêm sinh viên mới</h4>
+                                            <h4 class="card-title">Cập nhật thông tin sinh viên</h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
@@ -127,23 +127,22 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="first-name-column">Mã sinh viên</label>
-                                                                <input type="text" id="helperText" class="form-control"
-                                                                       placeholder="Mã sinh viên" name="maSV">
-                                                                <p style="font-style: italic"><small class="text-muted">Không được trùng mã</small></p>
+                                                                <input type="text" id="first-name-column" class="form-control"
+                                                                       placeholder="Mã sinh viên" name="maSV" value="${s.maSV}" readonly="readonly">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="last-name-column">Họ và tên</label>
                                                                 <input type="text" id="last-name-column" class="form-control"
-                                                                       placeholder="Họ và tên" name="tenSV">
+                                                                       placeholder="Họ và tên" name="tenSV" value="${s.tenSV}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="city-column">Giới tính</label>
                                                                 <input type="text" id="city-column" class="form-control" placeholder="Giới tính"
-                                                                       name="gioitinh">
+                                                                       name="gioitinh" value="${s.gioiTinh}">
 
                                                             </div>
                                                         </div>
@@ -151,38 +150,35 @@
                                                             <div class="form-group">
                                                                 <label for="country-floating">Ngày sinh</label>
                                                                 <input type="date" id="country-floating" class="form-control"
-                                                                       name="ngaysinh" placeholder="Ngày sinh">
+                                                                       name="ngaysinh" placeholder="Ngày sinh" value="${s.ngaySinh}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="company-column">Quê quán</label>
                                                                 <input type="text" id="company-column" class="form-control"
-                                                                       name="quequan" placeholder="Quê quán">
+                                                                       name="quequan" placeholder="Quê quán" value="${s.queQuan}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="email-id-column">Mã lớp</label>
-                                                                <select name="maLop" id="first-name" class="form-control">
-                                                                    <c:forEach items="${listMaLop}" var="lml">
-                                                                        <option>${lml.maLop}</option>
-                                                                    </c:forEach>
-                                                                </select>
+                                                                <input type="text" id="company-column" class="form-control"
+                                                                       name="maLop" placeholder="Mã lớp" value="${s.lop.maLop}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="company-column">Số điện thoại</label>
                                                                 <input type="text" id="company-column" class="form-control"
-                                                                       name="sdt" placeholder="Số điện thoại">
+                                                                       name="sdt" placeholder="Số điện thoại" value="${s.sdt}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="email-id-column">Email</label>
                                                                 <input type="email" id="email-id-column" class="form-control"
-                                                                       name="email" placeholder="Email">
+                                                                       name="email" placeholder="Email" value="${s.email}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -192,12 +188,12 @@
                                 </div>
                             </div>
                         </section>
-                        <button type="submit" class="btn btn-primary" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                        <button type="submit" class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
-                            </i>Lưu</button>
+                            </i>Xác nhận</button>
                         </a>
                     </form>
-                    <a href="sinhvien"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="sinhvien"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>

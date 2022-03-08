@@ -16,9 +16,9 @@ public class HeDT {
 
     public HeDT() {
     }
-
-    public HeDT(String tenHDT) {
-        this.tenHDT = tenHDT;
+    
+    public HeDT(String maHDT) {
+        this.maHDT = maHDT;
     }
 
     public HeDT(String maHDT, String tenHDT) {

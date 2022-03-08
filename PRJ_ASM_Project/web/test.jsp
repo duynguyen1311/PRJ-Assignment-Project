@@ -6,6 +6,9 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Khoa"%>
+<%@page import="model.KhoaHoc"%>
+<%@page import="model.HeDT"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,12 +16,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:forEach items="${listKhoa}" var="l">
-            ${l.maKhoa}
-            ${l.tenKhoa}
-            ${l.diaChi}
-            ${l.dienThoai}
-            
-        </c:forEach>
+        ${requestScope.l.maLop}
+        ${requestScope.l.tenLop}
+        ${requestScope.l.khoa.maKhoa}
+        ${requestScope.l.heDT.maHDT}
+        ${requestScope.l.khoahoc.maKH}
 </body>
 </html>

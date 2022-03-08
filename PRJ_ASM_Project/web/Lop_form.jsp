@@ -128,8 +128,9 @@
                                                             <label class="col-form-label">Mã Lớp</label>
                                                         </div>
                                                         <div class="col-lg-10 col-9">
-                                                            <input type="text" id="first-name" class="form-control" name="maLop"
+                                                            <input type="text" id="helperText" class="form-control" name="maLop"
                                                                    placeholder="Mã Lớp">
+                                                            <p style="font-style: italic"><small class="text-muted">Không được trùng mã</small></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,7 +197,7 @@
                                 </div>
                             </div>
                         </section>
-                        <a href=""><button class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                        <a href=""><button class="btn btn-primary" style="padding-left:25px;padding-right: 25px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                     style="margin-right: 5px;">
                                 </i>Lưu</button>
                         </a>

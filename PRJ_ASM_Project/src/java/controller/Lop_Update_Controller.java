@@ -5,22 +5,29 @@
  */
 package controller;
 
-import DAO.SinhVienDAO;
+import DAO.HDTDAO;
+import DAO.KhoaDAO;
+import DAO.KhoaHocDAO;
+import DAO.LopDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.SinhVien;
+import model.HeDT;
+import model.Khoa;
+import model.KhoaHoc;
+import model.Lop;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "SinhVienController", urlPatterns = {"/sinhvien"})
-public class SinhVienController extends HttpServlet {
+@WebServlet(name = "Lop_Update_Controller", urlPatterns = {"/lop_update"})
+public class Lop_Update_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,13 +40,19 @@ public class SinhVienController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SinhVienDAO dao = new SinhVienDAO();
-        ArrayList<SinhVien> listSinhVien = dao.getAllSinhVien();
-        String id = request.getParameter("sid");
-        SinhVien sv = dao.getSinhVienByMaSV(id);
-        request.setAttribute("sinhv", sv);
-        request.setAttribute("listSinhVien", listSinhVien);
-        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Lop_Update_Controller</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Lop_Update_Controller at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +67,22 @@ public class SinhVienController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        KhoaDAO kdao = new KhoaDAO();
+        KhoaHocDAO khdao = new KhoaHocDAO();
+        HDTDAO hdao = new HDTDAO();
+        String id = request.getParameter("lid");
+        LopDAO dao = new LopDAO();
+        Lop l = dao.getLopByMaLop(id);
+        
+        ArrayList<Khoa> listMaKhoa = kdao.getMaKhoaTenKhoa();
+        ArrayList<KhoaHoc> listMaKhoaHoc = khdao.getMaKhoaHocTenKhoaHoc();
+        ArrayList<HeDT> listMaHDT = hdao.getMaHDTTenHDT();
+        
+        request.setAttribute("listMaKhoa", listMaKhoa);
+        request.setAttribute("listMaKhoaHoc", listMaKhoaHoc);
+        request.setAttribute("listMaHDT", listMaHDT);
+        request.setAttribute("l", l);
+        request.getRequestDispatcher("Lop_Update.jsp").forward(request, response);
     }
 
     /**
@@ -68,7 +96,15 @@ public class SinhVienController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String maLop = request.getParameter("maLop");
+        String tenLop = request.getParameter("tenLop");
+        String maKhoa = request.getParameter("maKhoa");
+        String maHDT = request.getParameter("maHDT");
+        String maKhoaHoc = request.getParameter("maKhoaHoc");
+        
+        LopDAO dao = new LopDAO();
+        dao.updateLop(maLop, tenLop, maKhoa, maHDT, maKhoaHoc);
+        request.getRequestDispatcher("lop").forward(request, response);
     }
 
     /**

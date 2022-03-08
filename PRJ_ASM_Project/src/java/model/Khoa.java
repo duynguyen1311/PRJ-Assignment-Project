@@ -30,10 +30,10 @@ public class Khoa {
         this.dienThoai = dienThoai;
     }
 
-    public Khoa(String tenKhoa) {
-        this.tenKhoa = tenKhoa;
+    public Khoa(String maKhoa) {
+        this.maKhoa = maKhoa;
     }
-
+    
     public String getMaKhoa() {
         return maKhoa;
     }

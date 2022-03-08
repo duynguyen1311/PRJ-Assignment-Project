@@ -48,6 +48,45 @@ public class DiemDAO {
         return null;
     }
 
+    public Diem getDiemByMaSVandMaMH(String maSV, String maMH) {
+        try {
+            String sql = "select * from Diem where MaSV = ? and MaMH = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maSV);
+            ps.setString(2, maMH);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Diem d = new Diem(new SinhVien(rs.getString(1)),
+                        new MonHoc(rs.getString(2)),
+                        rs.getInt(3), rs.getInt(4), rs.getInt(5));
+                return d;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void updateDiem(String maSV, String maMH, int hocky, int diem1, int diem2) {
+        try {
+            String sql = "Update Diem\n"
+                    + "Set HocKy=?, DiemLan1=?, DiemLan2 = ?\n"
+                    + "Where MaSV=? and MaMH = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, hocky);
+            ps.setInt(2, diem1);
+            ps.setInt(3, diem2);
+            ps.setString(4, maSV);
+            ps.setString(5, maMH);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void insertDiem(String maSV, String maMH, int hocKy, int diem1, int diem2) {
         try {
             String sql = "insert into Diem(MaSV,MaMH,HocKy,DiemLan1,DiemLan2)\n"
@@ -70,6 +109,7 @@ public class DiemDAO {
 //        for (Diem o : dao.getDiemList()) {
 //            System.out.println(o);
 //        }
-        dao.insertDiem("0241060218", "SQL", 2, 5, 1);
+//        dao.insertDiem("0241060218", "SQL", 2, 5, 1);
+        System.out.println(dao.getDiemByMaSVandMaMH("111111","A1"));
     }
 }

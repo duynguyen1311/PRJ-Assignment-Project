@@ -105,6 +105,15 @@
                                     <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
                                         </i>Thêm mới </button>
                                 </a>
+                                <form action="">
+                                <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                                    <input type="text" name="search" class="form-control" placeholder="Tìm sinh viên"
+                                        aria-label="Recipient's username">
+                                    <button class="btn btn-outline-secondary" type="submit"
+                                        id="button-addon2">Search</button>
+                                </div>
+                            </form>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -140,16 +149,72 @@
                                                         <td>${sv.tenSV}</td>
                                                         <td class="text-bold-500">${sv.ngaySinh}</td>
                                                         <td>${sv.lop.maLop}</td>
-                                                        <td><a href="#" class="bi-eye" data-bs-toggle="modal"
+                                                        <td><a href="sinhvien?sid=${sv.maSV}" class="bi-eye" data-bs-toggle="modal"
                                                                data-bs-target="#inlineForm"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" class="bi-box-arrow-in-up-left"><i
+                                                            <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                             <a href="#" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
+                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
+                                                                 role="dialog" aria-labelledby="myModalLabel33"
+                                                                 aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                                                     role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title" id="myModalLabel33">Thông
+                                                                                tin sinh viên</h4>
+                                                                            <button type="button" class="close"
+                                                                                    data-bs-dismiss="modal" aria-label="Close">
+                                                                                <i data-feather="x"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <label>Mã số sinh viên</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control" value="${sv.maSV}" readonly="readonly">
+                                                                            </div>
+                                                                            <label>Họ và tên</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control" value="${sv.tenSV}" readonly="readonly">
+                                                                            </div>
+                                                                            <label>Giới tính</label>
+                                                                            <div class="form-group"
+                                                                                 style="margin-top: 10px;">
+                                                                                <c:choose>
+                                                                                    <c:when test="${sv.gioiTinh==1}">
+                                                                                        <input type="radio" value="1" checked>Nam
+                                                                                    </c:when>
+                                                                                    <c:when test="${sv.gioiTinh==0}">
+                                                                                        <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
+                                                                                    </c:when>
+                                                                                </c:choose>
+
+                                                                            </div>
+                                                                            <label>Ngày sinh</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control" value="${sv.ngaySinh}" readonly="readonly">
+                                                                            </div>
+                                                                            <label>Quê quán</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control" value="${sv.queQuan}" readonly="readonly">
+                                                                            </div>
+                                                                            <label>Số điện thoại</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control" value="${sv.sdt}" readonly="readonly">
+                                                                            </div>
+                                                                            <label>Email</label>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control" value="${sv.email}" readonly="readonly">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -157,66 +222,7 @@
                                         </table>
                                     </div>
 
-                                    <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                         role="dialog" aria-labelledby="myModalLabel33"
-                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                             role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel33">Thông
-                                                        tin sinh viên</h4>
-                                                    <button type="button" class="close"
-                                                            data-bs-dismiss="modal" aria-label="Close">
-                                                        <i data-feather="x"></i>
-                                                    </button>
-                                                </div>
-                                                <c:forEach items="${requestScope.listSinhVien}" var="sv">
-                                                    <form action="sinhvien?svid=${sv.maSV}" method="post">
-                                                        <div class="modal-body">
-                                                            <label>Mã số sinh viên</label>
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sinhv.maSV}" readonly="readonly">
-                                                            </div>
-                                                            <label>Họ và tên</label>
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sinhv.tenSV}" readonly="readonly">
-                                                            </div>
-                                                            <label>Giới tính</label>
-                                                            <div class="form-group"
-                                                                 style="margin-top: 10px;">
-                                                                <c:choose>
-                                                                    <c:when test="${sinhv.gioiTinh==1}">
-                                                                        <input type="radio" value="1" checked>Nam
-                                                                    </c:when>
-                                                                    <c:when test="${sinhv.gioiTinh==0}">
-                                                                        <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
-                                                                    </c:when>
-                                                                </c:choose>
 
-                                                            </div>
-                                                            <label>Ngày sinh</label>
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sinhv.ngaySinh}" readonly="readonly">
-                                                            </div>
-                                                            <label>Quê quán</label>
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sinhv.queQuan}" readonly="readonly">
-                                                            </div>
-                                                            <label>Số điện thoại</label>
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sinhv.sdt}" readonly="readonly">
-                                                            </div>
-                                                            <label>Email</label>
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" value="${sinhv.email}" readonly="readonly">
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </c:forEach>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>

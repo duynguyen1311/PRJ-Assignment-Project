@@ -21,8 +21,8 @@ public class KhoaHoc {
         this.tenKH = tenKH;
     }
 
-    public KhoaHoc(String tenKH) {
-        this.tenKH = tenKH;
+    public KhoaHoc(String maKH) {
+        this.maKH = maKH;
     }
     
     public String getMaKH() {

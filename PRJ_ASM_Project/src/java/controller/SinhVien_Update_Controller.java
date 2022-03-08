@@ -7,7 +7,7 @@ package controller;
 
 import DAO.SinhVienDAO;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,8 @@ import model.SinhVien;
  *
  * @author admin
  */
-@WebServlet(name = "SinhVienController", urlPatterns = {"/sinhvien"})
-public class SinhVienController extends HttpServlet {
+@WebServlet(name = "SinhVien_Update_Controller", urlPatterns = {"/sinhvien_update"})
+public class SinhVien_Update_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,13 +33,19 @@ public class SinhVienController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SinhVienDAO dao = new SinhVienDAO();
-        ArrayList<SinhVien> listSinhVien = dao.getAllSinhVien();
-        String id = request.getParameter("sid");
-        SinhVien sv = dao.getSinhVienByMaSV(id);
-        request.setAttribute("sinhv", sv);
-        request.setAttribute("listSinhVien", listSinhVien);
-        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SinhVien_Update_Controller</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SinhVien_Update_Controller at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +60,11 @@ public class SinhVienController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("sid");
+        SinhVienDAO dao = new SinhVienDAO();
+        SinhVien s = dao.getSinhVienByMaSV(id);
+        request.setAttribute("s", s);
+        request.getRequestDispatcher("SinhVien_Update.jsp").forward(request, response);
     }
 
     /**
@@ -68,7 +78,18 @@ public class SinhVienController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String maSV = request.getParameter("maSV");
+        String tenSV = request.getParameter("tenSV");
+        int gioitinh = Integer.parseInt(request.getParameter("gioitinh"));
+        String ngaysinh = request.getParameter("ngaysinh");
+        String quequan = request.getParameter("quequan");
+        String maLop = request.getParameter("maLop");
+        String sdt = request.getParameter("sdt");
+        String email = request.getParameter("email");
+        
+        SinhVienDAO dao = new SinhVienDAO();
+        dao.updateSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
+        request.getRequestDispatcher("sinhvien").forward(request, response);
     }
 
     /**
