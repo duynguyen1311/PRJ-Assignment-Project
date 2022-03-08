@@ -48,6 +48,52 @@ public class SinhVienDAO {
         return null;
     }
 
+    public int count(String search) {
+        try {
+            String query = "select COUNT(*) from SinhVien where MaSV LIKE ? or TenSV LIKE ? or QueQuan LIKE ?";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            ps.setString(3, "%" + search + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+
+    public ArrayList<SinhVien> getSearchSinhVien(String search, int index, int size) {
+
+        try {
+            ArrayList<SinhVien> list = new ArrayList<>();
+            String sql = "with x as(select ROW_NUMBER() over (order by MaSV ASC) as r\n"
+                    + ",* from SinhVien where QueQuan LIKE ?)\n"
+                    + "select * from x where r between ?*3-2 and ?*5";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%"+search+"%");
+            ps.setInt(2, index);
+            ps.setInt(3, index);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SinhVien sv = new SinhVien(rs.getString(2), rs.getString(3),
+                        rs.getInt(4), rs.getDate(5), rs.getString(6),
+                        new Lop(rs.getString(7)), rs.getString(8), rs.getString(9));
+                list.add(sv);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public SinhVien getSinhVienByMaSV(String maSV) {
         try {
             String sql = "select * from SinhVien where MaSV = ?";
@@ -132,11 +178,10 @@ public class SinhVienDAO {
 
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
-//        for (SinhVien o : dao.getMaSinhVien()) {
-//            System.out.println(o);
-//        }
-        SinhVien s = dao.getSinhVienByMaSV("111111");
-        System.out.println(s);
-//        dao.insertSinhVien("123456", "Nguyen Van A", 0, "1989-01-02", "Ha Long", "MT2", "090909123", "nmquynh@gmail");
+        for (SinhVien o : dao.getSearchSinhVien("H", 1, 3)) {
+            System.out.println(o);
+        }
+//        int count = dao.count("Ha Noi");
+//        System.out.println(count);
     }
 }

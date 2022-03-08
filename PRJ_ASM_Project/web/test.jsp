@@ -16,10 +16,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        ${requestScope.l.maLop}
-        ${requestScope.l.tenLop}
-        ${requestScope.l.khoa.maKhoa}
-        ${requestScope.l.heDT.maHDT}
-        ${requestScope.l.khoahoc.maKH}
+        ${requestScope.listSinhVien.maLop}
+        ${requestScope.listSinhVien.tenLop}
+        ${requestScope.listSinhVien.khoa.maKhoa}
+        ${requestScope.listSinhVien.heDT.maHDT}
+        ${requestScope.listSinhVien.khoahoc.maKH}
 </body>
 </html>

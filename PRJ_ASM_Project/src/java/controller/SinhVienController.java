@@ -33,13 +33,27 @@ public class SinhVienController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SinhVienDAO dao = new SinhVienDAO();
-        ArrayList<SinhVien> listSinhVien = dao.getAllSinhVien();
-        String id = request.getParameter("sid");
-        SinhVien sv = dao.getSinhVienByMaSV(id);
-        request.setAttribute("sinhv", sv);
-        request.setAttribute("listSinhVien", listSinhVien);
-        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        try {
+            SinhVienDAO dao = new SinhVienDAO();
+            String search = request.getParameter("search");
+            int index = Integer.parseInt(request.getParameter("index"));
+            int endPage = 0;
+            int pageSize = 3;
+            int count = dao.count(search);
+            endPage = count / pageSize;
+            if (count % pageSize != 0) {
+                endPage++;
+            }
+            ArrayList<SinhVien> listSinhVien = dao.getSearchSinhVien(search, index, pageSize);
+            for (SinhVien o : listSinhVien) {
+                System.out.println(o);
+            }
+            request.setAttribute("search", search);
+            request.setAttribute("endPage", endPage);
+            request.setAttribute("listSV", listSinhVien);
+            request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

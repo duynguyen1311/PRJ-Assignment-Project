@@ -105,15 +105,15 @@
                                     <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
                                         </i>Thêm mới </button>
                                 </a>
-                                <form action="">
-                                <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                                    <input type="text" name="search" class="form-control" placeholder="Tìm sinh viên"
-                                        aria-label="Recipient's username">
-                                    <button class="btn btn-outline-secondary" type="submit"
-                                        id="button-addon2">Search</button>
-                                </div>
-                            </form>
+                                <form action="sinhvien?index=1" method="post">
+                                    <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                                        <input type="text" name="search" class="form-control" placeholder="Tìm sinh viên"
+                                               aria-label="Recipient's username">
+                                        <button class="btn btn-outline-secondary" type="submit"
+                                                id="button-addon2">Search</button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -143,7 +143,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${requestScope.listSinhVien}" var="sv">
+                                                <c:forEach items="${listSV}" var="sv">
                                                     <tr class="table-success">
                                                         <td class="text-bold-500">${sv.maSV}</td>
                                                         <td>${sv.tenSV}</td>
@@ -159,7 +159,7 @@
                                                             <a href="#" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
+<!--                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
                                                                  role="dialog" aria-labelledby="myModalLabel33"
                                                                  aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
@@ -214,21 +214,31 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>-->
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <!-- Table head options end -->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-primary  justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <c:forEach begin="1" end="${endPage}" var="i">
+                                <li class="page-item active"><a class="page-link" href="#">${i}</a></li>
+                            </c:forEach>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+
                 </div>
 
                 <footer>
