@@ -36,9 +36,12 @@ public class SinhVienController extends HttpServlet {
         try {
             SinhVienDAO dao = new SinhVienDAO();
             String search = request.getParameter("search");
+            if(search == null){
+                search="";
+            }
             int index = Integer.parseInt(request.getParameter("index"));
             int endPage = 0;
-            int pageSize = 3;
+            int pageSize = 5;
             int count = dao.count(search);
             endPage = count / pageSize;
             if (count % pageSize != 0) {
@@ -49,6 +52,7 @@ public class SinhVienController extends HttpServlet {
                 System.out.println(o);
             }
             request.setAttribute("search", search);
+            request.setAttribute("index", index);
             request.setAttribute("endPage", endPage);
             request.setAttribute("listSV", listSinhVien);
             request.getRequestDispatcher("sinhvien.jsp").forward(request, response);

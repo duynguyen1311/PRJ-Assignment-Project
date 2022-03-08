@@ -76,7 +76,7 @@
                                 </a>
                                 <ul class="submenu ">
                                     <li class="submenu-item ">
-                                        <a href="sinhvien">Danh sách sinh viên</a>
+                                        <a href="sinhvien.jsp">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
                                         <a href="diem">Điểm</a>
@@ -109,7 +109,7 @@
                                     <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                         <input type="text" name="search" class="form-control" placeholder="Tìm sinh viên"
-                                               aria-label="Recipient's username">
+                                               aria-label="Recipient's username" value="<%=request.getParameter("search") != null ? request.getParameter("search") : ""%>">
                                         <button class="btn btn-outline-secondary" type="submit"
                                                 id="button-addon2">Search</button>
                                     </div>
@@ -159,62 +159,62 @@
                                                             <a href="#" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-<!--                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                                 role="dialog" aria-labelledby="myModalLabel33"
-                                                                 aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                     role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                                tin sinh viên</h4>
-                                                                            <button type="button" class="close"
-                                                                                    data-bs-dismiss="modal" aria-label="Close">
-                                                                                <i data-feather="x"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.maSV}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.tenSV}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <c:choose>
-                                                                                    <c:when test="${sv.gioiTinh==1}">
-                                                                                        <input type="radio" value="1" checked>Nam
-                                                                                    </c:when>
-                                                                                    <c:when test="${sv.gioiTinh==0}">
-                                                                                        <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
-                                                                                    </c:when>
-                                                                                </c:choose>
+                                                            <!--                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
+                                                                                                                             role="dialog" aria-labelledby="myModalLabel33"
+                                                                                                                             aria-hidden="true">
+                                                                                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                                                                                                                 role="document">
+                                                                                                                                <div class="modal-content">
+                                                                                                                                    <div class="modal-header">
+                                                                                                                                        <h4 class="modal-title" id="myModalLabel33">Thông
+                                                                                                                                            tin sinh viên</h4>
+                                                                                                                                        <button type="button" class="close"
+                                                                                                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                                                                                                            <i data-feather="x"></i>
+                                                                                                                                        </button>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="modal-body">
+                                                                                                                                        <label>Mã số sinh viên</label>
+                                                                                                                                        <div class="form-group">
+                                                                                                                                            <input type="text" class="form-control" value="${sv.maSV}" readonly="readonly">
+                                                                                                                                        </div>
+                                                                                                                                        <label>Họ và tên</label>
+                                                                                                                                        <div class="form-group">
+                                                                                                                                            <input type="text" class="form-control" value="${sv.tenSV}" readonly="readonly">
+                                                                                                                                        </div>
+                                                                                                                                        <label>Giới tính</label>
+                                                                                                                                        <div class="form-group"
+                                                                                                                                             style="margin-top: 10px;">
+                                                            <c:choose>
+                                                                <c:when test="${sv.gioiTinh==1}">
+                                                                    <input type="radio" value="1" checked>Nam
+                                                                </c:when>
+                                                                <c:when test="${sv.gioiTinh==0}">
+                                                                    <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
+                                                                </c:when>
+                                                            </c:choose>
 
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.ngaySinh}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.queQuan}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Số điện thoại</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.sdt}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Email</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.email}" readonly="readonly">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>-->
+                                                        </div>
+                                                        <label>Ngày sinh</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" value="${sv.ngaySinh}" readonly="readonly">
+                                                        </div>
+                                                        <label>Quê quán</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" value="${sv.queQuan}" readonly="readonly">
+                                                        </div>
+                                                        <label>Số điện thoại</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" value="${sv.sdt}" readonly="readonly">
+                                                        </div>
+                                                        <label>Email</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" value="${sv.email}" readonly="readonly">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -227,15 +227,28 @@
                     </section>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-primary  justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
+                            <c:if test="${index != 1}">
+                                <li class="page-item">
+                                    <a class="page-link" href="sinhvien?index=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                            </c:if>
                             <c:forEach begin="1" end="${endPage}" var="i">
-                                <li class="page-item active"><a class="page-link" href="#">${i}</a></li>
-                            </c:forEach>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
+                                <c:choose>
+                                    <c:when test="${index == i}">
+                                        <li class="page-item"><a class="page-link active" href="sinhvien?index=${i}&search=${search}">${i}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <li class="page-item"><a class="page-link" href="sinhvien?index=${i}&search=${search}">${i}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                                        
+                                <c:if test="${index < endPage}">
+                                <li class="page-item">
+                                    <a class="page-link" href="sinhvien?index=${index+1}&search=${search}">Next</a>
+                                </li>
+                            </c:if>
+
                         </ul>
                     </nav>
 
@@ -256,7 +269,6 @@
         </div>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
-
         <script src="assets/js/mazer.js"></script>
     </body>
 

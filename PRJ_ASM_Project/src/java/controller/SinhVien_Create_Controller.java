@@ -90,7 +90,7 @@ public class SinhVien_Create_Controller extends HttpServlet {
         
         SinhVienDAO dao = new SinhVienDAO();
         dao.insertSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
-        request.getRequestDispatcher("sinhvien").forward(request, response);
+        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
     }
 
     /**

@@ -72,13 +72,16 @@ public class SinhVienDAO {
         try {
             ArrayList<SinhVien> list = new ArrayList<>();
             String sql = "with x as(select ROW_NUMBER() over (order by MaSV ASC) as r\n"
-                    + ",* from SinhVien where QueQuan LIKE ?)\n"
-                    + "select * from x where r between ?*3-2 and ?*5";
+                    + ",* from SinhVien where MaSV LIKE ? or TenSV LIKE ? or QueQuan LIKE ? or MaLop LIKE ?)\n"
+                    + "select * from x where r between ?*3-2 and ?*3";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, "%"+search+"%");
-            ps.setInt(2, index);
-            ps.setInt(3, index);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            ps.setString(3, "%" + search + "%");
+            ps.setString(4, "%" + search + "%");
+            ps.setInt(5, index);
+            ps.setInt(6, index);
             rs = ps.executeQuery();
             while (rs.next()) {
                 SinhVien sv = new SinhVien(rs.getString(2), rs.getString(3),
