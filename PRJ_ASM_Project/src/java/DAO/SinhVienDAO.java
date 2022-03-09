@@ -191,6 +191,22 @@ public class SinhVienDAO {
         }
     }
     
+    public int TongSoSinhVien() {
+        try {
+            String query = "select COUNT(*) from SinhVien";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+    
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
         for (SinhVien o : dao.getSearchSinhVien("H", 1, 3)) {

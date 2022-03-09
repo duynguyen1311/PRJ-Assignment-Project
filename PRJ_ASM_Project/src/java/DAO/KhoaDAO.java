@@ -171,6 +171,22 @@ public class KhoaDAO {
         return null;
     }
 
+    public int TongSoKhoa() {
+        try {
+            String query = "select COUNT(*) from Khoa";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+
     public static void main(String[] args) {
         KhoaDAO dao = new KhoaDAO();
 //        for (Khoa o : dao.getMaKhoaTenKhoa()) {
@@ -179,10 +195,10 @@ public class KhoaDAO {
 //        dao.updateKhoa("A1", "Ki thuat", "Tang 5", "1234");
 //        dao.deleteKhoa("A1");
 
-        int count = dao.count("K");
+        int count = dao.TongSoKhoa();
         System.out.println(count);
-        for (Khoa o : dao.getSearchKhoa("K", 1, 3)) {
-            System.out.println(o);
-        }
+//        for (Khoa o : dao.getSearchKhoa("K", 1, 3)) {
+//            System.out.println(o);
+//        }
     }
 }

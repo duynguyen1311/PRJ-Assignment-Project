@@ -168,6 +168,22 @@ public class MonHocDAO {
         return null;
     }
     
+    public int TongSoMonHoc() {
+        try {
+            String query = "select COUNT(*) from MonHoc";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+    
     public static void main(String[] args) {
         MonHocDAO dao = new MonHocDAO();
 //        for (MonHoc o : dao.getMaMonHoc()) {

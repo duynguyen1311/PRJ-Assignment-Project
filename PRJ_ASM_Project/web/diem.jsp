@@ -41,7 +41,7 @@
                     <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-item">
-                                <a href="home.jsp" class='sidebar-link'>
+                                <a href="home" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
                                     <span>Trang chủ</span>
                                 </a>
@@ -115,13 +115,12 @@
                                     </div>
                                 </form>
                                 <p style="font-style: italic">${requestScope.mess}</p>
-
                             </div>
 
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="home.jsp">Trang chủ</a></li>
+                                        <li class="breadcrumb-item"><a href="home">Trang chủ</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">điểm</li>
                                     </ol>
                                 </nav>

@@ -195,6 +195,22 @@ public class LopDAO {
         return null;
     }
 
+    public int TongSoLop() {
+        try {
+            String query = "select COUNT(*) from Lop";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+    
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
 //        for (Lop o : dao.getMaLop()) {

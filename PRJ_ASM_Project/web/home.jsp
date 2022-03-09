@@ -32,7 +32,7 @@
                     <div class="sidebar-header">
                         <div class="d-flex justify-content-between">
                             <div class="logo">
-                                <a href="home.jsp"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                                <a href="home"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                             </div>
                             <div class="toggler">
                                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -42,7 +42,7 @@
                     <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-item">
-                                <a href="home.jsp" class='sidebar-link'>
+                                <a href="home" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
                                     <span>Trang chủ</span>
                                 </a>
@@ -112,8 +112,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <h6 class="text-muted font-semibold">Profile Views</h6>
-                                                        <h6 class="font-extrabold mb-0">112.000</h6>
+                                                        <h6 class="text-muted font-semibold">Khoa</h6>
+                                                        <h6 class="font-extrabold mb-0">${countKhoa}.000</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,8 +129,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <h6 class="text-muted font-semibold">Followers</h6>
-                                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                                        <h6 class="text-muted font-semibold">Môn học</h6>
+                                                        <h6 class="font-extrabold mb-0">${countMonHoc}.000</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,8 +146,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <h6 class="text-muted font-semibold">Following</h6>
-                                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                                        <h6 class="text-muted font-semibold">Sinh Viên</h6>
+                                                        <h6 class="font-extrabold mb-0">${countSinhVien}.000</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,8 +163,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <h6 class="text-muted font-semibold">Saved Post</h6>
-                                                        <h6 class="font-extrabold mb-0">112</h6>
+                                                        <h6 class="text-muted font-semibold">Lớp</h6>
+                                                        <h6 class="font-extrabold mb-0">${countLop}.000</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,11 +193,6 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                                                 style="width:10px">
-                                                            <use
-                                                                xlink:href="assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                            </svg>
                                                             <h5 class="mb-0 ms-3">Europe</h5>
                                                         </div>
                                                     </div>
