@@ -65,7 +65,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop" class='sidebar-link'>
+                                <a href="lop.jsp" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -107,6 +107,16 @@
                                     <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
                                         </i>Thêm mới </button>
                                 </a>
+                                <form action="lop?lindex=1" method="post">
+                                    <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                                        <input type="text" name="search" class="form-control" placeholder="Tìm lớp"
+                                               aria-label="Recipient's username" value="<%=request.getParameter("search") != null ? request.getParameter("search") : ""%>">
+                                        <button class="btn btn-outline-secondary" type="submit"
+                                                id="button-addon2">Search</button>
+                                    </div>
+                                </form>
+                                <p style="font-style: italic">${requestScope.mess}</p>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -147,7 +157,7 @@
                                                             <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                                    <a href="#" onclick="DeleteLop(${ll.maLop})" class="bi-trash-fill"><i
+                                                            <a href="#" onclick="DeleteLop(${ll.maLop})" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                         </td>
@@ -159,7 +169,33 @@
                                 </div>
                             </div>
                         </div>
-                </section>
+                    </section>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-primary  justify-content-center">
+                            <c:if test="${index != 1}">
+                                <li class="page-item">
+                                    <a class="page-link" href="lop?lindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                            </c:if>
+                            <c:forEach begin="1" end="${endPage}" var="i">
+                                <c:choose>
+                                    <c:when test="${index == i}">
+                                        <li class="page-item active"><a class="page-link" href="lop?lindex=${i}&search=${search}">${i}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <li class="page-item"><a class="page-link" href="lop?lindex=${i}&search=${search}">${i}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+
+                            <c:if test="${index < endPage}">
+                                <li class="page-item">
+                                    <a class="page-link" href="lop?lindex=${index+1}&search=${search}">Next</a>
+                                </li>
+                            </c:if>
+
+                        </ul>
+                    </nav>
                 </div>
                 <!-- Table head options end -->
             </div>
@@ -176,17 +212,17 @@
                 </div>
             </footer>
         </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/mazer.js"></script>
-    <script>
-        function DeleteLop(id){
-        var option = confirm("Do you really want to delete ?");
-        if(option === true){
-            window.location.href = 'lop_delete?lid='+id;
-        }
-    }
-    </script>
-</body>
+        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/mazer.js"></script>
+        <script>
+                                                                function DeleteLop(id) {
+                                                                    var option = confirm("Do you really want to delete ?");
+                                                                    if (option === true) {
+                                                                        window.location.href = 'lop_delete?lid=' + id;
+                                                                    }
+                                                                }
+        </script>
+    </body>
 
 </html>

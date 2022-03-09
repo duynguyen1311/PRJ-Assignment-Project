@@ -104,7 +104,7 @@ public class Lop_Update_Controller extends HttpServlet {
         
         LopDAO dao = new LopDAO();
         dao.updateLop(maLop, tenLop, maKhoa, maHDT, maKhoaHoc);
-        request.getRequestDispatcher("lop").forward(request, response);
+        request.getRequestDispatcher("lop.jsp").forward(request, response);
     }
 
     /**

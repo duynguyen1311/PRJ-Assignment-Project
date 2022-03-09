@@ -46,10 +46,10 @@ public class KhoaController extends HttpServlet {
             if(listKhoa.isEmpty()){
                 request.setAttribute("mess", "Không tìm thấy kết quả");
             }
-            request.setAttribute("listKhoa", listKhoa);
             request.setAttribute("search", search);
             request.setAttribute("index", index);
             request.setAttribute("endPage", endPage);
+            request.setAttribute("listKhoa", listKhoa);
             request.getRequestDispatcher("khoa.jsp").forward(request, response);
         } catch (Exception e) {
         }

@@ -64,7 +64,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop" class='sidebar-link'>
+                                <a href="lop.jsp" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>

@@ -34,7 +34,22 @@ public class LopController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         LopDAO dao = new LopDAO();
-        ArrayList<Lop> listLop = dao.getLopList();
+        String search = request.getParameter("search");
+        int index = Integer.parseInt(request.getParameter("lindex"));
+        int endPage = 0;
+        int pageSize = 5;
+        int count = dao.count(search);
+        endPage = count / pageSize;
+        if (count % pageSize != 0) {
+            endPage++;
+        }
+        ArrayList<Lop> listLop = dao.getSearchLop(search, index, pageSize);
+        if (listLop.isEmpty()) {
+            request.setAttribute("mess", "Không tìm thấy kết quả");
+        }
+        request.setAttribute("search", search);
+        request.setAttribute("index", index);
+        request.setAttribute("endPage", endPage);
         request.setAttribute("listLop", listLop);
         request.getRequestDispatcher("lop.jsp").forward(request, response);
     }

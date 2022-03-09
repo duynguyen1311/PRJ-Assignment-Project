@@ -140,7 +140,61 @@ public class LopDAO {
             Logger.getLogger(LopDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public int count(String search) {
+        try {
+            String query = "select COUNT(*) from Lop where MaLop LIKE ? or TenLop LIKE ? ";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+
+    public ArrayList<Lop> getSearchLop(String search, int index, int size) {
+
+        try {
+            ArrayList<Lop> list = new ArrayList<>();
+            String sql = "with x as(select ROW_NUMBER() over (order by MaLop ASC) as r\n"
+                    + ",lop.MaLop,lop.TenLop,HeDT.TenHeDT,Khoa.MaKhoa,khoa.TenKhoa,KhoaHoc.MaKhoaHoc,KhoaHoc.TenKhoaHoc, HeDT.MaHeDT\n"
+                    + "from dbo.HeDT INNER JOIN\n"
+                    + "dbo.Lop ON dbo.HeDT.MaHeDT = dbo.Lop.MaHeDT INNER JOIN\n"
+                    + "dbo.Khoa ON dbo.Lop.MaKhoa = dbo.Khoa.MaKhoa INNER JOIN\n"
+                    + "dbo.KhoaHoc ON dbo.Lop.MaKhoaHoc = dbo.KhoaHoc.MaKhoaHoc\n"
+                    + " where lop.MaLop LIKE ? or lop.TenLop LIKE ? or HeDT.TenHeDT LIKE ? or Khoa.TenKhoa LIKE ?)\n"
+                    + "select * from x where r between ?*4-3 and ?*4";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            ps.setString(3, "%" + search + "%");
+            ps.setString(4, "%" + search + "%");
+            ps.setInt(5, index);
+            ps.setInt(6, index);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Lop lp = new Lop(rs.getString(2), rs.getString(3),
+                        new HeDT(rs.getString(4), rs.getString(5)),
+                        new Khoa(rs.getString(6), rs.getString(7)),
+                        new KhoaHoc(rs.getString(8), rs.getString(9)));
+                list.add(lp);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
 //        for (Lop o : dao.getMaLop()) {
@@ -149,6 +203,11 @@ public class LopDAO {
 //        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
 //        System.out.println(dao.getLopByMaLop("KT1"));
 //        dao.updateLop("KT1","Kinh te" , "A2", "C01", K10");
-        dao.deleteLop("MT1");
+//        dao.deleteLop("MT1");
+        int count = dao.count("M");
+        System.out.println(count);
+        for (Lop o : dao.getSearchLop("M", 1, 3)) {
+            System.out.println(o);
+        }
     }
 }
