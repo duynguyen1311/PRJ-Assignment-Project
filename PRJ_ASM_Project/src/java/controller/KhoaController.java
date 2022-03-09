@@ -31,10 +31,28 @@ public class KhoaController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        KhoaDAO dao = new KhoaDAO();
-        ArrayList<Khoa> listKhoa = dao.getKhoaList();
-        request.setAttribute("listKhoa", listKhoa);
-        request.getRequestDispatcher("khoa.jsp").forward(request, response);
+        try {
+            KhoaDAO dao = new KhoaDAO();
+            String search = request.getParameter("search");
+            int index = Integer.parseInt(request.getParameter("kindex"));
+            int endPage = 0;
+            int pageSize = 5;
+            int count = dao.count(search);
+            endPage = count / pageSize;
+            if (count % pageSize != 0) {
+                endPage++;
+            }
+            ArrayList<Khoa> listKhoa = dao.getSearchKhoa(search, index, pageSize);
+            if(listKhoa.isEmpty()){
+                request.setAttribute("mess", "Không tìm thấy kết quả");
+            }
+            request.setAttribute("listKhoa", listKhoa);
+            request.setAttribute("search", search);
+            request.setAttribute("index", index);
+            request.setAttribute("endPage", endPage);
+            request.getRequestDispatcher("khoa.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

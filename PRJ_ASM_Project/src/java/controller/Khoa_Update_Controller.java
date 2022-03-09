@@ -85,7 +85,7 @@ public class Khoa_Update_Controller extends HttpServlet {
         
         KhoaDAO dao = new KhoaDAO();
         dao.updateKhoa(maKhoa, tenKhoa, diachi, sdt);
-        request.getRequestDispatcher("khoa").forward(request, response);
+        request.getRequestDispatcher("khoa.jsp").forward(request, response);
     }
 
     /**

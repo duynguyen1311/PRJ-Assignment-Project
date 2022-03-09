@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DAO.DiemDAO;
+import DAO.MonHocDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Diem;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "Diem_Update_Controller", urlPatterns = {"/diem_update"})
-public class Diem_Update_Controller extends HttpServlet {
+@WebServlet(name = "MonHoc_Delete_Controller", urlPatterns = {"/monhoc_delete"})
+public class MonHoc_Delete_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +38,10 @@ public class Diem_Update_Controller extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Diem_Update_Controller</title>");            
+            out.println("<title>Servlet MonHoc_Delete_Controller</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Diem_Update_Controller at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MonHoc_Delete_Controller at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,12 +59,11 @@ public class Diem_Update_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("did");
-        String mh = request.getParameter("dmh");
-        DiemDAO dao = new DiemDAO();
-        Diem d = dao.getDiemByMaSVandMaMH(id,mh);
-        request.setAttribute("d", d);
-        request.getRequestDispatcher("Diem_Update.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("mid"));
+        MonHocDAO dao = new MonHocDAO();
+        dao.deleteMonHoc(id);
+        response.sendRedirect("monhoc.jsp");
+
     }
 
     /**
@@ -79,15 +77,7 @@ public class Diem_Update_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String maSV = request.getParameter("maSV");
-        String maMH = request.getParameter("maMH");
-        int hocky = Integer.parseInt(request.getParameter("hocky"));
-        int diem1 = Integer.parseInt(request.getParameter("diem1"));
-        int diem2 = Integer.parseInt(request.getParameter("diem2"));
-        
-        DiemDAO dao = new DiemDAO();
-        dao.updateDiem(maSV, maMH, hocky, diem1, diem2);
-        request.getRequestDispatcher("diem.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

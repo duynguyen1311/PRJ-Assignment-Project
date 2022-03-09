@@ -36,9 +36,6 @@ public class SinhVienController extends HttpServlet {
         try {
             SinhVienDAO dao = new SinhVienDAO();
             String search = request.getParameter("search");
-            if(search == null){
-                search="";
-            }
             int index = Integer.parseInt(request.getParameter("index"));
             int endPage = 0;
             int pageSize = 5;
@@ -48,8 +45,8 @@ public class SinhVienController extends HttpServlet {
                 endPage++;
             }
             ArrayList<SinhVien> listSinhVien = dao.getSearchSinhVien(search, index, pageSize);
-            for (SinhVien o : listSinhVien) {
-                System.out.println(o);
+            if(listSinhVien.isEmpty()){
+                request.setAttribute("mess", "Không tìm thấy kết quả");
             }
             request.setAttribute("search", search);
             request.setAttribute("index", index);

@@ -33,10 +33,28 @@ public class MonHocController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MonHocDAO dao = new MonHocDAO();
-        ArrayList<MonHoc> listMonHoc = dao.getMonHocList();
-        request.setAttribute("listMonHoc", listMonHoc);
-        request.getRequestDispatcher("monhoc.jsp").forward(request, response);
+        try {
+            MonHocDAO dao = new MonHocDAO();
+            String search = request.getParameter("search");
+            int index = Integer.parseInt(request.getParameter("mindex"));
+            int endPage = 0;
+            int pageSize = 5;
+            int count = dao.count(search);
+            endPage = count / pageSize;
+            if (count % pageSize != 0) {
+                endPage++;
+            }
+            ArrayList<MonHoc> listMonHoc = dao.getSearchMonHoc(search, index, pageSize);
+            if(listMonHoc.isEmpty()){
+                request.setAttribute("mess", "Không tìm thấy kết quả");
+            }
+            request.setAttribute("search", search);
+            request.setAttribute("index", index);
+            request.setAttribute("endPage", endPage);
+            request.setAttribute("listMonHoc", listMonHoc);
+            request.getRequestDispatcher("monhoc.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -50,7 +50,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="khoa" class='sidebar-link'>
+                                <a href="khoa.jsp" class='sidebar-link'>
                                     <i class="bi bi-stack"></i>
                                     <span>Khoa</span>
                                 </a>
@@ -58,7 +58,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc" class='sidebar-link'>
+                                <a href="monhoc.jsp" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
@@ -81,7 +81,7 @@
                                         <a href="sinhvien.jsp">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
-                                        <a href="diem">Điểm</a>
+                                        <a href="diem.jsp">Điểm</a>
                                     </li>
                                 </ul>
                             </li>
@@ -147,7 +147,7 @@
                                                             <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" class="bi-trash-fill"><i
+                                                                    <a href="#" onclick="DeleteLop(${ll.maLop})" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                         </td>
@@ -159,8 +159,8 @@
                                 </div>
                             </div>
                         </div>
-                </div>
                 </section>
+                </div>
                 <!-- Table head options end -->
             </div>
 
@@ -176,11 +176,17 @@
                 </div>
             </footer>
         </div>
-    </div>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/mazer.js"></script>
+    <script>
+        function DeleteLop(id){
+        var option = confirm("Do you really want to delete ?");
+        if(option === true){
+            window.location.href = 'lop_delete?lid='+id;
+        }
+    }
+    </script>
 </body>
 
 </html>

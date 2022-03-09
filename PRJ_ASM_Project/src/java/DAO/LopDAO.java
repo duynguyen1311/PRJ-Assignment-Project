@@ -129,13 +129,26 @@ public class LopDAO {
         }
     }
 
+    public void deleteLop(String maLop) {
+        try {
+            String sql = "Delete from Lop where MaLop = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maLop);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(LopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
 //        for (Lop o : dao.getMaLop()) {
 //            System.out.println(o);
 //        }
 //        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
-        System.out.println(dao.getLopByMaLop("KT1"));
-//        dao.updateLop("KT1","Kinh te" , "A2", "C01", "K10");
+//        System.out.println(dao.getLopByMaLop("KT1"));
+//        dao.updateLop("KT1","Kinh te" , "A2", "C01", K10");
+        dao.deleteLop("MT1");
     }
 }

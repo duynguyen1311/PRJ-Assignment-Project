@@ -111,13 +111,75 @@ public class MonHocDAO {
             Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void deleteMonHoc(int id) {
+        try {
+            String sql = "Delete from MonHoc where id = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(MonHocDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public int count(String search) {
+        try {
+            String query = "select COUNT(*) from MonHoc where MaMH LIKE ? or TenMH LIKE ? ";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
 
+        return 0;
+    }
+    
+    public ArrayList<MonHoc> getSearchMonHoc(String search, int index, int size) {
+
+        try {
+            ArrayList<MonHoc> list = new ArrayList<>();
+            String sql = "with x as(select ROW_NUMBER() over (order by MaMH ASC) as r\n"
+                    + ",* from MonHoc where MaMH LIKE ? or TenMH LIKE ?)\n"
+                    + "select * from x where r between ?*4-3 and ?*4";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            ps.setInt(3, index);
+            ps.setInt(4, index);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                MonHoc mh = new MonHoc(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                list.add(mh);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         MonHocDAO dao = new MonHocDAO();
 //        for (MonHoc o : dao.getMaMonHoc()) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getMonHocById(1));
+//        System.out.println(dao.getMonHocById(1));
+//        dao.deleteMonHoc(30);
+        int count = dao.count("H");
+        System.out.println(count);
+        for (MonHoc o : dao.getSearchMonHoc("H", 1, 4)) {
+            System.out.println(o);
+        }
 
     }
 }

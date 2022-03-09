@@ -73,7 +73,7 @@ public class SinhVienDAO {
             ArrayList<SinhVien> list = new ArrayList<>();
             String sql = "with x as(select ROW_NUMBER() over (order by MaSV ASC) as r\n"
                     + ",* from SinhVien where MaSV LIKE ? or TenSV LIKE ? or QueQuan LIKE ? or MaLop LIKE ?)\n"
-                    + "select * from x where r between ?*3-2 and ?*3";
+                    + "select * from x where r between ?*4-3 and ?*4";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" + search + "%");
@@ -178,7 +178,19 @@ public class SinhVienDAO {
             Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    public void deleteSinhVien(String maSV) {
+        try {
+            String sql = "Delete from SinhVien where MaSV = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maSV);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
         for (SinhVien o : dao.getSearchSinhVien("H", 1, 3)) {

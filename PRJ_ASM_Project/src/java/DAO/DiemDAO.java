@@ -104,12 +104,76 @@ public class DiemDAO {
         }
     }
 
+    public void deleteDiem(String maMH) {
+        try {
+            String sql = "Delete from Diem where MaMH = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, maMH);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(DiemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public int count(String search) {
+        try {
+            String query = "select COUNT(*) from Diem where MaSV LIKE ? or MaMH LIKE ? ";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+
+    public ArrayList<Diem> getSearchDiem(String search, int index, int size) {
+
+        try {
+            ArrayList<Diem> list = new ArrayList<>();
+            String sql = "with x as(select ROW_NUMBER() over (order by MaSV ASC) as r\n"
+                    + ",* from Diem where MaSV LIKE ? or MaMH LIKE ?)\n"
+                    + "select * from x where r between ?*4-3 and ?*4";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            ps.setInt(3, index);
+            ps.setInt(4, index);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Diem diem = new Diem(new SinhVien(rs.getString(2)),
+                        new MonHoc(rs.getString(3)), rs.getInt(4), rs.getInt(5),
+                        rs.getInt(6));
+                list.add(diem);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         DiemDAO dao = new DiemDAO();
 //        for (Diem o : dao.getDiemList()) {
 //            System.out.println(o);
 //        }
 //        dao.insertDiem("0241060218", "SQL", 2, 5, 1);
-        System.out.println(dao.getDiemByMaSVandMaMH("111111","A1"));
+//        System.out.println(dao.getDiemByMaSVandMaMH("111111","A1"));
+//        dao.deleteDiem("H6");
+        int count = dao.count("S");
+        System.out.println(count);
+        for (Diem o : dao.getSearchDiem("S", 1, 3)) {
+            System.out.println(o);
+        }
     }
 }
