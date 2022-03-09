@@ -179,7 +179,7 @@
                             </i>Xác nhận</button>
                     </form>
                     <div>
-                        <a href="khoa"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                        <a href="khoa.jsp"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                     style="margin-right: 5px;">
                                 </i>Hủy bỏ</button>
                         </a>

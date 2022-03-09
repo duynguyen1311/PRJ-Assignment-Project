@@ -182,9 +182,9 @@ public class LopDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Lop lp = new Lop(rs.getString(2), rs.getString(3),
-                        new HeDT(rs.getString(4), rs.getString(5)),
-                        new Khoa(rs.getString(6), rs.getString(7)),
-                        new KhoaHoc(rs.getString(8), rs.getString(9)));
+                        new HeDT(rs.getString(5), rs.getString(4)),
+                        new Khoa(rs.getString(7), rs.getString(6)),
+                        new KhoaHoc(rs.getString(9), rs.getString(8)));
                 list.add(lp);
             }
             return list;

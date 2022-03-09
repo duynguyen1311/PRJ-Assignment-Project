@@ -44,6 +44,9 @@ public class LopController extends HttpServlet {
             endPage++;
         }
         ArrayList<Lop> listLop = dao.getSearchLop(search, index, pageSize);
+        for (Lop o : listLop) {
+            System.out.println(o);
+        }
         if (listLop.isEmpty()) {
             request.setAttribute("mess", "Không tìm thấy kết quả");
         }
