@@ -73,6 +73,8 @@ public class MonHoc_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String maMH = request.getParameter("maMH");
         String tenMH = request.getParameter("tenMH");
         int tinchi = Integer.parseInt(request.getParameter("tinchi"));

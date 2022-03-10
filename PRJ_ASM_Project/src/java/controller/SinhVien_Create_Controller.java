@@ -80,6 +80,8 @@ public class SinhVien_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         LopDAO ldao = new LopDAO();
         ArrayList<Lop> listMaLop = ldao.getMaLop();
         String maSV = request.getParameter("maSV");

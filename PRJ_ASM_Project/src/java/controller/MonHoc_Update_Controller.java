@@ -78,6 +78,8 @@ public class MonHoc_Update_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         int id = Integer.parseInt(request.getParameter("id"));
         String tenMH = request.getParameter("tenMH");
         String maMH = request.getParameter("maMH");

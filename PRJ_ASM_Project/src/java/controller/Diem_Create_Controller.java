@@ -86,6 +86,8 @@ public class Diem_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String maSV = request.getParameter("maSV");
         String maMH = request.getParameter("maMH");
         int hocKy = Integer.parseInt(request.getParameter("hocky"));

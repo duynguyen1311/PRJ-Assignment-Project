@@ -78,6 +78,8 @@ public class SinhVien_Update_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String maSV = request.getParameter("maSV");
         String tenSV = request.getParameter("tenSV");
         int gioitinh = Integer.parseInt(request.getParameter("gioitinh"));
@@ -86,7 +88,7 @@ public class SinhVien_Update_Controller extends HttpServlet {
         String maLop = request.getParameter("maLop");
         String sdt = request.getParameter("sdt");
         String email = request.getParameter("email");
-        
+
         SinhVienDAO dao = new SinhVienDAO();
         dao.updateSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
         request.getRequestDispatcher("sinhvien?index=1").forward(request, response);

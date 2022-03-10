@@ -73,6 +73,8 @@ public class Khoa_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String makhoa = request.getParameter("makhoa");
         String tenkhoa = request.getParameter("tenkhoa");
         String diachi = request.getParameter("diachi");
