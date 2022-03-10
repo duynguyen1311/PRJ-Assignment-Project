@@ -89,7 +89,7 @@ public class SinhVien_Update_Controller extends HttpServlet {
         
         SinhVienDAO dao = new SinhVienDAO();
         dao.updateSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
-        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        request.getRequestDispatcher("sinhvien?index=1").forward(request, response);
     }
 
     /**

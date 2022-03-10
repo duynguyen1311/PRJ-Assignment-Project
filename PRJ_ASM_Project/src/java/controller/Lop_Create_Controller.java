@@ -99,7 +99,7 @@ public class Lop_Create_Controller extends HttpServlet {
         
         LopDAO dao = new LopDAO();
         dao.insertLop(maLop, tenLop, maKhoa, maHDT, maKhoahoc);
-        request.getRequestDispatcher("lop.jsp").forward(request, response);
+        request.getRequestDispatcher("lop?lindex=1").forward(request, response);
     }
 
     /**

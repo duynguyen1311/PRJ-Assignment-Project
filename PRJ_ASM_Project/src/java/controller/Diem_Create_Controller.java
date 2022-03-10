@@ -94,7 +94,7 @@ public class Diem_Create_Controller extends HttpServlet {
         
         DiemDAO dao = new DiemDAO();
         dao.insertDiem(maSV, maMH, hocKy, diem1, diem2);
-        request.getRequestDispatcher("diem.jsp").forward(request, response);
+        request.getRequestDispatcher("diem?dindex=1").forward(request, response);
         
     }
 

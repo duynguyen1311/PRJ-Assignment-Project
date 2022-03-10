@@ -214,5 +214,6 @@ public class SinhVienDAO {
         }
 //        int count = dao.count("Ha Noi");
 //        System.out.println(count);
+        dao.deleteSinhVien("0241060218");
     }
 }

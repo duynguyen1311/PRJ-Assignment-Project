@@ -49,7 +49,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="khoa.jsp" class='sidebar-link'>
+                                <a href="khoa?kindex=1" class='sidebar-link'>
                                     <i class="bi bi-stack"></i>
                                     <span>Khoa</span>
                                 </a>
@@ -57,14 +57,14 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc.jsp" class='sidebar-link'>
+                                <a href="monhoc?mindex=1" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop.jsp" class='sidebar-link'>
+                                <a href="lop?lindex=1" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -77,10 +77,10 @@
                                 </a>
                                 <ul class="submenu ">
                                     <li class="submenu-item ">
-                                        <a href="sinhvien.jsp">Danh sách sinh viên</a>
+                                        <a href="sinhvien?index=1">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
-                                        <a href="diem.jsp">Điểm</a>
+                                        <a href="diem?dindex=1">Điểm</a>
                                     </li>
                                 </ul>
                             </li>

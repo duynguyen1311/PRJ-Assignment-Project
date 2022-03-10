@@ -87,7 +87,7 @@ public class Diem_Update_Controller extends HttpServlet {
         
         DiemDAO dao = new DiemDAO();
         dao.updateDiem(maSV, maMH, hocky, diem1, diem2);
-        request.getRequestDispatcher("diem.jsp").forward(request, response);
+        request.getRequestDispatcher("diem?dindex=1").forward(request, response);
     }
 
     /**

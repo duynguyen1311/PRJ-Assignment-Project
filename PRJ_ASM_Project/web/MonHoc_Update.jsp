@@ -177,7 +177,7 @@
                                 style="margin-right: 5px;">
                             </i>Xác nhận</button>
                     </form>
-                    <a href="monhoc.jsp"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="monhoc?mindex=1"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>

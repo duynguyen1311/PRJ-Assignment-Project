@@ -48,7 +48,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="khoa.jsp" class='sidebar-link'>
+                                <a href="khoa?kindex=1" class='sidebar-link'>
                                     <i class="bi bi-stack"></i>
                                     <span>Khoa</span>
                                 </a>
@@ -56,14 +56,14 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc.jsp" class='sidebar-link'>
+                                <a href="monhoc?mindex=1" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop.jsp" class='sidebar-link'>
+                                <a href="lop?lindex=1" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -76,10 +76,10 @@
                                 </a>
                                 <ul class="submenu ">
                                     <li class="submenu-item ">
-                                        <a href="sinhvien.jsp">Danh sách sinh viên</a>
+                                        <a href="sinhvien?index=1">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
-                                        <a href="diem.jsp">Điểm</a>
+                                        <a href="diem?dindex=1">Điểm</a>
                                     </li>
                                 </ul>
                             </li>
@@ -150,74 +150,16 @@
                                                         <td>${sv.tenSV}</td>
                                                         <td class="text-bold-500">${sv.ngaySinh}</td>
                                                         <td>${sv.lop.maLop}</td>
-                                                        <td><a href="sinhvien?sid=${sv.maSV}" class="bi-eye" data-bs-toggle="modal"
+                                                        <td><a href="modal?id=${sv.maSV}" class="bi-eye" data-bs-toggle="modal"
                                                                data-bs-target="#inlineForm"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                             <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" class="bi-trash-fill"><i
+                                                            <a href="#" onclick="DeleteSinhVien(${sv.maSV})" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <!--Start of modal part-->
-                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                                                 role="dialog" aria-labelledby="myModalLabel33"
-                                                                 aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                                     role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title" id="myModalLabel33">Thông
-                                                                                tin sinh viên</h4>
-                                                                            <button type="button" class="close"
-                                                                                    data-bs-dismiss="modal" aria-label="Close">
-                                                                                <i data-feather="x"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <label>Mã số sinh viên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.maSV}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Họ và tên</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.tenSV}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Giới tính</label>
-                                                                            <div class="form-group"
-                                                                                 style="margin-top: 10px;">
-                                                                                <c:choose>
-                                                                                    <c:when test="${sv.gioiTinh==1}">
-                                                                                        <input type="radio" value="1" checked>Nam
-                                                                                    </c:when>
-                                                                                    <c:when test="${sv.gioiTinh==0}">
-                                                                                        <input type="radio" value="0" style="margin-left: 20px;" checked>Nữ
-                                                                                    </c:when>
-                                                                                </c:choose>
-
-                                                                            </div>
-                                                                            <label>Ngày sinh</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.ngaySinh}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Quê quán</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.queQuan}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Số điện thoại</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.sdt}" readonly="readonly">
-                                                                            </div>
-                                                                            <label>Email</label>
-                                                                            <div class="form-group">
-                                                                                <input type="text" class="form-control" value="${sv.email}" readonly="readonly">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--End of modal part-->
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -276,6 +218,14 @@
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/mazer.js"></script>
+        <script>
+                                                                function DeleteSinhVien(id) {
+                                                                    var option = confirm("Do you really want to delete ?");
+                                                                    if (option === true) {
+                                                                        window.location.href = 'sinhvien_delete?svid=' + id;
+                                                                    }
+                                                                }
+        </script>
     </body>
 
 </html>

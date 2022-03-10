@@ -48,7 +48,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="khoa.jsp" class='sidebar-link'>
+                                <a href="khoa?kindex=1" class='sidebar-link'>
                                     <i class="bi bi-stack"></i>
                                     <span>Khoa</span>
                                 </a>
@@ -56,14 +56,14 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="monhoc.jsp" class='sidebar-link'>
+                                <a href="monhoc?mindex=1" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Môn học</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item">
-                                <a href="lop.jsp" class='sidebar-link'>
+                                <a href="lop?lindex=1" class='sidebar-link'>
                                     <i class="bi bi-grid-1x2-fill"></i>
                                     <span>Lớp</span>
                                 </a>
@@ -76,10 +76,10 @@
                                 </a>
                                 <ul class="submenu ">
                                     <li class="submenu-item ">
-                                        <a href="sinhvien.jsp">Danh sách sinh viên</a>
+                                        <a href="sinhvien?index=1">Danh sách sinh viên</a>
                                     </li>
                                     <li class="submenu-item ">
-                                        <a href="diem.jsp">Điểm</a>
+                                        <a href="diem?dindex=1">Điểm</a>
                                     </li>
                                 </ul>
                             </li>
@@ -155,9 +155,8 @@
                                                                 <a href="khoa_update?kid=${l.maKhoa}" class="bi-box-arrow-in-up-left"><i
                                                                         class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                         data-feather="mail"></i></a>
-                                                                <a href="khoa_delete?kid=${l.maKhoa}" 
-                                                                   onclick="if (!(confirm('Are you sure?')))
-                                                                               return false" class="bi-trash-fill"><i 
+                                                                <a href="#" 
+                                                                   onclick="DeleteKhoa(${l.maKhoa})" class="bi-trash-fill"><i 
                                                                         class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                         data-feather="mail"></i></a>
                                                             </td>
@@ -215,14 +214,14 @@
             <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
             <script src="assets/js/bootstrap.bundle.min.js"></script>
             <script src="assets/js/mazer.js"></script>
-            <!--            <script>
-                                                                                function DeleteKhoa(maKhoa) {
-                                                                                    var option = confirm("Do you really want to delete ?");
-                                                                                    if (option === true) {
-                                                                                        window.location.href = 'khoa_delete?kid=' + maKhoa;
-                                                                                    }
-                                                                                }
-                        </script>-->
+            <script>
+                                                                    function DeleteKhoa(maKhoa) {
+                                                                        var option = confirm("Do you really want to delete ?");
+                                                                        if (option === true) {
+                                                                            window.location.href = 'khoa_delete?kid=' + maKhoa;
+                                                                        }
+                                                                    }
+            </script>
     </body>
 
 </html>

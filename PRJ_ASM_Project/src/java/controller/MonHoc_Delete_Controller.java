@@ -62,7 +62,7 @@ public class MonHoc_Delete_Controller extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("mid"));
         MonHocDAO dao = new MonHocDAO();
         dao.deleteMonHoc(id);
-        response.sendRedirect("monhoc.jsp");
+        response.sendRedirect("monhoc?mindex=1");
 
     }
 

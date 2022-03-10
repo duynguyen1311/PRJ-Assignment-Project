@@ -202,7 +202,7 @@
                                 </i>Lưu</button>
                         </a>
                     </form>
-                    <a href="lop.jsp"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="lop?lindex=1"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>

@@ -34,7 +34,14 @@ public class KhoaController extends HttpServlet {
         try {
             KhoaDAO dao = new KhoaDAO();
             String search = request.getParameter("search");
-            int index = Integer.parseInt(request.getParameter("kindex"));
+            String indexstr = request.getParameter("kindex");
+            int index = 1;
+            if (indexstr != null) {
+                index = Integer.parseInt(indexstr);
+            }
+            if (search == null) {
+                search = "";
+            }
             int endPage = 0;
             int pageSize = 5;
             int count = dao.count(search);
@@ -43,7 +50,7 @@ public class KhoaController extends HttpServlet {
                 endPage++;
             }
             ArrayList<Khoa> listKhoa = dao.getSearchKhoa(search, index, pageSize);
-            if(listKhoa.isEmpty()){
+            if (listKhoa.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");
             }
             request.setAttribute("search", search);

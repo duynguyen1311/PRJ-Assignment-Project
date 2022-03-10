@@ -62,7 +62,7 @@ public class Lop_Delete_Controller extends HttpServlet {
         String id = request.getParameter("lid");
         LopDAO dao = new LopDAO();
         dao.deleteLop(id);
-        response.sendRedirect("lop.jsp");
+        response.sendRedirect("lop?lindex=1");
     }
 
     /**

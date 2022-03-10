@@ -85,7 +85,7 @@ public class MonHoc_Update_Controller extends HttpServlet {
         
         MonHocDAO dao = new MonHocDAO();
         dao.updateMonHoc(id, maMH, tenMH, tinchi);
-        request.getRequestDispatcher("monhoc.jsp").forward(request, response);
+        request.getRequestDispatcher("monhoc?mindex=1").forward(request, response);
     }
 
     /**

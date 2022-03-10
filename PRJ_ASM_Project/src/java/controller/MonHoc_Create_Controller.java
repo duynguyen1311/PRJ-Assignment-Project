@@ -78,7 +78,7 @@ public class MonHoc_Create_Controller extends HttpServlet {
         int tinchi = Integer.parseInt(request.getParameter("tinchi"));
         MonHocDAO dao = new MonHocDAO();
         dao.insertMonHoc(maMH, tenMH, tinchi);
-        request.getRequestDispatcher("monhoc.jsp").forward(request, response);
+        request.getRequestDispatcher("monhoc?mindex=1").forward(request, response);
     }
 
     /**

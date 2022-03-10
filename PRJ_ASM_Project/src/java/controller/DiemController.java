@@ -36,21 +36,28 @@ public class DiemController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         DiemDAO dao = new DiemDAO();
         String search = request.getParameter("search");
-            int index = Integer.parseInt(request.getParameter("dindex"));
-            int endPage = 0;
-            int pageSize = 5;
-            int count = dao.count(search);
-            endPage = count / pageSize;
-            if (count % pageSize != 0) {
-                endPage++;
-            }
+        String indexstr = request.getParameter("dindex");
+        int index = 1;
+        if (indexstr != null) {
+            index = Integer.parseInt(indexstr);
+        }
+        if (search == null) {
+            search = "";
+        }
+        int endPage = 0;
+        int pageSize = 5;
+        int count = dao.count(search);
+        endPage = count / pageSize;
+        if (count % pageSize != 0) {
+            endPage++;
+        }
         ArrayList<Diem> listDiem = dao.getSearchDiem(search, index, pageSize);
-        if(listDiem.isEmpty()){
-                request.setAttribute("mess", "Không tìm thấy kết quả");
-            }
-            request.setAttribute("search", search);
-            request.setAttribute("index", index);
-            request.setAttribute("endPage", endPage);
+        if (listDiem.isEmpty()) {
+            request.setAttribute("mess", "Không tìm thấy kết quả");
+        }
+        request.setAttribute("search", search);
+        request.setAttribute("index", index);
+        request.setAttribute("endPage", endPage);
         request.setAttribute("listDiem", listDiem);
         request.getRequestDispatcher("diem.jsp").forward(request, response);
     }

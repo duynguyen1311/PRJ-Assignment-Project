@@ -146,7 +146,7 @@ public class MonHocDAO {
 
         try {
             ArrayList<MonHoc> list = new ArrayList<>();
-            String sql = "with x as(select ROW_NUMBER() over (order by MaMH ASC) as r\n"
+            String sql = "with x as(select ROW_NUMBER() over (order by id ASC) as r\n"
                     + ",* from MonHoc where MaMH LIKE ? or TenMH LIKE ?)\n"
                     + "select * from x where r between ?*4-3 and ?*4";
             conn = new DBContext().getConnection();
@@ -157,7 +157,7 @@ public class MonHocDAO {
             ps.setInt(4, index);
             rs = ps.executeQuery();
             while (rs.next()) {
-                MonHoc mh = new MonHoc(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                MonHoc mh = new MonHoc(rs.getInt(5), rs.getString(2), rs.getString(3), rs.getInt(4));
                 list.add(mh);
             }
             return list;
@@ -189,11 +189,11 @@ public class MonHocDAO {
 //        for (MonHoc o : dao.getMaMonHoc()) {
 //            System.out.println(o);
 //        }
-//        System.out.println(dao.getMonHocById(1));
+        System.out.println(dao.getMonHocById(1));
 //        dao.deleteMonHoc(30);
-        int count = dao.count("H");
-        System.out.println(count);
-        for (MonHoc o : dao.getSearchMonHoc("H", 1, 4)) {
+//        int count = dao.count("H");
+//        System.out.println(count);
+        for (MonHoc o : dao.getSearchMonHoc("", 1, 4)) {
             System.out.println(o);
         }
 

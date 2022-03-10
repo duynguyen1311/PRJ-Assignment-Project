@@ -176,13 +176,16 @@
                                                                 <label for="company-column">Số điện thoại</label>
                                                                 <input type="text" id="company-column" class="form-control"
                                                                        name="sdt" placeholder="Số điện thoại">
+                                                                <p style="font-style: italic"><small class="text-muted danger">${mess1}</small></p>
+
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="email-id-column">Email</label>
-                                                                <input type="email" id="email-id-column" class="form-control"
+                                                                <input type="text" id="email-id-column" class="form-control"
                                                                        name="email" placeholder="Email">
+                                                                <p style="font-style: italic; color: red"><small class="text-muted">${mess2}</small></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,7 +200,7 @@
                             </i>Lưu</button>
                         </a>
                     </form>
-                    <a href="sinhvien.jsp"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="sinhvien?index=1"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>

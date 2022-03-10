@@ -79,7 +79,7 @@ public class Khoa_Create_Controller extends HttpServlet {
         String dienthoai = request.getParameter("dienthoai");
         KhoaDAO dao = new KhoaDAO();
         dao.insertKhoa(makhoa, tenkhoa, diachi, dienthoai);
-        request.getRequestDispatcher("khoa.jsp").forward(request, response);
+        request.getRequestDispatcher("khoa?kindex=1").forward(request, response);
 
     }
 

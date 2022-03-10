@@ -10,6 +10,7 @@ import DAO.SinhVienDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +42,7 @@ public class SinhVien_Create_Controller extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SinhVien_Create_Controller</title>");            
+            out.println("<title>Servlet SinhVien_Create_Controller</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SinhVien_Create_Controller at " + request.getContextPath() + "</h1>");
@@ -79,18 +80,29 @@ public class SinhVien_Create_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        LopDAO ldao = new LopDAO();
+        ArrayList<Lop> listMaLop = ldao.getMaLop();
         String maSV = request.getParameter("maSV");
         String tenSV = request.getParameter("tenSV");
-        int gioitinh = Integer.parseInt(request.getParameter("gioitinh")); 
+        int gioitinh = Integer.parseInt(request.getParameter("gioitinh"));
         String ngaysinh = request.getParameter("ngaysinh");
         String quequan = request.getParameter("quequan");
         String maLop = request.getParameter("maLop");
         String sdt = request.getParameter("sdt");
         String email = request.getParameter("email");
-        
+
+        Pattern ps = Pattern.compile("^[0-9]{10}$");
+        Pattern pe = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,3}$");
         SinhVienDAO dao = new SinhVienDAO();
-        dao.insertSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
-        request.getRequestDispatcher("sinhvien.jsp").forward(request, response);
+        if (ps.matcher(sdt).find() && pe.matcher(email).find()) {
+            dao.insertSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
+            request.getRequestDispatcher("sinhvien$index=1").forward(request, response);
+        } else {
+            request.setAttribute("mess1", "Số điện thoại phải gồm 10 ký tự");
+            request.setAttribute("mess2", "Email phải đúng định dạng");
+            request.setAttribute("listMaLop", listMaLop);
+            request.getRequestDispatcher("SinhVien_form.jsp").forward(request, response);
+        }
     }
 
     /**

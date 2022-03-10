@@ -35,7 +35,14 @@ public class LopController extends HttpServlet {
             throws ServletException, IOException {
         LopDAO dao = new LopDAO();
         String search = request.getParameter("search");
-        int index = Integer.parseInt(request.getParameter("lindex"));
+        String indexstr = request.getParameter("lindex");
+        int index = 1;
+        if(indexstr != null){
+            index = Integer.parseInt(indexstr);
+        }
+        if(search == null){
+            search="";
+        }
         int endPage = 0;
         int pageSize = 5;
         int count = dao.count(search);

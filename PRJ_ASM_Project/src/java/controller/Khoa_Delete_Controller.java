@@ -59,10 +59,10 @@ public class Khoa_Delete_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("kid");
+        String kid = request.getParameter("kid");
         KhoaDAO dao = new KhoaDAO();
-        dao.deleteKhoa(id);
-        response.sendRedirect("khoa.jsp");
+        dao.deleteKhoa(kid);
+        response.sendRedirect("khoa?kindex=1");
     }
 
     /**

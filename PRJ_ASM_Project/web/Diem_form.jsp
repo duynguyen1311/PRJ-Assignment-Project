@@ -149,6 +149,7 @@
                                                                 <label for="city-column">Học kỳ</label>
                                                                 <input type="text" id="city-column" class="form-control" placeholder="Học kỳ"
                                                                        name="hocky">
+                                                                <p style="font-style: italic"><small class="text-muted">Học kỳ phải > 0</small></p>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -176,7 +177,7 @@
                                     style="margin-right: 5px;">
                                 </i>Lưu</button>
                     </form>
-                    <a href="diem.jsp"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="diem?dindex=1"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>

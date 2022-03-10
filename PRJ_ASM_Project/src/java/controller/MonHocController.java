@@ -36,7 +36,14 @@ public class MonHocController extends HttpServlet {
         try {
             MonHocDAO dao = new MonHocDAO();
             String search = request.getParameter("search");
-            int index = Integer.parseInt(request.getParameter("mindex"));
+            String indexstr = request.getParameter("mindex");
+            int index = 1;
+            if (indexstr != null) {
+                index = Integer.parseInt(indexstr);
+            }
+            if (search == null) {
+                search = "";
+            }
             int endPage = 0;
             int pageSize = 5;
             int count = dao.count(search);
@@ -45,7 +52,7 @@ public class MonHocController extends HttpServlet {
                 endPage++;
             }
             ArrayList<MonHoc> listMonHoc = dao.getSearchMonHoc(search, index, pageSize);
-            if(listMonHoc.isEmpty()){
+            if (listMonHoc.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");
             }
             request.setAttribute("search", search);

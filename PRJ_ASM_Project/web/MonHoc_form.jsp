@@ -140,6 +140,7 @@
                                                         <div class="col-lg-10 col-9">
                                                             <input type="text" id="last-name" class="form-control" name="tinchi"
                                                                    placeholder="Số tín chỉ">
+                                                            <p style="font-style: italic"><small class="text-muted">Số tín chỉ nhiều hơn 0 và ít hơn 7</small></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +169,7 @@
                                 style="margin-right: 5px;">
                             </i>Lưu</button>
                     </form>
-                    <a href="monhoc.jsp"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                    <a href="monhoc?mindex=1"><button class="btn btn-outline-danger" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
                             </i>Hủy bỏ</button>
                     </a>
