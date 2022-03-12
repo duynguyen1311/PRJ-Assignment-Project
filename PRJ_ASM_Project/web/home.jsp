@@ -4,13 +4,14 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8”>
-        <meta charset="UTF-8">
+              <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Trang chủ</title>
 
@@ -85,8 +86,30 @@
                                     </li>
                                 </ul>
                             </li>
+                            <c:choose>
+                                <c:when test="${sessionScope.acc != null}">
+                                    <li class="sidebar-item">
+                                        <a href="logout" class='sidebar-link'>
+                                            <span>Log out</span>
+                                        </a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="sidebar-item">
+                                        <a href="login" class='sidebar-link'>
+                                            <span>Login</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="logout" class='sidebar-link'>
+                                            <span>Log out</span>
+                                        </a>
+                                    </li>
 
+                                </c:otherwise>
+                            </c:choose>
                             <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+                        </ul>
                     </div>
                 </div>
                 <div id="main">
@@ -98,6 +121,7 @@
 
                     <div class="page-heading">
                         <h3>QUẢN LÝ SINH VIÊN</h3>
+                        <!--<p style="float:right;"><a style="font-size: 50px;font-weight: 20px">Login</a><a>Log out</a></p>-->
                     </div>
                     <div class="page-content">
                         <section class="row">
@@ -302,8 +326,15 @@
                                                 <img src="assets/images/faces/1.jpg" alt="Face 1">
                                             </div>
                                             <div class="ms-3 name">
-                                                <h5 class="font-bold">John Duck</h5>
-                                                <h6 class="text-muted mb-0">@johnducky</h6>
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.acc != null}">
+                                                        <h5 class="font-bold">${sessionScope.acc.displayname}</h5>
+                                                    <h6 class="text-muted mb-0">${sessionScope.acc.email}</h6>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        Welcome
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </div>
                                         </div>
                                     </div>
