@@ -9,6 +9,7 @@ import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
@@ -67,6 +68,30 @@ public class AccountDAO {
 
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        System.out.println(dao.getAcc("user", "123"));
+        System.out.println(dao.getListAcc());
+    }
+
+    public ArrayList<Account> getListAcc() {
+        try {
+            ArrayList<Account> list = new ArrayList<>();
+            String sql = "select * from Account where role = 'USER'";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt(1),
+                        rs.getString(2), rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7));
+                list.add(acc);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

@@ -329,7 +329,7 @@
                                                 <c:choose>
                                                     <c:when test="${sessionScope.acc != null}">
                                                         <h5 class="font-bold">${sessionScope.acc.displayname}</h5>
-                                                    <h6 class="text-muted mb-0">${sessionScope.acc.email}</h6>
+                                                        <h6 class="text-muted mb-0">${sessionScope.acc.email}</h6>
                                                     </c:when>
                                                     <c:otherwise>
                                                         Welcome
@@ -341,40 +341,48 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Recent Messages</h4>
+                                        <h4>Other users</h4>
                                     </div>
+
                                     <div class="card-content pb-4">
-                                        <div class="recent-message d-flex px-4 py-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="assets/images/faces/4.jpg">
+                                        <c:forEach items="${listAcc}" var="i">
+                                            <div class="recent-message d-flex px-4 py-3">
+                                                <c:choose>
+                                                    <c:when test="${i.id % 2 == 0}">
+                                                        <div class="avatar avatar-lg">
+                                                            <img src="assets/images/faces/4.jpg">
+                                                        </div>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <div class="avatar avatar-lg">
+                                                            <img src="assets/images/faces/1.jpg">
+                                                        </div>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <div class="name ms-4">
+                                                    <h5 class="mb-1">${i.displayname}</h5>
+                                                    <h6 class="text-muted mb-0">${i.email}</h6>
+                                                </div>
                                             </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Hank Schrader</h5>
-                                                <h6 class="text-muted mb-0">@johnducky</h6>
-                                            </div>
-                                        </div>
-                                        <div class="recent-message d-flex px-4 py-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="assets/images/faces/5.jpg">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Dean Winchester</h5>
-                                                <h6 class="text-muted mb-0">@imdean</h6>
-                                            </div>
-                                        </div>
-                                        <div class="recent-message d-flex px-4 py-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="assets/images/faces/1.jpg">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">John Dodol</h5>
-                                                <h6 class="text-muted mb-0">@dodoljohn</h6>
-                                            </div>
-                                        </div>
-                                        <div class="px-4">
-                                            <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
-                                                Conversation</button>
-                                        </div>
+                                        </c:forEach>
+                                        <!--                                        <div class="recent-message d-flex px-4 py-3">
+                                                                                    <div class="avatar avatar-lg">
+                                                                                        <img src="assets/images/faces/5.jpg">
+                                                                                    </div>
+                                                                                    <div class="name ms-4">
+                                                                                        <h5 class="mb-1">Dean Winchester</h5>
+                                                                                        <h6 class="text-muted mb-0">@imdean</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="recent-message d-flex px-4 py-3">
+                                                                                    <div class="avatar avatar-lg">
+                                                                                        <img src="assets/images/faces/1.jpg">
+                                                                                    </div>
+                                                                                    <div class="name ms-4">
+                                                                                        <h5 class="mb-1">John Dodol</h5>
+                                                                                        <h6 class="text-muted mb-0">@dodoljohn</h6>
+                                                                                    </div>
+                                                                                </div>-->
                                     </div>
                                 </div>
                                 <div class="card">
