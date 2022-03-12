@@ -13,7 +13,7 @@
 
     <head>
         <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8”>
-        <meta charset="UTF-8">
+              <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Quản lý lớp</title>
 
@@ -34,7 +34,7 @@
                     <div class="sidebar-header">
                         <div class="d-flex justify-content-between">
                             <div class="logo">
-                                <a href="home"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                                <a href="home"><img style="width: 210px;height: 175px" src="assets/images/logo/STUDENT.png" alt="Logo"></a>
                             </div>
                             <div class="toggler">
                                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -86,7 +86,28 @@
                                     </li>
                                 </ul>
                             </li>
+                            <c:choose>
+                                <c:when test="${sessionScope.acc != null}">
+                                    <li class="sidebar-item">
+                                        <a href="logout" class='sidebar-link'>
+                                            <span>Log out</span>
+                                        </a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="sidebar-item">
+                                        <a href="login" class='sidebar-link'>
+                                            <span>Login</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="logout" class='sidebar-link'>
+                                            <span>Log out</span>
+                                        </a>
+                                    </li>
 
+                                </c:otherwise>
+                            </c:choose>
                             <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                     </div>
                 </div>

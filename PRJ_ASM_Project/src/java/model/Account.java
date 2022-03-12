@@ -10,23 +10,29 @@ package model;
  * @author admin
  */
 public class Account {
+    
+    public static final String ADMIN = "ADMIN";
+    public static final String USER = "USER";
+    
     private int id;
     private String username;
     private String password;
     private String displayname;
     private String email;
     private String phone;
+    private String role;
 
     public Account() {
     }
 
-    public Account(int id, String username, String password, String displayname, String email, String phone) {
+    public Account(int id, String username, String password, String displayname, String email, String phone, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.displayname = displayname;
         this.email = email;
         this.phone = phone;
+        this.role = role;
     }
 
     public int getId() {
@@ -77,9 +83,17 @@ public class Account {
         this.phone = phone;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", displayname=" + displayname + ", email=" + email + ", phone=" + phone + '}';
+        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", displayname=" + displayname + ", email=" + email + ", phone=" + phone + ", role=" + role + '}';
     }
     
     
