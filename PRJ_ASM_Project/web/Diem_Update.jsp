@@ -11,10 +11,10 @@
 
     <head>
         <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8”>
-        <meta charset="UTF-8">
+              <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Quản lý điểm</title>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.min.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -167,9 +167,9 @@
                                 </div>
                             </div>
                         </section>
-                        <button type="submit" class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
-                                    style="margin-right: 5px;">
-                                </i>Xác nhận</button>
+                        <button type="submit" id="sweet" class="btn btn-primary" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
+                                style="margin-right: 5px;">
+                            </i>Xác nhận</button>
                     </form>
                     <a href="diem?dindex=1"><button class="btn btn-outline-danger" style="padding-right: 20px;padding-left: 20px;padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i
                                 style="margin-right: 5px;">
@@ -192,6 +192,21 @@
             <script src="assets/js/bootstrap.bundle.min.js"></script>
 
             <script src="assets/js/mazer.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.min.js"></script>
+            <script>
+                document.getElementById("sweet").addEventListener('click', (event) => {
+                    event.preventDefault();
+                    Swal.fire({
+                        position: 'top-middle',
+                        icon: 'success',
+                        title: 'Lưu thành công',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function () {
+                        document.querySelector('form').submit()
+                    });
+                });
+            </script>
     </body>
 
 </html>

@@ -177,7 +177,7 @@
                                                                 <label for="company-column">Số điện thoại</label>
                                                                 <input type="text" id="company-column" class="form-control"
                                                                        name="sdt" placeholder="Số điện thoại">
-                                                                <p style="font-style: italic"><small class="text-muted danger">${mess1}</small></p>
+                                                                <p style="font-style: italic"><small id="warning" class="text-muted danger">${mess1}</small></p>
 
                                                             </div>
                                                         </div>
@@ -225,15 +225,24 @@
             <script>
                 document.getElementById("sweet").addEventListener('click', (event) => {
                     event.preventDefault();
-                    Swal.fire({
-                        position: 'top-middle',
-                        icon: 'success',
-                        title: 'Your work has been saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(function () {
-                        document.querySelector('form').submit()
-                    });
+//                    if (a === undefined) {
+//                        Swal.fire({
+//                            icon: 'error',
+//                            title: 'Oops...',
+//                            text: 'Something went wrong!',
+//                        })
+//                    } else {
+                        Swal.fire({
+                            position: 'top-middle',
+                            icon: 'success',
+                            title: 'Tạo mới thành công',
+                            showConfirmButton: false,
+                            timer: 200000
+                        }).then(function () {
+                            document.querySelector('form').submit()
+                        });
+//                    }
+
                 });
             </script>
     </body>

@@ -210,7 +210,7 @@
                     Swal.fire({
                         position: 'top-middle',
                         icon: 'success',
-                        title: 'Your work has been saved',
+                        title: 'Tạo mới thành công',
                         showConfirmButton: false,
                         timer: 1500
                     }).then(function () {
