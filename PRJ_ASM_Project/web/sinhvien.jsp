@@ -172,7 +172,7 @@
                                                         <td>${sv.tenSV}</td>
                                                         <td class="text-bold-500">${sv.ngaySinh}</td>
                                                         <td>${sv.lop.maLop}</td>
-                                                        <td><a href="#" class="bi-eye" data-bs-toggle="modal"
+                                                        <td><a href="#" onclick="openModel(`${sv.maSV}`)" class="bi-eye" data-bs-toggle="modal"
                                                                data-bs-target="#inlineForm"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
@@ -207,10 +207,10 @@
                                         <i data-feather="x"></i>
                                     </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body" id="model">
                                     <label>Mã số sinh viên</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" value="${s.maSV}" readonly="readonly">
+                                        <input type="text" class="form-control info" value="${s.maSV}" readonly="readonly">
                                     </div>
                                     <label>Họ và tên</label>
                                     <div class="form-group">
@@ -231,7 +231,7 @@
                                     </div>
                                     <label>Ngày sinh</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" value="${s.ngaySinh}" readonly="readonly">
+                                        <input type="text" class="form-control info" value="${s.ngaySinh}" readonly="readonly">
                                     </div>
                                     <label>Quê quán</label>
                                     <div class="form-group">
@@ -296,12 +296,24 @@
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/mazer.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
                                                                 function DeleteSinhVien(id) {
                                                                     var option = confirm("Do you really want to delete ?");
                                                                     if (option === true) {
                                                                         window.location.href = 'sinhvien_delete?svid=' + id;
                                                                     }
+                                                                }
+                                                                function openModel(maSv){
+                                                                    console.log(maSv);
+                                                                    axios.get('get-student-by-maSv',{
+                                                                        params:{
+                                                                            maSv:maSv
+                                                                        }
+                                                                    }).then((response)=>{
+                                                                         const modelbody = document.getElementById('model');
+                                                                         modelbody.innerHTML=response.data
+                                                                    })
                                                                 }
         </script>
     </body>

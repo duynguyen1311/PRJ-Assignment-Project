@@ -4,6 +4,10 @@
         <servlet-name>KhoaController</servlet-name>
         <servlet-class>controller.KhoaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetStudentByMaSv</servlet-name>
+        <servlet-class>controller.aysnc.GetStudentByMaSv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KhoaController</servlet-name>
         <url-pattern>/khoa</url-pattern>
@@ -16,6 +20,10 @@
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern/>
     </filter-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStudentByMaSv</servlet-name>
+        <url-pattern>/get-student-by-maSv</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             60

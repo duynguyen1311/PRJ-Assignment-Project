@@ -41,8 +41,9 @@ public class AuthorizationFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
+        
         req.setAttribute("error2", "You are not permitted");
-        res.sendRedirect("http://localhost:8084/PRJ_ASM_Project/login");
+        request.getRequestDispatcher("http://localhost:8084/PRJ_ASM_Project/logout").forward(request, response);
     }
 
     @Override
