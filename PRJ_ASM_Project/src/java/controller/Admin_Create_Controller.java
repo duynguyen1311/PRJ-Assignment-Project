@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "Admin_Controller", urlPatterns = {"/admin/khoa"})
-public class Admin_Controller extends HttpServlet {
+@WebServlet(name = "Admin_Controller", urlPatterns = {"/admin/khoa_create"})
+public class Admin_Create_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +34,7 @@ public class Admin_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            request.getRequestDispatcher("../khoa").forward(request, response);
+            request.getRequestDispatcher("../khoa_create").forward(request, response);
         }
     }
 

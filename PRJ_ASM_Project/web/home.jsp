@@ -200,7 +200,7 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4>Profile Visit</h4>
+                                                <h4>Biểu đồ cột</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div id="chart-profile-visit"></div>
@@ -212,13 +212,13 @@
                                     <div class="col-12 col-xl-4">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4>Profile Visit</h4>
+                                                <h4>Biểu đồ đường</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="d-flex align-items-center">
-                                                            <h5 class="mb-0 ms-3">Europe</h5>
+                                                            <h5 class="mb-0 ms-3">Sinh viên</h5>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
@@ -236,7 +236,7 @@
                                                             <use
                                                                 xlink:href="assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
                                                             </svg>
-                                                            <h5 class="mb-0 ms-3">America</h5>
+                                                            <h5 class="mb-0 ms-3">Lớp</h5>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
@@ -254,7 +254,7 @@
                                                             <use
                                                                 xlink:href="assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
                                                             </svg>
-                                                            <h5 class="mb-0 ms-3">Indonesia</h5>
+                                                            <h5 class="mb-0 ms-3">Khoa</h5>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
@@ -369,7 +369,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Visitors Profile</h4>
+                                        <h4>Biểu đồ tròn</h4>
                                     </div>
                                     <div class="card-body">
                                         <div id="chart-visitors-profile"></div>

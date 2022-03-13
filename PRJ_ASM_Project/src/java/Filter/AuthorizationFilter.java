@@ -42,7 +42,7 @@ public class AuthorizationFilter implements Filter {
             return;
         }
         req.setAttribute("error2", "You are not permitted");
-        req.getRequestDispatcher("../login.jsp").forward(request, response);
+        res.sendRedirect("http://localhost:8084/PRJ_ASM_Project/login");
     }
 
     @Override

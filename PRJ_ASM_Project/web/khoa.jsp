@@ -17,11 +17,11 @@
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/css/bootstrap.css">
 
-        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-        <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-        <link rel="stylesheet" href="assets/css/app.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/css/app.css">
         <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
     </head>
 
@@ -32,7 +32,7 @@
                     <div class="sidebar-header">
                         <div class="d-flex justify-content-between">
                             <div class="logo">
-                                <a href="home"><img style="width: 210px;height: 175px" src="assets/images/logo/STUDENT.png" alt="Logo"></a>
+                                <a href="home"><img style="width: 210px;height: 175px" src="/PRJ_ASM_Project/assets/images/logo/STUDENT.png" alt="Logo"></a>
                             </div>
                             <div class="toggler">
                                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>

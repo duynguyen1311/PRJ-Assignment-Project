@@ -16,12 +16,12 @@
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/css/bootstrap.css">
 
-        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-        <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-        <link rel="stylesheet" href="assets/css/app.css">
-        <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+        <link rel="stylesheet" href="/PRJ_ASM_Project/assets/css/app.css">
+        <link rel="shortcut icon" href="/PRJ_ASM_Project/assets/images/favicon.svg" type="image/x-icon">
     </head>
 
     <body>
@@ -31,7 +31,7 @@
                     <div class="sidebar-header">
                         <div class="d-flex justify-content-between">
                             <div class="logo">
-                                <a href="#"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                                <a href="#"><img src="/PRJ_ASM_Project/assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                             </div>
                             <div class="toggler">
                                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
