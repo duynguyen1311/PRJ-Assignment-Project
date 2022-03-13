@@ -104,12 +104,13 @@ public class DiemDAO {
         }
     }
 
-    public void deleteDiem(String maMH) {
+    public void deleteDiem(String maSV, String maMH) {
         try {
-            String sql = "Delete from Diem where MaMH = ?";
+            String sql = "Delete from Diem where MaSV = ? and MaMH = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, maMH);
+            ps.setString(1, maSV);
+            ps.setString(2, maMH);
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(DiemDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -98,7 +98,7 @@ public class SinhVien_Create_Controller extends HttpServlet {
         SinhVienDAO dao = new SinhVienDAO();
         if (ps.matcher(sdt).find() && pe.matcher(email).find()) {
             dao.insertSinhVien(maSV, tenSV, gioitinh, ngaysinh, quequan, maLop, sdt, email);
-            request.getRequestDispatcher("sinhvien$index=1").forward(request, response);
+            request.getRequestDispatcher("sinhvien?index=1").forward(request, response);
         } else {
             request.setAttribute("mess1", "Số điện thoại phải gồm 10 ký tự");
             request.setAttribute("mess2", "Email phải đúng định dạng");

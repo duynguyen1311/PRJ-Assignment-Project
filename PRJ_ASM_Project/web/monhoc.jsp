@@ -176,26 +176,29 @@
                                                             <a href="monhoc_update?mid=${lm.id}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" onclick="Delete(${lm.id})" class="bi-trash-fill" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                            <a href="#" onclick="Delete(${lm.id})" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <!--                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                                                                            <div class="modal-dialog">
-                                                                                                                                <div class="modal-content">
-                                                                                                                                    <div class="modal-header">
-                                                                                                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                                                                    </div>
-                                                                                                                                    <div class="modal-body">
-                                                                                                                                        Bạn có chắc chắn muốn xóa ?
-                                                                                                                                    </div>
-                                                                                                                                    <div class="modal-footer">
-                                                                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                                                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>-->
+<!--                                                            <form action="monhoc_delete?mid=${lm.id}" method="post">
+                                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalLabel">Warning !</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Bạn có chắc chắn muốn xóa ?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>-->
+
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -239,11 +242,11 @@
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
+                        <p>14/3/20022 &copy; Quản lý sinh viên</p>
                     </div>
                     <div class="float-end">
                         <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">A. Saugi</a></p>
+                                href="http://ahmadsaugi.com">Duy Nguyễn</a></p>
                     </div>
                 </div>
             </footer>
@@ -253,12 +256,12 @@
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/mazer.js"></script>
     <script>
-                                                                function Delete(id) {
-                                                                    var option = confirm("Do you really want to delete ?");
-                                                                    if (option === true) {
-                                                                        window.location.href = 'monhoc_delete?mid=' + id;
-                                                                    }
-                                                                }
+        function Delete(id) {
+            var option = confirm("Do you really want to delete ?");
+            if (option === true) {
+                window.location.href = 'monhoc_delete?mid=' + id;
+            }
+        }
     </script>
 </body>
 

@@ -38,7 +38,7 @@ public class Lop_Delete_Controller extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Lop_Delete_Controller</title>");            
+            out.println("<title>Servlet Lop_Delete_Controller</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Lop_Delete_Controller at " + request.getContextPath() + "</h1>");

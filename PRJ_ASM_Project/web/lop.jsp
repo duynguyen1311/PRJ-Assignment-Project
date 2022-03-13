@@ -179,9 +179,29 @@
                                                             <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" onclick="DeleteLop(${ll.maLop})" class="bi-trash-fill"><i
+                                                            <a href="lop_delete?lid=${ll.maLop}" 
+                                                               onclick="if(!confirm('Bạn có chắc chắn muốn xóa?')) return false" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
+<!--                                                            <form action="lop_delete?lid=${ll.maLop}" method="post">
+                                                                <div class="modal fade" id="LopModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalLabel">Warning !</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Bạn có chắc chắn muốn xóa ?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>-->
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -238,12 +258,13 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/mazer.js"></script>
         <script>
-                                                                function DeleteLop(id) {
+                                                                function DeleteLop(lid) {
                                                                     var option = confirm("Do you really want to delete ?");
                                                                     if (option === true) {
-                                                                        window.location.href = 'lop_delete?lid=' + id;
+                                                                        window.location.href = 'lop_delete?lid=' + lid;
                                                                     }
                                                                 }
+                                                                
         </script>
     </body>
 

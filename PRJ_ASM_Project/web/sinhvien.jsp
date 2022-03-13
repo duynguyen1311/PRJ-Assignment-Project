@@ -179,7 +179,8 @@
                                                             <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" onclick="DeleteSinhVien(${sv.maSV})" class="bi-trash-fill"><i
+                                                            <a href="sinhvien_delete?svid=${sv.maSV}"
+                                                               onclick="if(!(confirm('Bạn có chắc chắc muốn xóa?'))) return false" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                         </td>

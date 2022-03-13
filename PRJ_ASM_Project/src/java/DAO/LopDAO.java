@@ -219,11 +219,11 @@ public class LopDAO {
 //        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
 //        System.out.println(dao.getLopByMaLop("KT1"));
 //        dao.updateLop("KT1","Kinh te" , "A2", "C01", K10");
-//        dao.deleteLop("MT1");
-        int count = dao.count("M");
-        System.out.println(count);
-        for (Lop o : dao.getSearchLop("M", 1, 3)) {
-            System.out.println(o);
-        }
+        dao.deleteLop("MD");
+//        int count = dao.count("M");
+//        System.out.println(count);
+//        for (Lop o : dao.getSearchLop("M", 1, 3)) {
+//            System.out.println(o);
+//        }
     }
 }

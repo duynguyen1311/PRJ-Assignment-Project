@@ -59,9 +59,10 @@ public class Diem_Delete_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String idm = request.getParameter("dmh");
+        String ids = request.getParameter("dsv");
         DiemDAO dao = new DiemDAO();
-        String id = request.getParameter("did");
-        dao.deleteDiem(id);
+        dao.deleteDiem(ids,idm);
         response.sendRedirect("diem?dindex=1");
     }
 

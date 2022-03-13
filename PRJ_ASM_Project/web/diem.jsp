@@ -178,26 +178,10 @@
                                                             <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="#" class="bi-trash-fill" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                                    <a href="diem_delete?dsv=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" 
+                                                                    onclick="if(!confirm('Bạn có chắc chắn muốn xóa')) return false" class="bi-trash-fill"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            Bạn có chắc chắn muốn xóa ?
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            <a href="diem_delete?did=${ld.monhoc.maMH}"><button type="button" class="btn btn-primary">Save changes</button></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
