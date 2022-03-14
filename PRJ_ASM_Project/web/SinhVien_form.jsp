@@ -237,7 +237,7 @@
                             icon: 'success',
                             title: 'Tạo mới thành công',
                             showConfirmButton: false,
-                            timer: 200000
+                            timer: 1500
                         }).then(function () {
                             document.querySelector('form').submit()
                         });

@@ -15,7 +15,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,8 +24,7 @@ import model.Account;
  *
  * @author admin
  */
-@WebFilter(filterName = "AuthorizationFilter", urlPatterns = {"/admin/*"})
-public class AuthorizationFilter implements Filter {
+public class AuthenticationFilterForCRUD implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
@@ -34,29 +32,30 @@ public class AuthorizationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        
+
         HttpSession session = req.getSession();
         Account acc = (Account) session.getAttribute("acc");
-        if(acc !=null && acc.getRole().equals(Account.ADMIN)){
+        if (acc != null && acc.getRole().equals(Account.ADMIN)) {
             chain.doFilter(request, response);
             return;
         }
-        
-//        req.setAttribute("error2", "You are not permitted");
-        request.getRequestDispatcher("../logout").forward(request, response);
-    }
-
-    @Override
-    public void destroy() {
+        req.setAttribute("error2", "Bạn không được phép truy cập");
+        request.getRequestDispatcher("login").forward(request, response);
     }
 
     /**
-     * Init method for this filter
+     * Return the filter configuration object for this filter.
+     *
      * @param filterConfig
      */
     @Override
     public void init(FilterConfig filterConfig) {
 
+    }
+
+    @Override
+    public void destroy() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

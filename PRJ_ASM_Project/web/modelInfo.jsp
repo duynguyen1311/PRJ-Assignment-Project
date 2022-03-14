@@ -16,9 +16,8 @@
 <label>Giới tính</label>
 <div class="form-group"
      style="margin-top: 10px;">
-            <input type="radio" value="1" ${s.gioiTinh == 1? "checked":""}>Nam
-            <input type="radio" value="0" style="margin-left: 20px;" ${s.gioiTinh == 0? "checked":""}>Nữ
-
+    <input type="radio" value="1" readonly="readonly" ${s.gioiTinh == 1? "checked":""}>Nam
+    <input type="radio" value="0" readonly="readonly" style="margin-left: 20px;" ${s.gioiTinh == 0? "checked":""}>Nữ
 </div>
 <label>Ngày sinh</label>
 <div class="form-group">

@@ -298,12 +298,6 @@
         <script src="assets/js/mazer.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-                                                                function DeleteSinhVien(id) {
-                                                                    var option = confirm("Do you really want to delete ?");
-                                                                    if (option === true) {
-                                                                        window.location.href = 'sinhvien_delete?svid=' + id;
-                                                                    }
-                                                                }
                                                                 function openModel(maSv){
                                                                     console.log(maSv);
                                                                     axios.get('get-student-by-maSv',{
