@@ -40,7 +40,7 @@ public class AuthenticationFilterForCRUD implements Filter {
             return;
         }
         req.setAttribute("error2", "Bạn không được phép truy cập");
-        request.getRequestDispatcher("login").forward(request, response);
+        request.getRequestDispatcher("error.jsp").forward(request, response);
     }
 
     /**

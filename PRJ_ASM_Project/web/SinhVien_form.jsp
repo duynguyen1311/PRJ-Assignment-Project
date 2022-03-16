@@ -177,7 +177,7 @@
                                                                 <label for="company-column">Số điện thoại</label>
                                                                 <input type="text" id="company-column" class="form-control"
                                                                        name="sdt" placeholder="Số điện thoại">
-                                                                <p style="font-style: italic"><small id="warning" class="text-muted danger">${mess1}</small></p>
+                                                                <p id="warning" style="font-style: italic"><small class="text-muted text-danger">${mess1}</small></p>
 
                                                             </div>
                                                         </div>
@@ -186,7 +186,7 @@
                                                                 <label for="email-id-column">Email</label>
                                                                 <input type="text" id="email-id-column" class="form-control"
                                                                        name="email" placeholder="Email">
-                                                                <p style="font-style: italic; color: red"><small class="text-muted">${mess2}</small></p>
+                                                                <p style="font-style: italic; color: red"><small class="text-muted text-danger">${mess2}</small></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -208,11 +208,11 @@
                     <footer>
                         <div class="footer clearfix mb-0 text-muted">
                             <div class="float-start">
-                                <p>2021 &copy; Mazer</p>
+                                <p>14/03/2022 &copy; Quản lý sinh viên</p>
                             </div>
                             <div class="float-end">
-                                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                        href="http://ahmadsaugi.com">A. Saugi</a></p>
+                                <p>Created with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                        href="http://ahmadsaugi.com">Duy Nguyễn</a></p>
                             </div>
                         </div>
                     </footer>
@@ -222,29 +222,6 @@
             <script src="assets/js/bootstrap.bundle.min.js"></script>
             <script src="assets/js/mazer.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.min.js"></script>
-            <script>
-                document.getElementById("sweet").addEventListener('click', (event) => {
-                    event.preventDefault();
-//                    if (a === undefined) {
-//                        Swal.fire({
-//                            icon: 'error',
-//                            title: 'Oops...',
-//                            text: 'Something went wrong!',
-//                        })
-//                    } else {
-                        Swal.fire({
-                            position: 'top-middle',
-                            icon: 'success',
-                            title: 'Tạo mới thành công',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(function () {
-                            document.querySelector('form').submit()
-                        });
-//                    }
-
-                });
-            </script>
     </body>
 
 </html>

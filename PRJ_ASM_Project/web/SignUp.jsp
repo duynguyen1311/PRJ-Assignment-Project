@@ -26,7 +26,7 @@
                 <div class="col-lg-5 col-12">
                     <div id="auth-left">
                         <div class="auth-logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
+                            <img style="width: 200px;height: 200px" src="assets/images/logo/STUDENT.png" alt="Logo">
                         </div>
                         <h1 class="auth-title">Đăng ký</h1>
                         <p class="text-danger" role="alert">${error3}</p>

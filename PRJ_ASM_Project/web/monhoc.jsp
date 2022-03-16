@@ -245,7 +245,7 @@
                         <p>14/3/20022 &copy; Quản lý sinh viên</p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                        <p>Created with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                                 href="http://ahmadsaugi.com">Duy Nguyễn</a></p>
                     </div>
                 </div>

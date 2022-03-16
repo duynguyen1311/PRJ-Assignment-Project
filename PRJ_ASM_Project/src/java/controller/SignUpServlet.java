@@ -84,7 +84,7 @@ public class SignUpServlet extends HttpServlet {
             dao.insertAcc(username, password, displayname, email, phone, role);
             request.getRequestDispatcher("login").forward(request, response);
         }else{
-            request.setAttribute("error3", "Password not match !");
+            request.setAttribute("error3", "Không khớp mật khẩu !");
             request.getRequestDispatcher("SignUp.jsp").forward(request, response);
         }
 

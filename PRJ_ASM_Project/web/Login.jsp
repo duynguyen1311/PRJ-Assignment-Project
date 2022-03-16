@@ -30,7 +30,6 @@
                         </div>
                         <h1 class="auth-title">Welcome</h1>
                         <p class="auth-subtitle mb-5">Đăng nhập</p>
-                        <p class="text-danger" role="alert">${error2}</p>
                         <p class="text-danger" role="alert">${error}</p>
                         <form action="login" method="post">
                             <div class="form-group position-relative has-icon-left mb-4">
