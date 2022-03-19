@@ -123,10 +123,21 @@
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Danh sách sinh viên</h3>
                                 <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                <a href="sinhvien_create">
-                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                        </i>Thêm mới </button>
-                                </a>
+                                <c:choose>
+                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                        <a href="sinhvien_create" style="display: none;">
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="sinhvien_create">
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
+
                                 <form action="sinhvien?index=1" method="post">
                                     <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -162,7 +173,14 @@
                                                     <th>Tên sinh viên</th>
                                                     <th>Ngày sinh</th>
                                                     <th>Mã lớp</th>
-                                                    <th>ACTION</th>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                            <th> </th>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            <th>ACTION</th>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -172,18 +190,40 @@
                                                         <td>${sv.tenSV}</td>
                                                         <td class="text-bold-500">${sv.ngaySinh}</td>
                                                         <td>${sv.lop.maLop}</td>
-                                                        <td><a href="#" onclick="openModel(`${sv.maSV}`)" class="bi-eye" data-bs-toggle="modal"
-                                                               data-bs-target="#inlineForm"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
-                                                            <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
-                                                            <a href="sinhvien_delete?svid=${sv.maSV}"
-                                                               onclick="if(!(confirm('Bạn có chắc chắc muốn xóa?'))) return false" class="bi-trash-fill"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
-                                                        </td>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                                <td style="display: none;">
+                                                                    <a href="#" onclick="openModel(`${sv.maSV}`)" class="bi-eye" data-bs-toggle="modal"
+                                                                       data-bs-target="#inlineForm"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="sinhvien_delete?svid=${sv.maSV}"
+                                                                       onclick="if (!(confirm('Bạn có chắc chắc muốn xóa?')))
+                                                                                   return false" class="bi-trash-fill"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                </td>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <td><a href="#" onclick="openModel(`${sv.maSV}`)" class="bi-eye" data-bs-toggle="modal"
+                                                                       data-bs-target="#inlineForm"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="sinhvien_delete?svid=${sv.maSV}"
+                                                                       onclick="if (!(confirm('Bạn có chắc chắc muốn xóa?')))
+                                                                                   return false" class="bi-trash-fill"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                </td>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -298,17 +338,17 @@
         <script src="assets/js/mazer.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-                                                                function openModel(maSv){
-                                                                    console.log(maSv);
-                                                                    axios.get('get-student-by-maSv',{
-                                                                        params:{
-                                                                            maSv:maSv
-                                                                        }
-                                                                    }).then((response)=>{
-                                                                         const modelbody = document.getElementById('model');
-                                                                         modelbody.innerHTML=response.data
-                                                                    })
-                                                                }
+                                                                           function openModel(maSv) {
+                                                                               console.log(maSv);
+                                                                               axios.get('get-student-by-maSv', {
+                                                                                   params: {
+                                                                                       maSv: maSv
+                                                                                   }
+                                                                               }).then((response) => {
+                                                                                   const modelbody = document.getElementById('model');
+                                                                                   modelbody.innerHTML = response.data
+                                                                               })
+                                                                           }
         </script>
     </body>
 

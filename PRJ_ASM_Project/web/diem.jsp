@@ -123,10 +123,21 @@
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý điểm</h3>
                                 <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                <a href="diem_create">
-                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                        </i>Thêm mới </button>
-                                </a>
+                                <c:choose>
+                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                        <a href="diem_create" style="display: none;">
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="diem_create">
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
+
                                 <form action="diem?dindex=1" method="post">
                                     <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -163,7 +174,14 @@
                                                     <th>Học kỳ</th>
                                                     <th>Điểm lần 1</th>
                                                     <th>Điểm lần 2</th>
-                                                    <th>ACTION</th>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                            <th> </th>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            <th>ACTION</th>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -174,15 +192,33 @@
                                                         <td class="text-bold-500">${ld.hocKy}</td>
                                                         <td>${ld.diem1}</td>
                                                         <td>${ld.diem2}</td>
-                                                        <td>
-                                                            <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                                <td style="display: none;">
+                                                                    <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
                                                                     <a href="diem_delete?dsv=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" 
-                                                                    onclick="if(!confirm('Bạn có chắc chắn muốn xóa')) return false" class="bi-trash-fill"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
-                                                        </td>
+                                                                       onclick="if (!confirm('Bạn có chắc chắn muốn xóa'))
+                                                                                   return false" class="bi-trash-fill"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                </td>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <td>
+                                                                    <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="diem_delete?dsv=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" 
+                                                                       onclick="if (!confirm('Bạn có chắc chắn muốn xóa'))
+                                                                                   return false" class="bi-trash-fill"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                </td>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>

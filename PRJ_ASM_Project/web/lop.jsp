@@ -124,11 +124,23 @@
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý lớp</h3>
-                                <a href="lop_create">
-                                    <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                        </i>Thêm mới </button>
-                                </a>
+                                <c:choose>
+                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                        <a href="lop_create" style="display: none;">
+                                            <p class="text-subtitle text-muted" style="margin-top:50px"></p>
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="lop_create">
+                                            <p class="text-subtitle text-muted" style="margin-top:50px"></p>
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
+
                                 <form action="lop?lindex=1" method="post">
                                     <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -164,7 +176,14 @@
                                                     <th>Hệ đào tạo</th>
                                                     <th>Khoa</th>
                                                     <th>Khóa</th>
-                                                    <th>ACTION</th>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                            <th> </th>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            <th>ACTION</th>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -175,34 +194,33 @@
                                                         <td class="text-bold-500">${ll.heDT.tenHDT}</td>
                                                         <td>${ll.khoa.tenKhoa}</td>
                                                         <td>${ll.khoahoc.tenKH}</td>
-                                                        <td>
-                                                            <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
-                                                            <a href="lop_delete?lid=${ll.maLop}" 
-                                                               onclick="if(!confirm('Bạn có chắc chắn muốn xóa?')) return false" class="bi-trash-fill"><i
-                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                    data-feather="mail"></i></a>
-<!--                                                            <form action="lop_delete?lid=${ll.maLop}" method="post">
-                                                                <div class="modal fade" id="LopModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Warning !</h5>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                Bạn có chắc chắn muốn xóa ?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit" class="btn btn-primary">Xác nhận</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>-->
-                                                        </td>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                                <td style="display: none;">
+                                                                    <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="lop_delete?lid=${ll.maLop}" 
+                                                                       onclick="if (!confirm('Bạn có chắc chắn muốn xóa?'))
+                                                                                   return false" class="bi-trash-fill"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                </td>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <td>
+                                                                    <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                    <a href="lop_delete?lid=${ll.maLop}" 
+                                                                       onclick="if (!confirm('Bạn có chắc chắn muốn xóa?'))
+                                                                                   return false" class="bi-trash-fill"><i
+                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                            data-feather="mail"></i></a>
+                                                                </td>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -258,13 +276,13 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/mazer.js"></script>
         <script>
-                                                                function DeleteLop(lid) {
-                                                                    var option = confirm("Do you really want to delete ?");
-                                                                    if (option === true) {
-                                                                        window.location.href = 'lop_delete?lid=' + lid;
-                                                                    }
-                                                                }
-                                                                
+                                                                           function DeleteLop(lid) {
+                                                                               var option = confirm("Do you really want to delete ?");
+                                                                               if (option === true) {
+                                                                                   window.location.href = 'lop_delete?lid=' + lid;
+                                                                               }
+                                                                           }
+
         </script>
     </body>
 

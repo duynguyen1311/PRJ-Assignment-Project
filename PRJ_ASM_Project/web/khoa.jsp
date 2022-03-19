@@ -123,10 +123,21 @@
                             <div class="col-12 col-md-6 order-md-1 order-last">
                                 <h3>Quản lý khoa</h3>
                                 <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                                <a href="khoa_create">
-                                    <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                        </i>Thêm mới </button>
-                                </a>
+                                <c:choose>
+                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                        <a href="khoa_create" style="display: none;">
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="khoa_create">
+                                            <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                                </i>Thêm mới </button>
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
+
                                 <form action="khoa?kindex=1" method="post">
                                     <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -163,7 +174,15 @@
                                                         <th>Tên Khoa</th>
                                                         <th>Địa chỉ</th>
                                                         <th>Điện Thoại</th>
-                                                        <th>ACTION</th>
+                                                            <c:choose>
+                                                                <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                                <th> </th>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                <th>ACTION</th>
+                                                                </c:otherwise>
+                                                            </c:choose>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -173,15 +192,33 @@
                                                             <td>${l.tenKhoa}</td>
                                                             <td class="text-bold-500">${l.diaChi}</td>
                                                             <td>${l.dienThoai}</td>
-                                                            <td>
-                                                                <a href="khoa_update?kid=${l.maKhoa}" class="bi-box-arrow-in-up-left"><i
-                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                        data-feather="mail"></i></a>
-                                                                <a href="khoa_delete?kid=${l.maKhoa}" 
-                                                                   onclick="if(!(confirm('Bạn có chắc chắn muốn xóa ?')))return false"  class="bi-trash-fill"><i 
-                                                                        class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                        data-feather="mail"></i></a>
-                                                            </td>
+                                                            <c:choose>
+                                                                <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                                    <td style="display:none;">
+                                                                        <a href="khoa_update?kid=${l.maKhoa}" class="bi-box-arrow-in-up-left"><i
+                                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                                data-feather="mail"></i></a>
+                                                                        <a href="khoa_delete?kid=${l.maKhoa}" 
+                                                                           onclick="if (!(confirm('Bạn có chắc chắn muốn xóa ?')))
+                                                                                       return false"  class="bi-trash-fill"><i 
+                                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                                data-feather="mail"></i></a>
+                                                                    </td>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <td>
+                                                                        <a href="khoa_update?kid=${l.maKhoa}" class="bi-box-arrow-in-up-left"><i
+                                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                                data-feather="mail"></i></a>
+                                                                        <a href="khoa_delete?kid=${l.maKhoa}" 
+                                                                           onclick="if (!(confirm('Bạn có chắc chắn muốn xóa ?')))
+                                                                                       return false"  class="bi-trash-fill"><i 
+                                                                                class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                                data-feather="mail"></i></a>
+                                                                    </td>
+                                                                </c:otherwise>
+                                                            </c:choose>
+
                                                         </tr>
                                                     </c:forEach>
                                                 </tbody>
@@ -236,14 +273,14 @@
             <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
             <script src="assets/js/bootstrap.bundle.min.js"></script>
             <script src="assets/js/mazer.js"></script>
-<!--            <script>
-                                                                    function Delete(maKhoa) {
-                                                                        var option = confirm("Do you really want to delete ?");
-                                                                        if (option === true) {
-                                                                            window.location.href = 'khoa_delete?kid=' + maKhoa;
-                                                                        }
-                                                                    }
-            </script>-->
+            <!--            <script>
+                                                                                function Delete(maKhoa) {
+                                                                                    var option = confirm("Do you really want to delete ?");
+                                                                                    if (option === true) {
+                                                                                        window.location.href = 'khoa_delete?kid=' + maKhoa;
+                                                                                    }
+                                                                                }
+                        </script>-->
     </body>
 
 </html>
