@@ -5,7 +5,7 @@
  */
 package Filter;
 
-import DAO.AccountDAO;
+import DAO.SinhVienDAO;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,7 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Account;
+import model.SinhVien;
 
 /**
  *
@@ -35,7 +35,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         
         HttpSession session = req.getSession();
-        Account acc = (Account) session.getAttribute("acc");
+        SinhVien acc = (SinhVien) session.getAttribute("acc");
         if(acc !=null){
             chain.doFilter(request, response);
         }else{
@@ -54,7 +54,7 @@ public class AuthenticationFilter implements Filter {
             }
         }
         if (username != null && password != null) {
-            Account accLogin = new AccountDAO().getAcc(username, password);
+            SinhVien accLogin = new SinhVienDAO().getAcc(username, password);
             if (acc != null) {
                 session.setAttribute("acc", acc);
                 chain.doFilter(request, response);

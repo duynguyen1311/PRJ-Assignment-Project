@@ -187,24 +187,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${listMonHoc}" var="lm">
-                                                    <tr>
-                                                        <td class="text-bold-500">${lm.id}</td>
-                                                        <td>${lm.maMH}</td>
-                                                        <td class="text-bold-500">${lm.tenMH}</td>
-                                                        <td>${lm.tinChi}</td>
-                                                        <c:choose>
-                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                                                <td style="display: none;">
-                                                                    <a href="monhoc_update?mid=${lm.id}" class="bi-box-arrow-in-up-left"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                    <a href="#" onclick="Delete(${lm.id})" class="bi-trash-fill"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                </td>
-                                                            </c:when>
-                                                            <c:otherwise>
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                        <c:forEach items="${listMonHocByUsername}" var="l">
+                                                            <tr>
+                                                                <td class="text-bold-500">${l.id}</td>
+                                                                <td>${l.maMH}</td>
+                                                                <td class="text-bold-500">${l.tenMH}</td>
+                                                                <td>${l.tinChi}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:forEach items="${listMonHoc}" var="lm">
+                                                            <tr>
+                                                                <td class="text-bold-500">${lm.id}</td>
+                                                                <td>${lm.maMH}</td>
+                                                                <td class="text-bold-500">${lm.tenMH}</td>
+                                                                <td>${lm.tinChi}</td>
                                                                 <td>
                                                                     <a href="monhoc_update?mid=${lm.id}" class="bi-box-arrow-in-up-left"><i
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
@@ -213,11 +213,10 @@
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                             data-feather="mail"></i></a>
                                                                 </td>
-                                                            </c:otherwise>
-                                                        </c:choose>
-
-                                                    </tr>
-                                                </c:forEach>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </tbody>
                                         </table>
                                     </div>
@@ -225,32 +224,34 @@
                             </div>
                         </div>
                     </section>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-primary  justify-content-center">
-                            <c:if test="${index != 1}">
-                                <li class="page-item">
-                                    <a class="page-link" href="monhoc?mindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                            </c:if>
-                            <c:forEach begin="1" end="${endPage}" var="i">
-                                <c:choose>
-                                    <c:when test="${index == i}">
-                                        <li class="page-item active"><a class="page-link" href="monhoc?mindex=${i}&search=${search}">${i}</a></li>
-                                        </c:when>
-                                        <c:otherwise>
-                                        <li class="page-item"><a class="page-link" href="monhoc?mindex=${i}&search=${search}">${i}</a></li>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
+                    <c:if test="${sessionScope.acc.role eq 'ADMIN'}">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary  justify-content-center">
+                                <c:if test="${index != 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="monhoc?mindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="1" end="${endPage}" var="i">
+                                    <c:choose>
+                                        <c:when test="${index == i}">
+                                            <li class="page-item active"><a class="page-link" href="monhoc?mindex=${i}&search=${search}">${i}</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                            <li class="page-item"><a class="page-link" href="monhoc?mindex=${i}&search=${search}">${i}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
 
-                            <c:if test="${index < endPage}">
-                                <li class="page-item">
-                                    <a class="page-link" href="monhoc?mindex=${index+1}&search=${search}">Next</a>
-                                </li>
-                            </c:if>
+                                <c:if test="${index < endPage}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="monhoc?mindex=${index+1}&search=${search}">Next</a>
+                                    </li>
+                                </c:if>
 
-                        </ul>
-                    </nav>
+                            </ul>
+                        </nav>
+                    </c:if>
                 </div>
                 <!-- Table head options end -->
             </div>

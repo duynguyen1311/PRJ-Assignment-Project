@@ -5,7 +5,6 @@
  */
 package controller;
 
-import DAO.AccountDAO;
 import DAO.KhoaDAO;
 import DAO.LopDAO;
 import DAO.MonHocDAO;
@@ -17,7 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
+import model.SinhVien;
 
 /**
  *
@@ -48,8 +47,8 @@ public class Home_Controller extends HttpServlet {
         int countSinhVien = dao3.TongSoSinhVien();
         int countLop = dao4.TongSoLop();
         
-        AccountDAO dao = new AccountDAO();
-        ArrayList<Account> listAcc = dao.getListAcc();
+        SinhVienDAO dao = new SinhVienDAO();
+        ArrayList<SinhVien> listAcc = dao.getListAcc();
         request.setAttribute("listAcc", listAcc);
         request.setAttribute("countKhoa", countKhoa);
         request.setAttribute("countMonHoc", countMonHoc);

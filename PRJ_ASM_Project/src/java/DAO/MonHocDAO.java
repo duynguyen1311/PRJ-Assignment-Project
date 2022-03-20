@@ -43,6 +43,31 @@ public class MonHocDAO {
         return null;
     }
 
+    public ArrayList<MonHoc> getMonHocListByUsername(String username) {
+        try {
+            ArrayList<MonHoc> list = new ArrayList<>();
+            String sql = "SELECT dbo.MonHoc.id, dbo.MonHoc.MaMH ,dbo.MonHoc.TenMH, dbo.MonHoc.SoTrinh\n"
+                    + "FROM dbo.Diem INNER JOIN\n"
+                    + "dbo.MonHoc ON dbo.Diem.MaMH = dbo.MonHoc.MaMH INNER JOIN\n"
+                    + "dbo.SinhVien ON dbo.Diem.MaSV = dbo.SinhVien.MaSV\n"
+                    + "WHERE (dbo.SinhVien.username = ?)"
+                    + "order by id ASC";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                MonHoc mh = new MonHoc(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                list.add(mh);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public ArrayList<MonHoc> getMaMonHoc() {
         try {
             ArrayList<MonHoc> list = new ArrayList<>();
@@ -111,7 +136,7 @@ public class MonHocDAO {
             Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void deleteMonHoc(int id) {
         try {
             String sql = "Delete from MonHoc where id = ?";
@@ -123,7 +148,7 @@ public class MonHocDAO {
             Logger.getLogger(MonHocDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public int count(String search) {
         try {
             String query = "select COUNT(*) from MonHoc where MaMH LIKE ? or TenMH LIKE ? ";
@@ -141,7 +166,7 @@ public class MonHocDAO {
 
         return 0;
     }
-    
+
     public ArrayList<MonHoc> getSearchMonHoc(String search, int index, int size) {
 
         try {
@@ -167,7 +192,7 @@ public class MonHocDAO {
         }
         return null;
     }
-    
+
     public int TongSoMonHoc() {
         try {
             String query = "select COUNT(*) from MonHoc";
@@ -183,19 +208,19 @@ public class MonHocDAO {
 
         return 0;
     }
-    
+
     public static void main(String[] args) {
         MonHocDAO dao = new MonHocDAO();
 //        for (MonHoc o : dao.getMaMonHoc()) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getMonHocById(1));
+        System.out.println(dao.getMonHocListByUsername("mre"));
 //        dao.deleteMonHoc(30);
 //        int count = dao.count("H");
 //        System.out.println(count);
-        for (MonHoc o : dao.getSearchMonHoc("", 1, 4)) {
-            System.out.println(o);
-        }
+//        for (MonHoc o : dao.getSearchMonHoc("", 1, 4)) {
+//            System.out.println(o);
+//        }
 
     }
 }

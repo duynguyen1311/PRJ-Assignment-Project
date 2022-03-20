@@ -185,27 +185,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${listDiem}" var="ld">
-                                                    <tr>
-                                                        <td class="text-bold-500">${ld.sinhvien.maSV}</td>
-                                                        <td>${ld.monhoc.maMH}</td>
-                                                        <td class="text-bold-500">${ld.hocKy}</td>
-                                                        <td>${ld.diem1}</td>
-                                                        <td>${ld.diem2}</td>
-                                                        <c:choose>
-                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                                                <td style="display: none;">
-                                                                    <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                    <a href="diem_delete?dsv=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" 
-                                                                       onclick="if (!confirm('Bạn có chắc chắn muốn xóa'))
-                                                                                   return false" class="bi-trash-fill"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                </td>
-                                                            </c:when>
-                                                            <c:otherwise>
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.acc.role eq 'USER'}"> 
+                                                        <c:forEach items="${listDiemByUsername}" var="l">
+                                                            <tr>
+                                                                <td class="text-bold-500">${l.sinhvien.maSV}</td>
+                                                                <td>${l.monhoc.maMH}</td>
+                                                                <td class="text-bold-500">${l.hocKy}</td>
+                                                                <td>${l.diem1}</td>
+                                                                <td>${l.diem2}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:forEach items="${listDiem}" var="ld">
+                                                            <tr>
+                                                                <td class="text-bold-500">${ld.sinhvien.maSV}</td>
+                                                                <td>${ld.monhoc.maMH}</td>
+                                                                <td class="text-bold-500">${ld.hocKy}</td>
+                                                                <td>${ld.diem1}</td>
+                                                                <td>${ld.diem2}</td>
                                                                 <td>
                                                                     <a href="diem_update?did=${ld.sinhvien.maSV}&dmh=${ld.monhoc.maMH}" class="bi-box-arrow-in-up-left"><i
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
@@ -216,11 +215,10 @@
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                             data-feather="mail"></i></a>
                                                                 </td>
-                                                            </c:otherwise>
-                                                        </c:choose>
-
-                                                    </tr>
-                                                </c:forEach>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </tbody>
                                         </table>
                                     </div>
@@ -228,50 +226,37 @@
                             </div>
                         </div>
                     </section>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-primary  justify-content-center">
-                            <c:if test="${index != 1}">
-                                <li class="page-item">
-                                    <a class="page-link" href="diem?dindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                            </c:if>
-                            <c:forEach begin="1" end="${endPage}" var="i">
-                                <c:choose>
-                                    <c:when test="${index == i}">
-                                        <li class="page-item active"><a class="page-link" href="diem?dindex=${i}&search=${search}">${i}</a></li>
-                                        </c:when>
-                                        <c:otherwise>
-                                        <li class="page-item"><a class="page-link" href="diem?dindex=${i}&search=${search}">${i}</a></li>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
+                    <c:if test="${sessionScope.acc.role eq 'ADMIN'}">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary  justify-content-center">
+                                <c:if test="${index != 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="diem?dindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="1" end="${endPage}" var="i">
+                                    <c:choose>
+                                        <c:when test="${index == i}">
+                                            <li class="page-item active"><a class="page-link" href="diem?dindex=${i}&search=${search}">${i}</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                            <li class="page-item"><a class="page-link" href="diem?dindex=${i}&search=${search}">${i}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
 
-                            <c:if test="${index < endPage}">
-                                <li class="page-item">
-                                    <a class="page-link" href="diem?dindex=${index+1}&search=${search}">Next</a>
-                                </li>
-                            </c:if>
+                                <c:if test="${index < endPage}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="diem?dindex=${index+1}&search=${search}">Next</a>
+                                    </li>
+                                </c:if>
 
-                        </ul>
-                    </nav>
+                            </ul>
+                        </nav>
+                    </c:if>
+
                 </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <footer>

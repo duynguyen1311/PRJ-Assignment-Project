@@ -25,7 +25,48 @@ public class SinhVienDAO {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    
+    public SinhVien getAcc(String user, String pass) {
 
+        try {
+            String sql = "select username,password,role from SinhVien where username=? and password=?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SinhVien acc = new SinhVien(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3));
+                return acc;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public ArrayList<SinhVien> getListAcc() {
+        try {
+            ArrayList<SinhVien> list = new ArrayList<>();
+            String sql = "select username,password,role from SinhVien where role = 'USER'";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SinhVien acc = new SinhVien(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3));
+                list.add(acc);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public ArrayList<SinhVien> getAllSinhVien() {
 
         try {
@@ -48,6 +89,29 @@ public class SinhVienDAO {
         return null;
     }
 
+    public ArrayList<SinhVien> getSinhVienByUsername(String username) {
+
+        try {
+            ArrayList<SinhVien> list = new ArrayList<>();
+            String sql = "select * from SinhVien where username = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SinhVien sv = new SinhVien(rs.getString(1), rs.getString(2),
+                        rs.getInt(3), rs.getDate(4), rs.getString(5),
+                        new Lop(rs.getString(6)), rs.getString(7), rs.getString(8));
+                list.add(sv);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public int count(String search) {
         try {
             String query = "select COUNT(*) from SinhVien where MaSV LIKE ? or TenSV LIKE ? or QueQuan LIKE ?";
@@ -209,11 +273,15 @@ public class SinhVienDAO {
     
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
-        for (SinhVien o : dao.getSearchSinhVien("H", 1, 3)) {
-            System.out.println(o);
-        }
+//        for (SinhVien o : dao.getSearchSinhVien("H", 1, 3)) {
+//            System.out.println(o);
+//        }
 //        int count = dao.count("Ha Noi");
 //        System.out.println(count);
-        dao.deleteSinhVien("0241060218");
+//        dao.deleteSinhVien("0241060218");
+//        System.out.println(dao.getAcc("mra", "123"));
+//        System.out.println(dao.getListAcc());
+//        System.out.println(dao.TongSoSinhVien());
+        System.out.println(dao.getSinhVienByUsername("mra"));
     }
 }

@@ -219,8 +219,7 @@
                                             <div class="ms-3 name">
                                                 <c:choose>
                                                     <c:when test="${sessionScope.acc != null}">
-                                                        <h5 class="font-bold">${sessionScope.acc.displayname}</h5>
-                                                        <h6 class="text-muted mb-0">${sessionScope.acc.email}</h6>
+                                                        <h5 class="font-bold">${sessionScope.acc.username}</h5>
                                                     </c:when>
                                                     <c:otherwise>
                                                         Welcome
@@ -238,21 +237,12 @@
                                     <div class="card-content pb-4">
                                         <c:forEach items="${listAcc}" var="i">
                                             <div class="recent-message d-flex px-4 py-3">
-                                                <c:choose>
-                                                    <c:when test="${i.id % 2 == 0}">
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="assets/images/faces/4.jpg">
-                                                        </div>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="assets/images/faces/1.jpg">
-                                                        </div>
-                                                    </c:otherwise>
-                                                </c:choose>
+                                                <div class="avatar avatar-lg">
+                                                    <img src="assets/images/faces/1.jpg">
+                                                </div>
                                                 <div class="name ms-4">
-                                                    <h5 class="mb-1">${i.displayname}</h5>
-                                                    <h6 class="text-muted mb-0">${i.email}</h6>
+                                                    <h5 class="mb-1">Hello</h5>
+                                                    <h6 class="text-muted mb-0">abc@gmail.com</h6>
                                                 </div>
                                             </div>
                                         </c:forEach>

@@ -17,13 +17,9 @@
         <url-pattern>/lop_create</url-pattern>
         <url-pattern>/lop_update</url-pattern>
         <url-pattern>/lop_delete</url-pattern>
-                
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>AuthorizationFilter</filter-name>
     </filter-mapping>
     <servlet>
         <servlet-name>KhoaController</servlet-name>

@@ -187,27 +187,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${listLop}" var="ll">
-                                                    <tr>
-                                                        <td class="text-bold-500">${ll.maLop}</td>
-                                                        <td>${ll.tenLop}</td>
-                                                        <td class="text-bold-500">${ll.heDT.tenHDT}</td>
-                                                        <td>${ll.khoa.tenKhoa}</td>
-                                                        <td>${ll.khoahoc.tenKH}</td>
-                                                        <c:choose>
-                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                                                <td style="display: none;">
-                                                                    <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                    <a href="lop_delete?lid=${ll.maLop}" 
-                                                                       onclick="if (!confirm('Bạn có chắc chắn muốn xóa?'))
-                                                                                   return false" class="bi-trash-fill"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                </td>
-                                                            </c:when>
-                                                            <c:otherwise>
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                        <c:forEach items="${listLopByUsername}" var="l">
+                                                            <tr>
+                                                                <td class="text-bold-500">${l.maLop}</td>
+                                                                <td>${l.tenLop}</td>
+                                                                <td class="text-bold-500">${l.heDT.tenHDT}</td>
+                                                                <td>${l.khoa.tenKhoa}</td>
+                                                                <td>${l.khoahoc.tenKH}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:forEach items="${listLop}" var="ll">
+                                                            <tr>
+                                                                <td class="text-bold-500">${ll.maLop}</td>
+                                                                <td>${ll.tenLop}</td>
+                                                                <td class="text-bold-500">${ll.heDT.tenHDT}</td>
+                                                                <td>${ll.khoa.tenKhoa}</td>
+                                                                <td>${ll.khoahoc.tenKH}</td>
                                                                 <td>
                                                                     <a href="lop_update?lid=${ll.maLop}" class="bi-box-arrow-in-up-left"><i
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
@@ -218,11 +217,11 @@
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                             data-feather="mail"></i></a>
                                                                 </td>
-                                                            </c:otherwise>
-                                                        </c:choose>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:otherwise>
+                                                </c:choose>
 
-                                                    </tr>
-                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -230,32 +229,34 @@
                             </div>
                         </div>
                     </section>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-primary  justify-content-center">
-                            <c:if test="${index != 1}">
-                                <li class="page-item">
-                                    <a class="page-link" href="lop?lindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                            </c:if>
-                            <c:forEach begin="1" end="${endPage}" var="i">
-                                <c:choose>
-                                    <c:when test="${index == i}">
-                                        <li class="page-item active"><a class="page-link" href="lop?lindex=${i}&search=${search}">${i}</a></li>
-                                        </c:when>
-                                        <c:otherwise>
-                                        <li class="page-item"><a class="page-link" href="lop?lindex=${i}&search=${search}">${i}</a></li>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
+                    <c:if test="${sessionScope.acc.role eq 'ADMIN'}">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary  justify-content-center">
+                                <c:if test="${index != 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="lop?lindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="1" end="${endPage}" var="i">
+                                    <c:choose>
+                                        <c:when test="${index == i}">
+                                            <li class="page-item active"><a class="page-link" href="lop?lindex=${i}&search=${search}">${i}</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                            <li class="page-item"><a class="page-link" href="lop?lindex=${i}&search=${search}">${i}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
 
-                            <c:if test="${index < endPage}">
-                                <li class="page-item">
-                                    <a class="page-link" href="lop?lindex=${index+1}&search=${search}">Next</a>
-                                </li>
-                            </c:if>
+                                <c:if test="${index < endPage}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="lop?lindex=${index+1}&search=${search}">Next</a>
+                                    </li>
+                                </c:if>
 
-                        </ul>
-                    </nav>
+                            </ul>
+                        </nav>
+                    </c:if>
                 </div>
                 <!-- Table head options end -->
             </div>

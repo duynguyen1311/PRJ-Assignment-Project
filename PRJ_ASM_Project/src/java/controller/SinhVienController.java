@@ -51,10 +51,13 @@ public class SinhVienController extends HttpServlet {
             if (count % pageSize != 0) {
                 endPage++;
             }
+            SinhVien acc = (SinhVien) request.getSession().getAttribute("acc");
+            ArrayList<SinhVien> listSinhVienByUsername = dao.getSinhVienByUsername(acc.getUsername());
             ArrayList<SinhVien> listSinhVien = dao.getSearchSinhVien(search, index, pageSize);
             if (listSinhVien.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");
             }
+            request.setAttribute("listSinhVienByUsername", listSinhVienByUsername);
             request.setAttribute("search", search);
             request.setAttribute("index", index);
             request.setAttribute("endPage", endPage);

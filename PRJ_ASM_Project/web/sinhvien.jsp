@@ -184,30 +184,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${listSV}" var="sv">
-                                                    <tr class="table-success">
-                                                        <td class="text-bold-500">${sv.maSV}</td>
-                                                        <td>${sv.tenSV}</td>
-                                                        <td class="text-bold-500">${sv.ngaySinh}</td>
-                                                        <td>${sv.lop.maLop}</td>
-                                                        <c:choose>
-                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                                                <td style="display: none;">
-                                                                    <a href="#" onclick="openModel(`${sv.maSV}`)" class="bi-eye" data-bs-toggle="modal"
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
+                                                        <c:forEach items="${listSinhVienByUsername}" var="l">
+                                                            <tr>
+                                                                <td class="text-bold-500">${l.maSV}</td>
+                                                                <td>${l.tenSV}</td>
+                                                                <td class="text-bold-500">${l.ngaySinh}</td>
+                                                                <td>${l.lop.maLop}</td>
+                                                                <td><a href="#" onclick="openModel(`${l.maSV}`)" class="bi-eye" data-bs-toggle="modal"
                                                                        data-bs-target="#inlineForm"><i
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                    <a href="sinhvien_update?sid=${sv.maSV}" class="bi-box-arrow-in-up-left"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                    <a href="sinhvien_delete?svid=${sv.maSV}"
-                                                                       onclick="if (!(confirm('Bạn có chắc chắc muốn xóa?')))
-                                                                                   return false" class="bi-trash-fill"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                </td>
-                                                            </c:when>
-                                                            <c:otherwise>
+                                                                            data-feather="mail"></i></a></td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:forEach items="${listSV}" var="sv">
+                                                            <tr class="table-success">
+                                                                <td class="text-bold-500">${sv.maSV}</td>
+                                                                <td>${sv.tenSV}</td>
+                                                                <td class="text-bold-500">${sv.ngaySinh}</td>
+                                                                <td>${sv.lop.maLop}</td>
                                                                 <td><a href="#" onclick="openModel(`${sv.maSV}`)" class="bi-eye" data-bs-toggle="modal"
                                                                        data-bs-target="#inlineForm"><i
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
@@ -217,15 +215,14 @@
                                                                             data-feather="mail"></i></a>
                                                                     <a href="sinhvien_delete?svid=${sv.maSV}"
                                                                        onclick="if (!(confirm('Bạn có chắc chắc muốn xóa?')))
-                                                                                   return false" class="bi-trash-fill"><i
+                                                                           return false" class="bi-trash-fill"><i
                                                                             class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                             data-feather="mail"></i></a>
                                                                 </td>
-                                                            </c:otherwise>
-                                                        </c:choose>
-
-                                                    </tr>
-                                                </c:forEach>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </tbody>
                                         </table>
                                     </div>
@@ -291,7 +288,8 @@
                     </div>
 
                     <!--                    paging part-->
-                    <nav aria-label="Page navigation example">
+                    <c:if test="${sessionScope.acc.role eq 'ADMIN'}">
+                        <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-primary  justify-content-center">
                             <c:if test="${index != 1}">
                                 <li class="page-item">
@@ -317,6 +315,8 @@
 
                         </ul>
                     </nav>
+                    </c:if>
+                    
 
                 </div>
 
@@ -338,17 +338,17 @@
         <script src="assets/js/mazer.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-                                                                           function openModel(maSv) {
-                                                                               console.log(maSv);
-                                                                               axios.get('get-student-by-maSv', {
-                                                                                   params: {
-                                                                                       maSv: maSv
-                                                                                   }
-                                                                               }).then((response) => {
-                                                                                   const modelbody = document.getElementById('model');
-                                                                                   modelbody.innerHTML = response.data
-                                                                               })
+                                                                   function openModel(maSv) {
+                                                                       console.log(maSv);
+                                                                       axios.get('get-student-by-maSv', {
+                                                                           params: {
+                                                                               maSv: maSv
                                                                            }
+                                                                       }).then((response) => {
+                                                                           const modelbody = document.getElementById('model');
+                                                                           modelbody.innerHTML = response.data
+                                                                       })
+                                                                   }
         </script>
     </body>
 

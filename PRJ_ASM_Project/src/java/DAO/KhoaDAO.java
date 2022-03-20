@@ -45,6 +45,30 @@ public class KhoaDAO {
         return null;
     }
 
+    public ArrayList<Khoa> getKhoaListByUsername(String username) {
+        try {
+            ArrayList<Khoa> list = new ArrayList<>();
+            String sql = "SELECT dbo.Khoa.MaKhoa, dbo.Khoa.TenKhoa, dbo.Khoa.DiaChi, dbo.Khoa.DienThoai\n"
+                    + "FROM dbo.Khoa INNER JOIN\n"
+                    + "dbo.Lop ON dbo.Khoa.MaKhoa = dbo.Lop.MaKhoa INNER JOIN\n"
+                    + "dbo.SinhVien ON dbo.Lop.MaLop = dbo.SinhVien.MaLop\n"
+                    + "WHERE (dbo.SinhVien.username = ?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Khoa k = new Khoa(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                list.add(k);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public ArrayList<Khoa> getMaKhoaTenKhoa() {
         try {
             ArrayList<Khoa> list = new ArrayList<>();
@@ -195,10 +219,11 @@ public class KhoaDAO {
 //        dao.updateKhoa("A1", "Ki thuat", "Tang 5", "1234");
 //        dao.deleteKhoa("A1");
 
-        int count = dao.TongSoKhoa();
-        System.out.println(count);
+//        int count = dao.TongSoKhoa();
+//        System.out.println(count);
 //        for (Khoa o : dao.getSearchKhoa("K", 1, 3)) {
 //            System.out.println(o);
 //        }
+        System.out.println(dao.getKhoaListByUsername("mrb"));
     }
 }

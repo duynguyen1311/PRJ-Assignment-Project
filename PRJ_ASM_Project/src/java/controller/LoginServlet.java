@@ -6,6 +6,7 @@
 package controller;
 
 import DAO.AccountDAO;
+import DAO.SinhVienDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.SinhVien;
 
 /**
  *
@@ -77,7 +79,7 @@ public class LoginServlet extends HttpServlet {
             }
         }
         if (username != null && password != null) {
-            Account acc = new AccountDAO().getAcc(username, password);
+            SinhVien acc = new SinhVienDAO().getAcc(username, password);
             if (acc != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("acc", acc);
@@ -103,7 +105,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         boolean remember = request.getParameter("remember") != null;
 
-        Account acc = new AccountDAO().getAcc(username, password);
+        SinhVien acc = new SinhVienDAO().getAcc(username, password);
         if (acc != null) {
             if (remember) {
                 Cookie userC = new Cookie("username", username);

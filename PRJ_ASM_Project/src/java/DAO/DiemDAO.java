@@ -48,6 +48,31 @@ public class DiemDAO {
         return null;
     }
 
+    public ArrayList<Diem> getDiemListByUsername(String username) {
+        try {
+            ArrayList<Diem> list = new ArrayList<>();
+            String sql = "SELECT dbo.Diem.MaSV, dbo.Diem.MaMH, dbo.Diem.HocKy, dbo.Diem.DiemLan1, dbo.Diem.DiemLan2\n"
+                    + "FROM dbo.Diem INNER JOIN\n"
+                    + "dbo.SinhVien ON dbo.Diem.MaSV = dbo.SinhVien.MaSV\n"
+                    + "WHERE(dbo.SinhVien.username = ?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Diem diem = new Diem(new SinhVien(rs.getString(1)),
+                        new MonHoc(rs.getString(2)), rs.getInt(3), rs.getInt(4),
+                        rs.getInt(5));
+                list.add(diem);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public Diem getDiemByMaSVandMaMH(String maSV, String maMH) {
         try {
             String sql = "select * from Diem where MaSV = ? and MaMH = ?";
@@ -171,10 +196,11 @@ public class DiemDAO {
 //        dao.insertDiem("0241060218", "SQL", 2, 5, 1);
 //        System.out.println(dao.getDiemByMaSVandMaMH("111111","A1"));
 //        dao.deleteDiem("H6");
-        int count = dao.count("S");
-        System.out.println(count);
-        for (Diem o : dao.getSearchDiem("S", 1, 3)) {
-            System.out.println(o);
-        }
+//        int count = dao.count("S");
+//        System.out.println(count);
+//        for (Diem o : dao.getSearchDiem("S", 1, 3)) {
+//            System.out.println(o);
+//        }
+        System.out.println(dao.getDiemListByUsername("mre"));
     }
 }

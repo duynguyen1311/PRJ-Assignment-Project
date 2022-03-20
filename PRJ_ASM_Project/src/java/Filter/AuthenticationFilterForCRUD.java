@@ -6,9 +6,6 @@
 package Filter;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -19,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.SinhVien;
 
 /**
  *
@@ -34,7 +32,7 @@ public class AuthenticationFilterForCRUD implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         HttpSession session = req.getSession();
-        Account acc = (Account) session.getAttribute("acc");
+        SinhVien acc = (SinhVien) session.getAttribute("acc");
         if (acc != null && acc.getRole().equals(Account.ADMIN)) {
             chain.doFilter(request, response);
             return;

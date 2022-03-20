@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Diem;
+import model.SinhVien;
 
 /**
  *
@@ -51,10 +52,13 @@ public class DiemController extends HttpServlet {
         if (count % pageSize != 0) {
             endPage++;
         }
+        SinhVien acc = (SinhVien) request.getSession().getAttribute("acc");
+        ArrayList<Diem> listDiemByUsername = dao.getDiemListByUsername(acc.getUsername());
         ArrayList<Diem> listDiem = dao.getSearchDiem(search, index, pageSize);
         if (listDiem.isEmpty()) {
             request.setAttribute("mess", "Không tìm thấy kết quả");
         }
+        request.setAttribute("listDiemByUsername", listDiemByUsername);
         request.setAttribute("search", search);
         request.setAttribute("index", index);
         request.setAttribute("endPage", endPage);

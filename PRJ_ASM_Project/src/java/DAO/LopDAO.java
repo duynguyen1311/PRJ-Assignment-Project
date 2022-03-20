@@ -53,6 +53,35 @@ public class LopDAO {
         return null;
     }
 
+    public ArrayList<Lop> getLopListByUsername(String username) {
+        try {
+            ArrayList<Lop> list = new ArrayList<>();
+            String sql = "SELECT dbo.Lop.MaLop, dbo.Lop.TenLop , dbo.HeDT.TenHeDT , dbo.Lop.MaKhoa , dbo.Khoa.TenKhoa , dbo.KhoaHoc.MaKhoaHoc,dbo.KhoaHoc.TenKhoaHoc ,dbo.HeDT.MaHeDT\n"
+                    + "FROM dbo.HeDT INNER JOIN\n"
+                    + "dbo.Lop ON dbo.HeDT.MaHeDT = dbo.Lop.MaHeDT INNER JOIN\n"
+                    + "dbo.Khoa ON dbo.Lop.MaKhoa = dbo.Khoa.MaKhoa INNER JOIN\n"
+                    + "dbo.KhoaHoc ON dbo.Lop.MaKhoaHoc = dbo.KhoaHoc.MaKhoaHoc INNER JOIN\n"
+                    + "dbo.SinhVien ON dbo.Lop.MaLop = dbo.SinhVien.MaLop\n"
+                    + "WHERE (dbo.SinhVien.username = ?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Lop lp = new Lop(rs.getString(1), rs.getString(2),
+                        new HeDT(rs.getString(3), rs.getString(4)),
+                        new Khoa(rs.getString(5), rs.getString(6)),
+                        new KhoaHoc(rs.getString(7), rs.getString(8)));
+                list.add(lp);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public ArrayList<Lop> getMaLop() {
         try {
             ArrayList<Lop> list = new ArrayList<>();
@@ -210,7 +239,7 @@ public class LopDAO {
 
         return 0;
     }
-    
+
     public static void main(String[] args) {
         LopDAO dao = new LopDAO();
 //        for (Lop o : dao.getMaLop()) {
@@ -219,11 +248,12 @@ public class LopDAO {
 //        dao.insertLop("KT4", "Kinh te 4", "KT", "D01", "K2");
 //        System.out.println(dao.getLopByMaLop("KT1"));
 //        dao.updateLop("KT1","Kinh te" , "A2", "C01", K10");
-        dao.deleteLop("MD");
+//        dao.deleteLop("MD");
 //        int count = dao.count("M");
 //        System.out.println(count);
 //        for (Lop o : dao.getSearchLop("M", 1, 3)) {
 //            System.out.println(o);
 //        }
+        System.out.println(dao.getLopListByUsername("mra"));
     }
 }

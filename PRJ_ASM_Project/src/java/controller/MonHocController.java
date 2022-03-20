@@ -13,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Khoa;
 import model.MonHoc;
+import model.SinhVien;
 
 /**
  *
@@ -51,10 +53,13 @@ public class MonHocController extends HttpServlet {
             if (count % pageSize != 0) {
                 endPage++;
             }
+            SinhVien acc = (SinhVien) request.getSession().getAttribute("acc");
+            ArrayList<MonHoc> listMonHocByUsername = dao.getMonHocListByUsername(acc.getUsername());
             ArrayList<MonHoc> listMonHoc = dao.getSearchMonHoc(search, index, pageSize);
             if (listMonHoc.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");
             }
+            request.setAttribute("listMonHocByUsername", listMonHocByUsername);
             request.setAttribute("search", search);
             request.setAttribute("index", index);
             request.setAttribute("endPage", endPage);
