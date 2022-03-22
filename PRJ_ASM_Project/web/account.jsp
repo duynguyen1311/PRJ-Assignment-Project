@@ -13,7 +13,7 @@
         <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8”>
               <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Quản Lý Khoa</title>
+        <title>Quản Lý tài khoản</title>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -170,6 +170,7 @@
                                                     <th>Mã tài khoản</th>
                                                     <th>Tên đăng nhập</th>
                                                     <th>Mật khẩu</th>
+                                                    <th>Display Name</th>
                                                     <th>Email</th>
                                                     <th>Điện Thoại</th>
                                                     <th>Role</th>
@@ -182,14 +183,15 @@
                                                         <td class="text-bold-500">${l.id}</td>
                                                         <td>${l.username}</td>
                                                         <td class="text-bold-500">${l.password}</td>
+                                                        <td>${l.displayname}</td>
                                                         <td>${l.email}</td>
                                                         <td>${l.phone}</td>
                                                         <td>${l.role}</td>
                                                         <td>
-                                                            <a href="account_update?kid=${l.id}" class="bi-box-arrow-in-up-left"><i
+                                                            <a href="account_update?id=${l.id}" class="bi-box-arrow-in-up-left"><i
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"
                                                                     data-feather="mail"></i></a>
-                                                            <a href="account_delete?kid=${l.id}" 
+                                                            <a href="account_delete?id=${l.id}" 
                                                                onclick="if (!(confirm('Bạn có chắc chắn muốn xóa ?')))
                                                                                    return false"  class="bi-trash-fill"><i 
                                                                     class="badge-circle badge-circle-light-secondary font-medium-1"

@@ -125,7 +125,7 @@ public class DiemDAO {
             ps.setInt(5, diem2);
             ps.executeUpdate();
         } catch (Exception ex) {
-            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DiemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

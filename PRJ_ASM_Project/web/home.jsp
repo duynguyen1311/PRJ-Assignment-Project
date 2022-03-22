@@ -226,7 +226,7 @@
                                             <div class="ms-3 name">
                                                 <c:choose>
                                                     <c:when test="${sessionScope.acc != null}">
-                                                        <h5 class="font-bold">${sessionScope.acc.username}</h5>
+                                                        <h5 class="font-bold">${sessionScope.acc.displayname}</h5>
                                                     </c:when>
                                                     <c:otherwise>
                                                         Welcome

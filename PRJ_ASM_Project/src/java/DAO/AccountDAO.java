@@ -66,10 +66,43 @@ public class AccountDAO {
         }
     }
 
+    public void updateAcc(String username, String password, String displayname, String email,
+            String phone, String role, int id) {
+        try {
+            String sql = "Update Account\n"
+                    + "Set username = ?, password = ?, displayname = ?, email = ?, phone = ?, role = ?\n"
+                    + "where Id = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, displayname);
+            ps.setString(4, email);
+            ps.setString(5, phone);
+            ps.setString(6, role);
+            ps.setInt(7, id);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteAcc(int id) {
+        try {
+            String sql = "Delete from Account where Id = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
 //        System.out.println(dao.getAllListAcc());
-        System.out.println(dao.getSearchAccount("user",1,3));
+        dao.updateAcc("mra", "123", "MR ASAP", "mra@gmail.com", "0912391238", "ADMIN", 7);
     }
 
     public ArrayList<Account> getListAcc() {
@@ -95,7 +128,29 @@ public class AccountDAO {
         }
         return null;
     }
-    
+
+    public Account getAccByID(int id) {
+        try {
+            String sql = "select * from Account where Id = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt(1),
+                        rs.getString(2), rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7));
+                return acc;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public ArrayList<Account> getAllListAcc() {
         try {
             ArrayList<Account> list = new ArrayList<>();
@@ -119,6 +174,7 @@ public class AccountDAO {
         }
         return null;
     }
+
     public int count(String search) {
         try {
             String query = "select COUNT(*) from Account where username LIKE ? or role LIKE ? ";
@@ -136,7 +192,7 @@ public class AccountDAO {
 
         return 0;
     }
-    
+
     public ArrayList<Account> getSearchAccount(String search, int index, int size) {
 
         try {
@@ -168,5 +224,5 @@ public class AccountDAO {
         }
         return null;
     }
-    
+
 }

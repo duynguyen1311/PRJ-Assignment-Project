@@ -84,6 +84,13 @@
                                     </li>
                                 </ul>
                             </li>
+                            <c:if test="${sessionScope.acc.role eq 'ADMIN' && sessionScope.acc != null}">
+                                <li class="sidebar-item">
+                                        <a href="account" class='sidebar-link'>
+                                            <span>Account</span>
+                                        </a>
+                                    </li>
+                            </c:if>
                             <c:choose>
                                 <c:when test="${sessionScope.acc != null}">
                                     <li class="sidebar-item">
