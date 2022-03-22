@@ -48,16 +48,16 @@ public class DiemDAO {
         return null;
     }
 
-    public ArrayList<Diem> getDiemListByUsername(String username) {
+    public ArrayList<Diem> getDiemListByAccountID(int id) {
         try {
             ArrayList<Diem> list = new ArrayList<>();
             String sql = "SELECT dbo.Diem.MaSV, dbo.Diem.MaMH, dbo.Diem.HocKy, dbo.Diem.DiemLan1, dbo.Diem.DiemLan2\n"
                     + "FROM dbo.Diem INNER JOIN\n"
                     + "dbo.SinhVien ON dbo.Diem.MaSV = dbo.SinhVien.MaSV\n"
-                    + "WHERE(dbo.SinhVien.username = ?)";
+                    + "WHERE(dbo.SinhVien.accountId = ?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Diem diem = new Diem(new SinhVien(rs.getString(1)),
@@ -201,6 +201,6 @@ public class DiemDAO {
 //        for (Diem o : dao.getSearchDiem("S", 1, 3)) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getDiemListByUsername("mre"));
+        System.out.println(dao.getDiemListByAccountID(10));
     }
 }

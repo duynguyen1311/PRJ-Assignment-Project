@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
 import model.SinhVien;
 
 /**
@@ -51,8 +52,8 @@ public class SinhVienController extends HttpServlet {
             if (count % pageSize != 0) {
                 endPage++;
             }
-            SinhVien acc = (SinhVien) request.getSession().getAttribute("acc");
-            ArrayList<SinhVien> listSinhVienByUsername = dao.getSinhVienByUsername(acc.getUsername());
+            Account acc = (Account) request.getSession().getAttribute("acc");
+            ArrayList<SinhVien> listSinhVienByUsername = dao.getSinhVienByAccountID(acc.getId());
             ArrayList<SinhVien> listSinhVien = dao.getSearchSinhVien(search, index, pageSize);
             if (listSinhVien.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");

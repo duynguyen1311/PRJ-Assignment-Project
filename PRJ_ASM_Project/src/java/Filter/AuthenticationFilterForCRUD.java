@@ -32,7 +32,7 @@ public class AuthenticationFilterForCRUD implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         HttpSession session = req.getSession();
-        SinhVien acc = (SinhVien) session.getAttribute("acc");
+        Account acc = (Account) session.getAttribute("acc");
         if (acc != null && acc.getRole().equals(Account.ADMIN)) {
             chain.doFilter(request, response);
             return;

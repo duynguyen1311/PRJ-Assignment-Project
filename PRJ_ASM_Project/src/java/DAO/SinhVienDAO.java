@@ -26,47 +26,6 @@ public class SinhVienDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
     
-    public SinhVien getAcc(String user, String pass) {
-
-        try {
-            String sql = "select username,password,role from SinhVien where username=? and password=?";
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, user);
-            ps.setString(2, pass);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                SinhVien acc = new SinhVien(rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3));
-                return acc;
-            }
-        } catch (Exception e) {
-        }
-        return null;
-    }
-    
-    public ArrayList<SinhVien> getListAcc() {
-        try {
-            ArrayList<SinhVien> list = new ArrayList<>();
-            String sql = "select username,password,role from SinhVien where role = 'USER'";
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                SinhVien acc = new SinhVien(rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3));
-                list.add(acc);
-            }
-            return list;
-
-        } catch (Exception ex) {
-            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
     public ArrayList<SinhVien> getAllSinhVien() {
 
         try {
@@ -89,14 +48,14 @@ public class SinhVienDAO {
         return null;
     }
 
-    public ArrayList<SinhVien> getSinhVienByUsername(String username) {
+    public ArrayList<SinhVien> getSinhVienByAccountID(int id) {
 
         try {
             ArrayList<SinhVien> list = new ArrayList<>();
-            String sql = "select * from SinhVien where username = ?";
+            String sql = "select * from SinhVien where accountId = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 SinhVien sv = new SinhVien(rs.getString(1), rs.getString(2),
@@ -282,6 +241,6 @@ public class SinhVienDAO {
 //        System.out.println(dao.getAcc("mra", "123"));
 //        System.out.println(dao.getListAcc());
 //        System.out.println(dao.TongSoSinhVien());
-        System.out.println(dao.getSinhVienByUsername("mra"));
+        System.out.println(dao.getSinhVienByAccountID(11));
     }
 }

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
 import model.Lop;
 import model.SinhVien;
 
@@ -52,8 +53,8 @@ public class LopController extends HttpServlet {
             if (count % pageSize != 0) {
                 endPage++;
             }
-            SinhVien acc = (SinhVien) request.getSession().getAttribute("acc");
-            ArrayList<Lop> listLopByUsername = dao.getLopListByUsername(acc.getUsername());
+            Account acc = (Account) request.getSession().getAttribute("acc");
+            ArrayList<Lop> listLopByUsername = dao.getLopListByAccountID(acc.getId());
             ArrayList<Lop> listLop = dao.getSearchLop(search, index, pageSize);
             if (listLop.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");

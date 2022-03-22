@@ -53,7 +53,7 @@ public class LopDAO {
         return null;
     }
 
-    public ArrayList<Lop> getLopListByUsername(String username) {
+    public ArrayList<Lop> getLopListByAccountID(int id) {
         try {
             ArrayList<Lop> list = new ArrayList<>();
             String sql = "SELECT dbo.Lop.MaLop, dbo.Lop.TenLop , dbo.HeDT.TenHeDT , dbo.Lop.MaKhoa , dbo.Khoa.TenKhoa , dbo.KhoaHoc.MaKhoaHoc,dbo.KhoaHoc.TenKhoaHoc ,dbo.HeDT.MaHeDT\n"
@@ -62,10 +62,10 @@ public class LopDAO {
                     + "dbo.Khoa ON dbo.Lop.MaKhoa = dbo.Khoa.MaKhoa INNER JOIN\n"
                     + "dbo.KhoaHoc ON dbo.Lop.MaKhoaHoc = dbo.KhoaHoc.MaKhoaHoc INNER JOIN\n"
                     + "dbo.SinhVien ON dbo.Lop.MaLop = dbo.SinhVien.MaLop\n"
-                    + "WHERE (dbo.SinhVien.username = ?)";
+                    + "WHERE (dbo.SinhVien.accountId = ?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Lop lp = new Lop(rs.getString(1), rs.getString(2),
@@ -254,6 +254,6 @@ public class LopDAO {
 //        for (Lop o : dao.getSearchLop("M", 1, 3)) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getLopListByUsername("mra"));
+        System.out.println(dao.getLopListByAccountID(11));
     }
 }

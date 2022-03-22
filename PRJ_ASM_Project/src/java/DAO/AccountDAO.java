@@ -68,7 +68,8 @@ public class AccountDAO {
 
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        System.out.println(dao.getListAcc());
+//        System.out.println(dao.getAllListAcc());
+        System.out.println(dao.count("user"));
     }
 
     public ArrayList<Account> getListAcc() {
@@ -94,4 +95,46 @@ public class AccountDAO {
         }
         return null;
     }
+    
+    public ArrayList<Account> getAllListAcc() {
+        try {
+            ArrayList<Account> list = new ArrayList<>();
+            String sql = "select * from Account";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt(1),
+                        rs.getString(2), rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7));
+                list.add(acc);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(KhoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public int count(String search) {
+        try {
+            String query = "select COUNT(*) from Account where username LIKE ? or role LIKE ? ";
+            DBContext db = new DBContext();
+            conn = db.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+    
 }

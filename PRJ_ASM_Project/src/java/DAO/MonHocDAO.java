@@ -43,18 +43,18 @@ public class MonHocDAO {
         return null;
     }
 
-    public ArrayList<MonHoc> getMonHocListByUsername(String username) {
+    public ArrayList<MonHoc> getMonHocListByAccountID(int id) {
         try {
             ArrayList<MonHoc> list = new ArrayList<>();
             String sql = "SELECT dbo.MonHoc.id, dbo.MonHoc.MaMH ,dbo.MonHoc.TenMH, dbo.MonHoc.SoTrinh\n"
                     + "FROM dbo.Diem INNER JOIN\n"
                     + "dbo.MonHoc ON dbo.Diem.MaMH = dbo.MonHoc.MaMH INNER JOIN\n"
                     + "dbo.SinhVien ON dbo.Diem.MaSV = dbo.SinhVien.MaSV\n"
-                    + "WHERE (dbo.SinhVien.username = ?)"
+                    + "WHERE (dbo.SinhVien.accountId = ?)"
                     + "order by id ASC";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 MonHoc mh = new MonHoc(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
@@ -214,7 +214,7 @@ public class MonHocDAO {
 //        for (MonHoc o : dao.getMaMonHoc()) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getMonHocListByUsername("mre"));
+        System.out.println(dao.getMonHocListByAccountID(1));
 //        dao.deleteMonHoc(30);
 //        int count = dao.count("H");
 //        System.out.println(count);

@@ -12,8 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
 import model.Khoa;
-import model.SinhVien;
 
 /**
  *
@@ -50,8 +50,8 @@ public class KhoaController extends HttpServlet {
             if (count % pageSize != 0) {
                 endPage++;
             }
-            SinhVien acc = (SinhVien) request.getSession().getAttribute("acc");
-            ArrayList<Khoa> listKhoaByUsername = dao.getKhoaListByUsername(acc.getUsername());
+            Account acc = (Account) request.getSession().getAttribute("acc");
+            ArrayList<Khoa> listKhoaByUsername = dao.getKhoaListByAccountID(acc.getId());
             ArrayList<Khoa> listKhoa = dao.getSearchKhoa(search, index, pageSize);
             if (listKhoa.isEmpty()) {
                 request.setAttribute("mess", "Không tìm thấy kết quả");

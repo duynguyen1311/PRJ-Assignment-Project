@@ -5,24 +5,20 @@
  */
 package controller;
 
-import DAO.DiemDAO;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
-import model.Diem;
-import model.SinhVien;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "DiemController", urlPatterns = {"/diem"})
-public class DiemController extends HttpServlet {
+@WebServlet(name = "AccountController", urlPatterns = {"/account"})
+public class AccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,35 +32,18 @@ public class DiemController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DiemDAO dao = new DiemDAO();
-        String search = request.getParameter("search");
-        String indexstr = request.getParameter("dindex");
-        int index = 1;
-        if (indexstr != null) {
-            index = Integer.parseInt(indexstr);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AccountController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AccountController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        if (search == null) {
-            search = "";
-        }
-        int endPage = 0;
-        int pageSize = 5;
-        int count = dao.count(search);
-        endPage = count / pageSize;
-        if (count % pageSize != 0) {
-            endPage++;
-        }
-         Account acc = (Account) request.getSession().getAttribute("acc");
-        ArrayList<Diem> listDiemByUsername = dao.getDiemListByAccountID(acc.getId());
-        ArrayList<Diem> listDiem = dao.getSearchDiem(search, index, pageSize);
-        if (listDiem.isEmpty()) {
-            request.setAttribute("mess", "Không tìm thấy kết quả");
-        }
-        request.setAttribute("listDiemByUsername", listDiemByUsername);
-        request.setAttribute("search", search);
-        request.setAttribute("index", index);
-        request.setAttribute("endPage", endPage);
-        request.setAttribute("listDiem", listDiem);
-        request.getRequestDispatcher("diem.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

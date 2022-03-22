@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
             }
         }
         if (username != null && password != null) {
-            SinhVien acc = new SinhVienDAO().getAcc(username, password);
+            Account acc = new AccountDAO().getAcc(username, password);
             if (acc != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("acc", acc);
@@ -105,7 +105,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         boolean remember = request.getParameter("remember") != null;
 
-        SinhVien acc = new SinhVienDAO().getAcc(username, password);
+        Account acc = new AccountDAO().getAcc(username, password);
         if (acc != null) {
             if (remember) {
                 Cookie userC = new Cookie("username", username);

@@ -45,17 +45,17 @@ public class KhoaDAO {
         return null;
     }
 
-    public ArrayList<Khoa> getKhoaListByUsername(String username) {
+    public ArrayList<Khoa> getKhoaListByAccountID(int id) {
         try {
             ArrayList<Khoa> list = new ArrayList<>();
             String sql = "SELECT dbo.Khoa.MaKhoa, dbo.Khoa.TenKhoa, dbo.Khoa.DiaChi, dbo.Khoa.DienThoai\n"
                     + "FROM dbo.Khoa INNER JOIN\n"
                     + "dbo.Lop ON dbo.Khoa.MaKhoa = dbo.Lop.MaKhoa INNER JOIN\n"
                     + "dbo.SinhVien ON dbo.Lop.MaLop = dbo.SinhVien.MaLop\n"
-                    + "WHERE (dbo.SinhVien.username = ?)";
+                    + "WHERE (dbo.SinhVien.accountId = ?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Khoa k = new Khoa(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
@@ -224,6 +224,6 @@ public class KhoaDAO {
 //        for (Khoa o : dao.getSearchKhoa("K", 1, 3)) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getKhoaListByUsername("mrb"));
+        System.out.println(dao.getKhoaListByAccountID(10));
     }
 }
