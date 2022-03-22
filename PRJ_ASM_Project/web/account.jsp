@@ -86,7 +86,7 @@
                             </li>
                             <c:if test="${sessionScope.acc.role eq 'ADMIN' && sessionScope.acc != null}">
                                 <li class="sidebar-item">
-                                    <a href="account" class='sidebar-link'>
+                                    <a href="account?aindex=1" class='sidebar-link'>
                                         <span>Account</span>
                                     </a>
                                 </li>
@@ -131,25 +131,14 @@
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Quản lý tài khoản</h3>
                             <p class="text-subtitle text-muted" style="margin-top:50px"></p>
-                            <c:choose>
-                                <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                    <a href="khoa_create" style="display: none;">
-                                        <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                            </i>Thêm mới </button>
-                                    </a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="khoa_create">
-                                        <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
-                                            </i>Thêm mới </button>
-                                    </a>
-                                </c:otherwise>
-                            </c:choose>
-
-                            <form action="khoa?kindex=1" method="post">
+                            <a href="account_create">
+                                <button class="btn btn-info" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;"><i class="bi-plus-circle" style="margin-right: 5px;">
+                                    </i>Thêm mới </button>
+                            </a>
+                            <form action="account?aindex=1" method="post">
                                 <div class="input-group mb-3" style="padding-top: 30px; padding-bottom: 10px;">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                                    <input type="text" name="search" class="form-control" placeholder="Tìm khoa"
+                                    <input type="text" name="search" class="form-control" placeholder="Tìm tài khoản"
                                            aria-label="Recipient's username" value="<%=request.getParameter("search") != null ? request.getParameter("search") : ""%>">
                                     <button class="btn btn-outline-secondary" type="submit"
                                             id="button-addon2">Search</button>
@@ -161,7 +150,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="home">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Khoa</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Account</li>
                                 </ol>
                             </nav>
                         </div>
@@ -178,56 +167,36 @@
                                         <table class="table mb-0 text-center">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th>Mã Khoa</th>
-                                                    <th>Tên Khoa</th>
-                                                    <th>Địa chỉ</th>
+                                                    <th>Mã tài khoản</th>
+                                                    <th>Tên đăng nhập</th>
+                                                    <th>Mật khẩu</th>
+                                                    <th>Email</th>
                                                     <th>Điện Thoại</th>
-                                                        <c:choose>
-                                                            <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                                            <th> </th>
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                            <th>ACTION</th>
-                                                            </c:otherwise>
-                                                        </c:choose>
-
+                                                    <th>Role</th>
+                                                    <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:choose>
-                                                    <c:when test="${sessionScope.acc.role eq 'USER'}">
-                                                        <c:forEach items="${listKhoaByUsername}" var="lk">
-                                                            <tr>
-                                                                <td class="text-bold-500">${lk.maKhoa}</td>
-                                                                <td>${lk.tenKhoa}</td>
-                                                                <td class="text-bold-500">${lk.diaChi}</td>
-                                                                <td>${lk.dienThoai}</td>
-                                                            </tr>
-                                                        </c:forEach>
-
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:forEach items="${listKhoa}" var="l">
-                                                            <tr>
-                                                                <td class="text-bold-500">${l.maKhoa}</td>
-                                                                <td>${l.tenKhoa}</td>
-                                                                <td class="text-bold-500">${l.diaChi}</td>
-                                                                <td>${l.dienThoai}</td>
-                                                                <td>
-                                                                    <a href="khoa_update?kid=${l.maKhoa}" class="bi-box-arrow-in-up-left"><i
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                    <a href="khoa_delete?kid=${l.maKhoa}" 
-                                                                       onclick="if (!(confirm('Bạn có chắc chắn muốn xóa ?')))
-                                                                                       return false"  class="bi-trash-fill"><i 
-                                                                            class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                                            data-feather="mail"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </c:otherwise>
-                                                </c:choose>
-
+                                                <c:forEach items="${listAccount}" var="l">
+                                                    <tr>
+                                                        <td class="text-bold-500">${l.id}</td>
+                                                        <td>${l.username}</td>
+                                                        <td class="text-bold-500">${l.password}</td>
+                                                        <td>${l.email}</td>
+                                                        <td>${l.phone}</td>
+                                                        <td>${l.role}</td>
+                                                        <td>
+                                                            <a href="account_update?kid=${l.id}" class="bi-box-arrow-in-up-left"><i
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                            <a href="account_delete?kid=${l.id}" 
+                                                               onclick="if (!(confirm('Bạn có chắc chắn muốn xóa ?')))
+                                                                                   return false"  class="bi-trash-fill"><i 
+                                                                    class="badge-circle badge-circle-light-secondary font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -237,34 +206,32 @@
                     </div>
                 </section>
                 <!-- Table head options end -->
-                <c:if test="${sessionScope.acc.role eq 'ADMIN'}">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-primary  justify-content-center">
                             <c:if test="${index != 1}">
                                 <li class="page-item">
-                                    <a class="page-link" href="khoa?kindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
+                                    <a class="page-link" href="account?aindex=${index-1}&search=${search}" tabindex="-1" aria-disabled="true">Previous</a>
                                 </li>
                             </c:if>
                             <c:forEach begin="1" end="${endPage}" var="i">
                                 <c:choose>
                                     <c:when test="${index == i}">
-                                        <li class="page-item active"><a class="page-link" href="khoa?kindex=${i}&search=${search}">${i}</a></li>
+                                        <li class="page-item active"><a class="page-link" href="account?aindex=${i}&search=${search}">${i}</a></li>
                                         </c:when>
                                         <c:otherwise>
-                                        <li class="page-item"><a class="page-link" href="khoa?kindex=${i}&search=${search}">${i}</a></li>
+                                        <li class="page-item"><a class="page-link" href="account?aindex=${i}&search=${search}">${i}</a></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
 
                             <c:if test="${index < endPage}">
                                 <li class="page-item">
-                                    <a class="page-link" href="khoa?kindex=${index+1}&search=${search}">Next</a>
+                                    <a class="page-link" href="account?aindex=${index+1}&search=${search}">Next</a>
                                 </li>
                             </c:if>
 
                         </ul>
                     </nav>
-                </c:if>
 
             </div>
 

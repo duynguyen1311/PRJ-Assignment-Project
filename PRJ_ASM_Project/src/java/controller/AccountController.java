@@ -5,13 +5,18 @@
  */
 package controller;
 
+import DAO.AccountDAO;
+import DAO.KhoaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
+import model.Khoa;
 
 /**
  *
@@ -34,15 +39,32 @@ public class AccountController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AccountController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AccountController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            AccountDAO dao = new AccountDAO();
+            String search = request.getParameter("search");
+            String indexstr = request.getParameter("aindex");
+            int index = 1;
+            if (indexstr != null) {
+                index = Integer.parseInt(indexstr);
+            }
+            if (search == null) {
+                search = "";
+            }
+            int endPage = 0;
+            int pageSize = 5;
+            int count = dao.count(search);
+            endPage = count / pageSize;
+            if (count % pageSize != 0) {
+                endPage++;
+            }
+            ArrayList<Account> listAccount = dao.getSearchAccount(search, index, pageSize);
+            if (listAccount.isEmpty()) {
+                request.setAttribute("mess", "Không tìm thấy kết quả");
+            }
+            request.setAttribute("search", search);
+            request.setAttribute("index", index);
+            request.setAttribute("endPage", endPage);
+            request.setAttribute("listAccount", listAccount);
+            request.getRequestDispatcher("account.jsp").forward(request, response);
         }
     }
 

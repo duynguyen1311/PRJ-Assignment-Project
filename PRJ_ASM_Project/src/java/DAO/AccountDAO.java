@@ -69,7 +69,7 @@ public class AccountDAO {
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
 //        System.out.println(dao.getAllListAcc());
-        System.out.println(dao.count("user"));
+        System.out.println(dao.getSearchAccount("user",1,3));
     }
 
     public ArrayList<Account> getListAcc() {
@@ -135,6 +135,38 @@ public class AccountDAO {
         }
 
         return 0;
+    }
+    
+    public ArrayList<Account> getSearchAccount(String search, int index, int size) {
+
+        try {
+            ArrayList<Account> list = new ArrayList<>();
+            String sql = "with x as(select ROW_NUMBER() over (order by ID ASC) as r\n"
+                    + ",* from Account where username LIKE ? or role LIKE ?)\n"
+                    + "select * from x where r between ?*4-3 and ?*4";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setString(2, "%" + search + "%");
+            ps.setInt(3, index);
+            ps.setInt(4, index);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8));
+                list.add(acc);
+            }
+            return list;
+
+        } catch (Exception ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }
