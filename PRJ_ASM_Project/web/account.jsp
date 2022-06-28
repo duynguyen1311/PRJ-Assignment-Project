@@ -172,7 +172,6 @@
                                                     <th>Mật khẩu</th>
                                                     <th>Display Name</th>
                                                     <th>Email</th>
-                                                    <th>Điện Thoại</th>
                                                     <th>Role</th>
                                                     <th>ACTION</th>
                                                 </tr>
@@ -185,7 +184,6 @@
                                                         <td class="text-bold-500">${l.password}</td>
                                                         <td>${l.displayname}</td>
                                                         <td>${l.email}</td>
-                                                        <td>${l.phone}</td>
                                                         <td>${l.role}</td>
                                                         <td>
                                                             <a href="account_update?id=${l.id}" class="bi-box-arrow-in-up-left"><i

@@ -248,8 +248,8 @@
                                                     <img src="assets/images/faces/1.jpg">
                                                 </div>
                                                 <div class="name ms-4">
-                                                    <h5 class="mb-1">Hello</h5>
-                                                    <h6 class="text-muted mb-0">abc@gmail.com</h6>
+                                                    <h5 class="mb-1">${i.displayname}</h5>
+                                                    <h6 class="text-muted mb-0">${i.email}</h6>
                                                 </div>
                                             </div>
                                         </c:forEach>

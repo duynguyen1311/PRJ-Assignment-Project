@@ -162,7 +162,7 @@ public class SinhVienDAO {
     public void insertSinhVien(String maSV, String tenSV, int gioiTinh,
             String ngaysinh, String quequan, String maLop, String sdt, String email) {
         try {
-            String sql = "insert into SinhVien\n"
+            String sql = "insert into SinhVien(MaSV,TenSV,GioiTinh,NgaySinh,QueQuan,MaLop,SDT,Email)\n"
                     + "values(?,?,?,?,?,?,?,?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -241,6 +241,7 @@ public class SinhVienDAO {
 //        System.out.println(dao.getAcc("mra", "123"));
 //        System.out.println(dao.getListAcc());
 //        System.out.println(dao.TongSoSinhVien());
-        System.out.println(dao.getSinhVienByAccountID(11));
+//        System.out.println(dao.getSinhVienByAccountID(11));
+        
     }
 }

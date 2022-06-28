@@ -221,9 +221,9 @@ public class KhoaDAO {
 
 //        int count = dao.TongSoKhoa();
 //        System.out.println(count);
-//        for (Khoa o : dao.getSearchKhoa("K", 1, 3)) {
-//            System.out.println(o);
-//        }
+        for (Khoa o : dao.getSearchKhoa("", 1, 3)) {
+            System.out.println(o);
+        }
         System.out.println(dao.getKhoaListByAccountID(10));
     }
 }
