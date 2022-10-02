@@ -232,6 +232,7 @@ public class SinhVienDAO {
     
     public static void main(String[] args) {
         SinhVienDAO dao = new SinhVienDAO();
+        
 //        for (SinhVien o : dao.getSearchSinhVien("H", 1, 3)) {
 //            System.out.println(o);
 //        }
@@ -241,7 +242,7 @@ public class SinhVienDAO {
 //        System.out.println(dao.getAcc("mra", "123"));
 //        System.out.println(dao.getListAcc());
 //        System.out.println(dao.TongSoSinhVien());
-//        System.out.println(dao.getSinhVienByAccountID(11));
+            System.out.println(dao.getSinhVienByAccountID(2));
         
     }
 }

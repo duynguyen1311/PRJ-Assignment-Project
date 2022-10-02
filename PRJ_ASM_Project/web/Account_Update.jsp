@@ -174,6 +174,17 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group row align-items-center">
                                                         <div class="col-lg-2 col-3">
+                                                            <label class="col-form-label">Phone</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-9">
+                                                            <input type="text" id="first-name" class="form-control" name="phone"
+                                                                   placeholder="Phone" value="${acc.phone}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row align-items-center">
+                                                        <div class="col-lg-2 col-3">
                                                             <label class="col-form-label">Role</label>
                                                         </div>
                                                         <div class="col-lg-10 col-9">

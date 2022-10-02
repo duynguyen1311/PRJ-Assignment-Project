@@ -15,8 +15,8 @@
         <title>Quản Lý Khoa</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/PRJ_ASM_Project/assets/css/bootstrap.css">
         <link rel="stylesheet" href="/PRJ_ASM_Project/assets/vendors/toastify/toastify.css">
         <link rel="stylesheet" href="/PRJ_ASM_Project/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">

@@ -27,7 +27,7 @@ public class AccountDAO {
     public Account getAcc(String user, String pass) {
 
         try {
-            String sql = "select * from Account where username=? and password=?";
+            String sql = "select * from Account where username = ? and password = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, user);
@@ -39,7 +39,8 @@ public class AccountDAO {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(6));
+                        rs.getString(6),
+                        rs.getString(7));
                 return acc;
             }
         } catch (Exception e) {
@@ -50,14 +51,15 @@ public class AccountDAO {
     public void insertAcc(String user, String pass, String display, String email, String phone, String role) {
         try {
             String sql = "insert into Account\n"
-                    + "values(?,?,?,?,?)";
+                    + "values(?,?,?,?,?,?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, user);
             ps.setString(2, pass);
             ps.setString(3, display);
             ps.setString(4, email);
-            ps.setString(5, role);
+            ps.setString(5, phone);
+            ps.setString(6, role);
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +70,7 @@ public class AccountDAO {
             String phone, String role, int id) {
         try {
             String sql = "Update Account\n"
-                    + "Set username = ?, password = ?, displayname = ?, email = ?, role = ?\n"
+                    + "Set username = ?, password = ?, displayname = ?, email = ?, phone = ?, role = ?\n"
                     + "where Id = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -76,8 +78,9 @@ public class AccountDAO {
             ps.setString(2, password);
             ps.setString(3, displayname);
             ps.setString(4, email);
-            ps.setString(5, role);
-            ps.setInt(6, id);
+            ps.setString(5, phone);
+            ps.setString(6, role);
+            ps.setInt(7, id);
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,7 +99,12 @@ public class AccountDAO {
         }
     }
 
-   
+    public static void main(String[] args) {
+        AccountDAO dao = new AccountDAO();
+//        System.out.println(dao.getAllListAcc());
+        //dao.updateAcc("mra", "123", "MR ASAP", "mra@gmail.com", "0912391238", "ADMIN", 7);
+        System.out.println(dao.getAcc("viet02", "viet01abc"));
+    }
 
     public ArrayList<Account> getListAcc() {
         try {
@@ -110,7 +118,8 @@ public class AccountDAO {
                         rs.getString(2), rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(6));
+                        rs.getString(6),
+                        rs.getString(7));
                 list.add(acc);
             }
             return list;
@@ -133,7 +142,8 @@ public class AccountDAO {
                         rs.getString(2), rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(6));
+                        rs.getString(6),
+                        rs.getString(7));
                 return acc;
             }
         } catch (Exception ex) {
@@ -154,7 +164,8 @@ public class AccountDAO {
                         rs.getString(2), rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(6));
+                        rs.getString(6),
+                        rs.getString(7));
                 list.add(acc);
             }
             return list;
@@ -203,7 +214,8 @@ public class AccountDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7));
+                        rs.getString(7),
+                        rs.getString(8));
                 list.add(acc);
             }
             return list;
@@ -212,14 +224,9 @@ public class AccountDAO {
             Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    
     }
-     public static void main(String[] args) {
-        AccountDAO dao = new AccountDAO();
-//        System.out.println(dao.getAllListAcc());
-        ArrayList<Account> list = dao.getSearchAccount("", 1, 6);
-         for (int i = 0; i < list.size(); i++) {
-             System.out.println(list.get(i));
-         }
-    }
+    
+    
 
 }

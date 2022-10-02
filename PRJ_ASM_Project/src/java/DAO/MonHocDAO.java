@@ -214,7 +214,7 @@ public class MonHocDAO {
 //        for (MonHoc o : dao.getMaMonHoc()) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getMonHocListByAccountID(1));
+        System.out.println(dao.getMonHocList());
 //        dao.deleteMonHoc(30);
 //        int count = dao.count("H");
 //        System.out.println(count);

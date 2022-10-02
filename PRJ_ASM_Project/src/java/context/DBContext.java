@@ -18,10 +18,10 @@ public class DBContext {
     /*Insert your other code right after this comment*/
  /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
     private final String serverName = "localhost";
-    private final String dbName = "PRJ_ASM";
-    private final String portNumber = "1433";
+    private final String dbName = "AssignmentPrj";
+    private final String portNumber = "1433";   
     private final String userID = "sa";
-    private final String password = "123456";
+    private final String password = "he163168";
 
     public static void main(String[] args) {
         try {

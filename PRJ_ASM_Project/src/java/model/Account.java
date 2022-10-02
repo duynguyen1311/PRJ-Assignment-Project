@@ -19,21 +19,22 @@ public class Account {
     private String password;
     private String displayname;
     private String email;
+    private String phone;
     private String role;
 
     public Account() {
     }
 
-    public Account(int id, String username, String password, String displayname, String email, String role) {
+    public Account(int id, String username, String password, String displayname, String email, String phone, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.displayname = displayname;
         this.email = email;
+        this.phone = phone;
         this.role = role;
     }
 
-  
     public int getId() {
         return id;
     }
@@ -74,6 +75,14 @@ public class Account {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getRole() {
         return role;
     }
@@ -84,7 +93,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", displayname=" + displayname + ", email=" + email + ", role=" + role + '}';
+        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", displayname=" + displayname + ", email=" + email + ", phone=" + phone + ", role=" + role + '}';
     }
     
     
